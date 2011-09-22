@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: Main Page</title>
+<title>SapphoDatabaseConnection: exec.php</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
@@ -71,9 +71,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">SapphoDatabaseConnection Documentation</div>  </div>
+<div class="title">exec.php</div>  </div>
 </div>
 <div class="contents">
+<p>This is how to use the exec(...) method</p>
+<div class="fragment"><pre class="fragment">&lt;?php
+... (initialize SDBC interface)
+
+<span class="comment">// issue statement to database</span>
+$exec = $sdbc-&gt;execute(<span class="stringliteral">&#39;CREATE TABLE temp(temp_id INT AUTO_INCREMENT, temp_data BLOB)&#39;</span>);
+
+<span class="comment">// check if execution was successfull</span>
+<span class="keywordflow">if</span>($exec) die(<span class="stringliteral">&quot;An error occured - $exec: &quot;</span>.$sdbc-&gt;lastError());
+
+...
+?&gt;
+</pre></div> </div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

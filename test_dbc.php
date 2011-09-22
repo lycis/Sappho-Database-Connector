@@ -1,5 +1,5 @@
 <?php
-	require_once('lib/sappho_dbc/sappho_dbc.php');
+	require_once('lib/sappho_dbc.php');
 	
 	echo "<h1>Database Module Test</h1>";
 	echo "<h3>Establishing connection</h3>";

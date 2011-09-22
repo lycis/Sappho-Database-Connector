@@ -6,6 +6,7 @@
  *        This class was developed during the Sappho project (a Document Management System).
  *        It is able to manage a database connection to MySQL and postgreSQL databases
  *        without the user worrying about the correct syntax of the different statments.
+ *
  */
 
 class SapphoDatabaseConnection{
@@ -138,7 +139,23 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
-	// select from database
+	/**
+	 * \brief Issue a select command to the database
+	 *
+	 *        This method selects data from a given table. You may specify
+	 *        limiting clauses (mostly known as WHERE clauses) or lock the
+	 *        selected data records.
+	 *
+	 * \param $table the table you wish to access
+	 * \param $fields an array with fieldnames for multiple fields or only one string for one field (or *)
+	 * \param $where a where clause
+	 * \param $lock set to true if you wish to lock the selected records
+	 *
+	 * \return <table>
+	 *           <tr><td>0</td><td>the statement was issued without any error</tr>
+	 *           <tr><td>#db_select_error</td><td>an error occured</td></tr>
+	 *         </table>
+	 */
 	function select($table, $fields = '*', $where = '', $lock=false)
 	{
 		//if(!is_array($fields)) return self::db_error_wrong_dtype;
@@ -186,7 +203,22 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
-	// execute given statement on database - use at own risk, no optimization done!
+	/**
+	 * \example exec.php
+	 * \brief This is how to use the exec(...) method 
+	 *
+	 */
+	
+	/**
+	 * \brief Executes a statement without further checks.
+	 *
+	 *        The given statement is executed on the database without any further checking.
+	 *        You have to make sure that the synstax is correct for the used database by yourself.
+	 *        
+	 * \param $stmnt the statement you want to execute
+	 *
+	 * \return 0 on success, 1 on failure
+	 */
 	function execute($stmnt)
 	{
 		if($this->typeIs(self::db_type_mysql))
