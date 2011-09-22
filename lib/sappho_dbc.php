@@ -239,10 +239,23 @@ class SapphoDatabaseConnection{
 		}
 	}
 	
-	// insert into database
+	/**
+	 * \brief Insert a new record into a table.
+	 *
+	 * This method is used to insert new data into an existing table of the database.
+	 *
+	 * \param $table the table you wish to insert into
+	 * \param $fields an array with the association of fieldnames (keys) to the values
+	 *
+	 * \returns <table>
+	 *            <tr><td>0</td><td>success</td></tr>
+	 *            <tr><td>#db_error_wrong_dtype</td><td>the parameter $field was no valid array</td></tr>
+	 *            <tr><td>#db_insert_error</td><td>an error occured</td></tr>
+	 *          </table>
+	 */
 	function insert($table, $fields)
 	{
-		if(!is_array($fields)) return self::db_insert_error;
+		if(!is_array($fields)) return self::db_error_wrong_dtype;
 		
 		$query = '';
 		
@@ -287,7 +300,20 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
-	// update a dataset
+	/**
+	 * \brief Update an already existing dataset.
+	 *
+	 *  Use this function to change already existing data in a table of the database.
+	 *
+	 * \param $table the table to be upated
+	 * \param $data an array that associates the fields to the values
+	 * \param $where a where clause to limit the updated datasets
+	 *
+	 * \returns <table>
+	 *           <tr><td>0</td><td>the statement was issued without any error</tr>
+	 *           <tr><td>#db_update_error</td><td>an error occured</td></tr>
+	 *         </table>
+	 */
 	function update($table, $data, $where = '')
 	{
 		if(!is_array($data)) return self::db_update_error;
@@ -329,7 +355,14 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
-	// get next data row of the last query
+	/**
+	 * \brief Get the next data set of the last result set.
+	 *
+	 *  This statement returns an associated array with the table data that was queried
+	 *  by the last select statement that was executed.
+	 *
+	 * \returns An associated array or #db_next_nodata
+	 */
 	function nextData(){
 		if(!mysql_num_rows($this->lastResult)) return self::db_next_nodata;
 		
@@ -353,41 +386,82 @@ class SapphoDatabaseConnection{
 	}
 	
 	// debug functions
-	function setLastQuery($query)
+	private function setLastQuery($query)
 	{
 		$this->last_query = $query;
 		if($this->debug_level > 0)
 			echo "SDBC: last query was '".$this->last_query."'<br/>";
 	}
 	
-	// get last error
+	/**
+	 * \brief The error message of the last occured error.
+	 *
+	 * \returns Error message of the last occured error.
+	 */
 	function lastError()
 	{
 		return $this->error_message;
 	}
 	
 	// last error in sql connection
-	function getSQLError(){
+	private function getSQLError(){
 		$error = '';
 		if($this->typeIs(self::db_type_mysql))
 			$error = mysql_error();
 		return $error;
 	}
 	
-	// is the connection of type...?
+	/**
+	 * \brief Check if the connection is of the given type.
+	 *
+	 * \param $compare the database type you wish to check
+	 * \returns true if the database types equals the given one.
+	 */
 	function typeIs($compare)
 	{
 		if($this->db_type == $compare) return true;
 		return false;
 	}
 	
-	// set level for debug messages
+	/**
+	 * \brief Set debug level.
+	 *
+	 * This method sets the debug level. When debug level is set some additional information
+	 * that helps finden errors in your code will be displayed. The level determines how verbose
+	 * this information will be. A higher level always displayes information that is provided
+	 * by lower levels.
+	 *
+	 * Currently these debug levels are implemented:
+	 * <table>
+	 *  <tr><th>level</th><th>information</th></tr>
+	 *  <tr><td>0</td><td>no debug information</td></tr>
+	 *  <tr><td>1</td><td>executed statements</td></tr>
+	 *  <tr><td>2</td><td>data retrieved by #nextData()</td></tr>
+	 * </table>
+	 *
+	 * \param $debug the debug level
+	 */
 	function setDebug($debug)
 	{
 		$this->debug_level = $debug;
 	}
 	
-	// close an former established connection
+	/**
+	 * \brief Close the database connection.
+	 *
+	 *  By using this function you close the SDBC connection. This means that you can not submit any
+	 *  requests after this statement. You may, however, use #connect() to reestablish the database
+	 *  connection.
+	 *
+	 * \b Mind \b this: The use of this function is \a optional. It is automatically called by
+	 *  #__destruct() when the instance is destructed.
+	 *
+	 * \returns <table>
+	 *           <tr><td>0</td><td>connection was closed</tr>
+	 *           <tr><td>#db_close_not_connected</td><td>you tried to close an unconnected SDBC</td></tr>
+	 *           <tr><td>#db_close_not_closed</td><td>the SDBC was not able to close the connection</td></tr>
+	 *          </table>
+	 */
 	function close()
 	{
 		if($this->status != 'connected')
@@ -404,7 +478,11 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
-	// get rows of result
+	/**
+	 * \brief The amount of rows queried by the last executed statement.
+	 *
+	 * \returns amount of rows held in the last result set
+	 */
 	function rowCount()
 	{
 		if(!$this->lastResult) return 0;
@@ -413,7 +491,11 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
-	// get the result handle of the last query
+	/**
+	 * \brief The last result set.
+	 *
+	 * \returns the result set of the last query
+	 */
 	function getLastResult()
 	{
 		return $this->lastResult;

@@ -52,7 +52,7 @@ PROJECT_LOGO           = D:/ws/sdbc/doc/logo_200x123.png
 # If a relative path is entered, it will be relative to the location 
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = D:/ws/sdbc/doc
+OUTPUT_DIRECTORY       = J:/eclipse_ws/sdbc/doc
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
 # 4096 sub-directories (in 2 levels) under the output directory of each output 
@@ -638,7 +638,7 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  = D:/ws/sdbc/lib \
+INPUT                  = J:/eclipse_ws/sdbc/lib \
                          ../doc/doxy/
 
 # This tag can be used to specify the character encoding of the source files 
