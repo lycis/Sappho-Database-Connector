@@ -180,6 +180,9 @@ class SapphoDatabaseConnection{
 			
 			$query .= " FROM $table";
 			
+			if($lock)
+			  $query .= ' FOR UPDATE';
+			
 			$where = trim($where);
 			if($where != '')
 				$query .= " WHERE ".mysql_real_escape_string($where);
@@ -374,7 +377,10 @@ class SapphoDatabaseConnection{
 			$data = mysql_fetch_assoc($this->lastResult);
 			
 		if($this->debug_level > 1)
+		{
 			print_r($data);
+			echo "<br/>";
+		}
 			
 		if(!$data)
 		{

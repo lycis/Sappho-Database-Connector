@@ -47,6 +47,16 @@
 	if($update) die("error - $update: ".$db->lastError());
 	echo "</p>";
 	
+	echo "<h3>select for update</h3>";
+	echo "<p>";
+	$db->execute("BEGIN");
+	$select = $db->select('object', array('object_id', 'object_name'),'',true);
+	if($select) die("foo - $select: ".$db->lastError());
+	
+	$object = $db->nextData() or die("blaaa: ".$db->lastError());
+	$db->execute("ROLLBACK");
+	echo "</p>";
+	
 	echo "<h3>close connection</h3>";
 	echo "<p>";
 	$r = $db->close();
