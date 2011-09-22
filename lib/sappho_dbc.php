@@ -7,8 +7,16 @@
  *        It is able to manage a database connection to MySQL and postgreSQL databases
  *        without the user worrying about the correct syntax of the different statments.
  *
+ *
+ * \author Daniel Eder
+ * \version 0.1
+ * \date 2011-09-22
+ * \copyright GNU Public License Version 3
  */
 
+// we use the syntax optimizer
+include("sappho_synopt.php");
+ 
 class SapphoDatabaseConnection{
 	// status can be:
 	//	connected or unconnected
@@ -29,6 +37,9 @@ class SapphoDatabaseConnection{
 	// debug fields
 	private $debug_level;
 	private $last_query;
+	
+	// syntax optimizer
+	private $synopt = null;
 	
 	// return codes for connect()
 	const db_connect_already_connected = 1; /**< returned by #connect(...) if the connector is already connected to a database */
@@ -57,8 +68,8 @@ class SapphoDatabaseConnection{
 	const db_error_wrong_dtype = 255; /**< a general return code if a wrong datatype was passed to a function */
 	
 	// database types
-	const db_type_mysql        = 'mysql'; /**< database type MySQL */
-	const db_type_postgresql   = 'postgresql'; /**< database type postgreSQL */
+	const db_type_mysql     = 'mysql'; /**< database type MySQL */
+	const db_type_postgre   = 'postgresql'; /**< database type postgreSQL */
 	
 	// data of the last query
 	private $lastResult;
@@ -82,6 +93,9 @@ class SapphoDatabaseConnection{
 		if(isset($host)) $this->db_host = $host;
 		if(isset($user)) $this->db_user = $user;
 		if(isset($db))   $this->db_name = $db;
+		
+		if(isset($this->db_type))
+			$this->synopt = new SapphoSyntaxOptimizer($this->db_type);
 	}
 	
 	/**
@@ -121,6 +135,9 @@ class SapphoDatabaseConnection{
 		$this->db_handle = 0;
 		if($this->typeIs(self::db_type_mysql))
 			$this->db_handle = mysql_connect($this->db_host,$this->db_user,$password);
+		else if($this->typeIs(self::db_type_postgre))
+		    $this->db_handle = pg_connect("host=".$this->db_host." dbname=".$this->db_name.
+			                              " user=".$this->db_user." password=$password");
 		
 		if(!$this->db_handle)
 		{
@@ -128,13 +145,14 @@ class SapphoDatabaseConnection{
 			return self::db_connect_declined;
 		}
 		
-		$this->status = 'connected';
-		 
-		if(!mysql_select_db($this->db_name))
+		if($this->typeIs(self::db_type_mysql) && 
+		   !mysql_select_db($this->db_name))
 		{
 			$this->error_message = $this->getSQLError();
 			return self::db_connect_db_notexist;
 		}
+		
+		$this->status = 'connected';
 		
 		return 0;
 	}
@@ -168,7 +186,7 @@ class SapphoDatabaseConnection{
 			{
 				for($i=0; $i < count($fields); $i++)
 				{
-				$f = mysql_real_escape_string($fields[$i]);
+				$f = $this->escape_keywords(mysql_real_escape_string($fields[$i]));
 				$query .= $f;
 			  
 				if($i != count($fields)-1)
@@ -178,23 +196,49 @@ class SapphoDatabaseConnection{
 			else
 				$query .= $fields;
 			
-			$query .= " FROM $table";
+			$query .= " FROM ".$this->escape_keywords(mysql_real_escape_string($table));
 			
 			if($lock)
 			  $query .= ' FOR UPDATE';
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= " WHERE ".mysql_real_escape_string($where);
+				$query .= " WHERE ".$this->escape_keywords(mysql_real_escape_string($where));
 			
 	    }
+		else if($this->db_type == self::db_type_postgre)
+		{
+			$query = 'SELECT ';
+			if(is_array($fields))
+			{
+				for($i=0; $i < count($fields); $i++)
+				{
+				$f = pg_escape_string($fields[$i]);
+				$query .= $f;
+			  
+				if($i != count($fields)-1)
+					$query .= ', ';
+				}
+			}
+			else
+				$query .= $this->escape_keywords(pg_escape_string($fields));
+			
+			$query .= " FROM ".$this->escape_keywords(pg_escape_string($table));
+			
+			if($lock)
+			  $query .= ' FOR UPDATE';
+			
+			$where = trim($where);
+			if($where != '')
+				$query .= " WHERE ".$this->escape_keywords(pg_escape_string($where));
+		}
 		$this->setLastQuery($query);
 		
 		$result = 0;
 		if($this->typeIs(self::db_type_mysql))
-		{
 			$result = mysql_query($query);
-		}
+		else if($this->typeIs(self::db_type_postgre))
+			$result = pg_query($query);
 			
 		if(!$result)
 		{
@@ -224,22 +268,22 @@ class SapphoDatabaseConnection{
 	 */
 	function execute($stmnt)
 	{
+		$this->setLastQuery($stmnt);
+		$result = 0;
+		
 		if($this->typeIs(self::db_type_mysql))
-		{
-			$this->setLastQuery($stmnt);
-			
-			$result = 0;
 			$result = mysql_query($stmnt);
-			
-			if(!$result)
-			{
-				$this->error_message = $this->getSQLError();
-				return 1;
-			}
-			
-			$this->lastResult = $result;
-			return 0;
+		else if($this->typeIs(self::db_type_postgre))
+			$result = pg_query($stmnt);
+		
+		if(!$result)
+		{
+			$this->error_message = $this->getSQLError();
+			return 1;
 		}
+			
+		$this->lastResult = $result;
+		return 0;
 	}
 	
 	/**
@@ -265,12 +309,36 @@ class SapphoDatabaseConnection{
 		if($this->db_type == self::db_type_mysql)
 		{
 			$query = 'INSERT INTO ';
-			$query .= mysql_real_escape_string($table);
+			$query .= $this->escape_keywords(mysql_real_escape_string($table));
 			
 			$query .= '(';
 			$fieldnames = array_keys($fields);
 			for($i=0; $i<count($fieldnames); $i++){
-				$query .= $fieldnames[$i];
+				$query .= $this->escape_keywords(mysql_real_escape_string($fieldnames[$i]));
+				
+				if($i != count($fieldnames)-1)
+					$query .= ', ';
+			}
+			
+			$query .= ') VALUES(';
+			$values = array_values($fields);
+			for($i=0; $i<count($values); $i++){
+				$query .= $values[$i];
+				
+				if($i != count($values)-1)
+					$query .= ', ';
+			}
+			$query .= ")";
+		}
+		else if($this->db_type == self::db_type_postgre)
+		{
+			$query = 'INSERT INTO ';
+			$query .= $this->escape_keywords(pg_escape_string($table));
+			
+			$query .= '(';
+			$fieldnames = array_keys($fields);
+			for($i=0; $i<count($fieldnames); $i++){
+				$query .= $this->escape_keywords(mysql_real_escape_string($fieldnames[$i]));
 				
 				if($i != count($fieldnames)-1)
 					$query .= ', ';
@@ -290,8 +358,10 @@ class SapphoDatabaseConnection{
 		$this->setLastQuery($query);
 		$result = 0;
 		
-		if($this->db_type = self::db_type_mysql)
+		if($this->db_type == self::db_type_mysql)
 			$result = mysql_query($query);
+		else if($this->db_type == self::db_type_postgre)
+			$result = pg_query($query);
 		
 		if(!$result)
 		{
@@ -322,31 +392,52 @@ class SapphoDatabaseConnection{
 		if(!is_array($data)) return self::db_update_error;
 		$query = '';
 		
-		if($this->db_type = self::db_type_mysql)
+		if($this->db_type == self::db_type_mysql)
 		{
 			$query .= 'UPDATE ';
-			$query .= mysql_real_escape_string($table);
+			$query .= $this->escape_keywords(mysql_real_escape_string($table));
 			
 			$query .= ' SET ';
 			$keys = array_keys($data);
 			for($i=0; $i<count($keys); $i++)
 			{
-				$query .= mysql_real_escape_string($keys[$i]).' = '.
-				          mysql_real_escape_string($data[$keys[$i]]);
+				$query .= $this->escape_keywords(mysql_real_escape_string($keys[$i])).' = '.
+				          $data[$keys[$i]];
 				if($i != count($keys)-1)
 					$query .= ', ';
 			}
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= ' WHERE '.mysql_real_escape_string($where);
+				$query .= ' WHERE '.$this->escape_keywords(mysql_real_escape_string($where));
+		}
+		else if($this->db_type = self::db_type_postgre)
+		{
+			$query .= 'UPDATE ';
+			$query .= $this->escape_keywords(pg_escape_string($table));
+			
+			$query .= ' SET ';
+			$keys = array_keys($data);
+			for($i=0; $i<count($keys); $i++)
+			{
+				$query .= $this->escape_keywords(pg_escape_string($keys[$i])).' = '.
+				          $data[$keys[$i]];
+				if($i != count($keys)-1)
+					$query .= ', ';
+			}
+			
+			$where = trim($where);
+			if($where != '')
+				$query .= ' WHERE '.$this->escape_keywords(pg_escape_string($where));
 		}
 		
 		$this->setLastQuery($query);
 		$result = 0;
 		
-		if($this->db_type = self::db_type_mysql)
+		if($this->db_type == self::db_type_mysql)
 			$result = mysql_query($query);
+		else if($this->db_type == self::db_type_postgre)
+			$result = pg_query($query);
 		
 		if(!$result)
 		{
@@ -367,7 +458,16 @@ class SapphoDatabaseConnection{
 	 * \returns An associated array or #db_next_nodata
 	 */
 	function nextData(){
-		if(!mysql_num_rows($this->lastResult)) return self::db_next_nodata;
+		if(($this->typeIs(self::db_type_mysql) &&
+		    !mysql_num_rows($this->lastResult)) 
+			||
+           ($this->typeIs(self::db_type_postgre) &&
+		    !pg_num_rows($this->lastResult)))
+		{
+			$this->error_message = "SDBC - last result set is empty";
+			return self::db_next_nodata;
+		}
+		
 		
 		if($this->debug_level > 1)
 			echo "SDBC: next data -> ";
@@ -375,16 +475,22 @@ class SapphoDatabaseConnection{
 		$data = 0;
 		if($this->typeIs(self::db_type_mysql))
 			$data = mysql_fetch_assoc($this->lastResult);
+	    else if($this->typeIs(self::db_type_postgre))
+			$data = pg_fetch_assoc($this->lastResult);
 			
 		if($this->debug_level > 1)
 		{
 			print_r($data);
 			echo "<br/>";
 		}
-			
+		
 		if(!$data)
 		{
-			$this->lastError = $this->getSQLError();
+			$this->error_message = $this->getSQLError();
+			
+			if(trim($this->lastError()) == '')
+				$this->error_message = "SDBC - no data left";
+				
 			return self::db_next_nodata;
 		}
 		
@@ -414,6 +520,8 @@ class SapphoDatabaseConnection{
 		$error = '';
 		if($this->typeIs(self::db_type_mysql))
 			$error = mysql_error();
+		if($this->typeIs(self::db_type_postgre))
+		    $error = pg_last_error();
 		return $error;
 	}
 	
@@ -479,6 +587,12 @@ class SapphoDatabaseConnection{
 				$this->error_message = 'Connection remains unclosed: '.mysql_error();
 				return self::db_close_not_closed;
 			}
+		else if($this->typeIs(self::db_type_postgre))
+			if(!(pg_close($this->db_handle)))
+			{
+				$this->error_message = 'Connection remains unclosed: '.mysql_error();
+				return self::db_close_not_closed;
+			}
 		
 		$this->status = 'unconnected';
 		return 0;
@@ -494,6 +608,8 @@ class SapphoDatabaseConnection{
 		if(!$this->lastResult) return 0;
 		if($this->typeIs(self::db_type_mysql))
 			return mysql_num_rows($this->lastResult);
+		if($this->typeIs(self::db_type_postgre))
+			return pg_num_rows($this->lastResult);
 		return 0;
 	}
 	
@@ -505,6 +621,12 @@ class SapphoDatabaseConnection{
 	function getLastResult()
 	{
 		return $this->lastResult;
+	}
+	
+	// escape DBS keywords
+	private function escape_keywords($string)
+	{
+		return $this->synopt->escape_reserved_words($string);
 	}
 }
 ?>
