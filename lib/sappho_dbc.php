@@ -449,6 +449,49 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
+	function bulkInsert($table, $fields)
+	{
+		if(!is_array($fields)) return self::db_error_wrong_dtype;
+		
+		$query = 'INSERT INTO ';
+		if($this->typeIs(self::db_type_mysql))
+			$table = $this->escape_keywords(mysql_real_escape_string($table));
+		else if($this->typeIs(self::db_type_postgre))
+			$table = $this->escape_keywords(pg_escape_string($table));
+			
+		$query .= $table;
+		$query .= '(';
+		for($i=0; $i<count($fields); $i++)
+		{
+			$val = '';
+			if($this->typeIs(self::db_type_mysql))
+				$val = $this->escape_keywords(mysql_real_escape_string($fields[i]));
+			else
+				$val = $this->escape_keywords(pg_escape_string($fields[i]));
+			
+			$query .= $val;
+			
+			if($i != count($fields)-1)
+				$query .= ', ';
+		}
+		
+		$query .= ') VALUES(';
+		for($i=0; $i<count($fields); $i++)
+		{
+			$query .= '?';
+			if($i != count($fields)-1)
+				$query .= ', ';
+		}
+		
+		$query .= ')';
+		
+		$this->setLastQuery($query);
+		if($this->typeIs(self::db_type_mysql));
+			
+		else if($this-typeIs(self::db_type_postgre))
+			pg_prepare("asdf", $query);
+	}
+	
 	/**
 	 * \brief Get the next data set of the last result set.
 	 *
