@@ -16,6 +16,9 @@
 
 // we use the syntax optimizer
 include("sappho_synopt.php");
+
+// table structures
+include("sappho_tabstruct.php");
  
 class SapphoDatabaseConnection{
 	// status can be:
@@ -599,6 +602,7 @@ class SapphoDatabaseConnection{
 	 *  <tr><td>0</td><td>no debug information</td></tr>
 	 *  <tr><td>1</td><td>executed statements</td></tr>
 	 *  <tr><td>2</td><td>data retrieved by #nextData()</td></tr>
+	 *  <tr><td>4</td><td>table catalog data</td></tr>
 	 *  <tr><td>9</td><td>also set debug flag in all submodules</td></tr>
 	 * </table>
 	 *
@@ -639,7 +643,7 @@ class SapphoDatabaseConnection{
 			return self::db_close_not_connected;
 			
 		if($this->typeIs(self::db_type_mysql))
-			if(!$this->db_handle->close($this->db_handle))
+			if(!$this->db_handle->close())
 			{
 				$this->error_message = 'Connection remains unclosed: '.$this->db_handle->error();
 				return self::db_close_not_closed;
@@ -713,6 +717,9 @@ class SapphoDatabaseConnection{
 		// structure is already cataloged
 		if(!$recat && in_array($table, array_keys($this->tablestruct)))
 			return true;
+			
+		if($this->debug_level)
+			echo "Analyzing table $table";
 		
 		if($this->typeIs(self::db_type_mysql))
 			return $this->catalog_mysql_table($table);
@@ -722,7 +729,7 @@ class SapphoDatabaseConnection{
 	}
 	
 	// catalog a mysql table
-	function catalog_mysql_table($table)
+	private function catalog_mysql_table($table)
 	{
 		// if this no mysql db we don't do anything
 		if(!$this->typeIs(self::db_type_mysql)) return false;
@@ -736,10 +743,25 @@ class SapphoDatabaseConnection{
 			return false;
 		}
 		
+		$struct = new SapphoTableStructure($table);
 		while(($data = $result->fetch_row()))
 		{
-			print_r($data);
-			echo "<br/>";
+			if($this->debug_level > 3)
+			{
+				echo "Analyzing attribute: ";
+				print_r($data);
+				echo "<br/>";
+			}
+			
+			$pos    = strpos($data[1], "(");
+			$type   = substr($data[1], 0, $pos);
+			$pos2   = strpos($data[1], ")");
+			$length = substr($data[1], $pos+1, $pos2-$pos-1);
+			
+			$struct->addColumn($data[0], $type, $length);
+			if($this->debug_level > 3)
+				echo $data[0]." -> type = ".$struct->getType($data[0]).
+				     "; length = ".$struct->getLength($data[0])."<br/>";
 		}
 	}
 }

@@ -5,7 +5,7 @@
 	echo "<h3>Establishing connection</h3>";
 	echo "<p>";
 	$db = new SapphoDatabaseConnection(SapphoDatabaseConnection::db_type_mysql, 'localhost', 'sappho', 'sappho');
-	$db->setDebug(2);
+	$db->setDebug(9);
 	if($db->connect('test123') != 0)
 		die("foo ".$db->lastError());
 	echo "Connection OK";
