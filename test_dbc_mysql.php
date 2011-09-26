@@ -56,6 +56,9 @@
 	$object = $db->nextData() or die("blaaa: ".$db->lastError());
 	$db->execute("ROLLBACK");
 	echo "</p>";
+
+	echo "<h3>Catalog table</h3>";
+	$db->catalog_table("area");
 	
 	echo "<h3>close connection</h3>";
 	echo "<p>";

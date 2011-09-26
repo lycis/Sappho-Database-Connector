@@ -106,6 +106,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new record into a table.  <a href="#a44a916b0f1388fa230c602eb5626c7d0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a5a746db9594beff91db644df4bde8d64">update</a> ($table, $data, $where= '')</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update an already existing dataset.  <a href="#a5a746db9594beff91db644df4bde8d64"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56f3d848f0b99c395251fe923781a564"></a><!-- doxytag: member="SapphoDatabaseConnection::bulkInsert" ref="a56f3d848f0b99c395251fe923781a564" args="($table, $fields)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>bulkInsert</b> ($table, $fields)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d">nextData</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next data set of the last result set.  <a href="#aade49b72ed36d5cf3af2a92f0bc5492d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a75b6fba37860b5cc1e896469971a053b">lastError</a> ()</td></tr>
@@ -120,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of rows queried by the last executed statement.  <a href="#a0ea493245c81a80ccc478bc3eb43b2c4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a37a37ac5ead2215728c5c95b44d0468b">getLastResult</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The last result set.  <a href="#a37a37ac5ead2215728c5c95b44d0468b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a6252d3006c6c29e4934000dc7564cb01">catalog_table</a> ($table, $recat=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Analyzes and catalogues the structure of a table.  <a href="#a6252d3006c6c29e4934000dc7564cb01"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0e53d783527edd85a1b5d6874e08c190">db_connect_already_connected</a> = 1</td></tr>
@@ -216,6 +220,46 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a6252d3006c6c29e4934000dc7564cb01"></a><!-- doxytag: member="SapphoDatabaseConnection::catalog_table" ref="a6252d3006c6c29e4934000dc7564cb01" args="($table, $recat=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::catalog_table </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>recat</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Analyzes and catalogues the structure of a table. </p>
+<p>Usually this method is called by any other data operation method. It catalogues a table and analyzes it's data structure. This is necessary for the automatic datatype recognition and syntax optimization.</p>
+<p>Because this method is called once for each table on it's first use, the first operation on a table might be a bit slower than the rest.</p>
+<p>You may call this function manually to recatalog a table. This will be necessary if you changed it's data structure while using the same SDBC.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$table</td><td>the name of the table to cagalogue </td></tr>
+    <tr><td class="paramname">$recat</td><td>set to true if you are recataloging a table</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>true</code> if the table was catalogued or <code>false</code> on any error </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a9748884a0a413e3500aa535227743402"></a><!-- doxytag: member="SapphoDatabaseConnection::close" ref="a9748884a0a413e3500aa535227743402" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -519,6 +563,8 @@ Public Attributes</h2></td></tr>
 <td>1</td><td>executed statements </td></tr>
 <tr>
 <td>2</td><td>data retrieved by <a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d" title="Get the next data set of the last result set.">nextData()</a> </td></tr>
+<tr>
+<td>9</td><td>also set debug flag in all submodules </td></tr>
 </table>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -824,7 +870,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 22 2011 23:43:37 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 26 2011 19:06:25 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
