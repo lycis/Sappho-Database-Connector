@@ -24,6 +24,7 @@ class SapphoSyntaxOptimizer{
 	const db_type_postgre   = 'postgresql'; /**< database type postgreSQL */
 	
 	private $db_type;
+	private $debug;
 	
 	/**
 	 * \brief Constructor.
@@ -33,6 +34,18 @@ class SapphoSyntaxOptimizer{
 	 function __construct($type)
 	 {
 		$this->db_type = $type;
+	 }
+	 
+	 /**
+	  * \brief Sets debug information level
+	  *
+	  *  The level of debug information is set. Currently every debug level > 1 will print any available
+	  *  debug information.
+	  *
+	  */
+	 function setDebug($level)
+	 {
+		$this->debug = $level;
 	 }
 	
 	/**
@@ -47,6 +60,9 @@ class SapphoSyntaxOptimizer{
 	 */
 	function escape_reserved_words($string)
 	{
+		if($this->debug > 0)
+			echo "SynOpt: got $string<br/>";
+			
 		$words = explode(" ", $string);
 		
 		for($i=0; $i<count($words); $i++)
@@ -59,6 +75,8 @@ class SapphoSyntaxOptimizer{
 				
 			if(in_array(strtoupper($words[$i]), $res_words))
 			{
+				if($this->debug > 0)
+					echo "SynOpt: escaping ".$words[$i]."<br/>";
 				switch($this->db_type)
 				{
 					case self::db_type_mysql:

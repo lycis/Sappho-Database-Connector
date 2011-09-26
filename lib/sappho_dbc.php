@@ -134,7 +134,7 @@ class SapphoDatabaseConnection{
 		   
 		$this->db_handle = 0;
 		if($this->typeIs(self::db_type_mysql))
-			$this->db_handle = mysql_connect($this->db_host,$this->db_user,$password);
+			$this->db_handle = mysqli_connect($this->db_host,$this->db_user,$password);
 		else if($this->typeIs(self::db_type_postgre))
 		    $this->db_handle = pg_connect("host=".$this->db_host." dbname=".$this->db_name.
 			                              " user=".$this->db_user." password=$password");
@@ -146,7 +146,7 @@ class SapphoDatabaseConnection{
 		}
 		
 		if($this->typeIs(self::db_type_mysql) && 
-		   !mysql_select_db($this->db_name))
+		   !mysqli_select_db($this->db_name))
 		{
 			$this->error_message = $this->getSQLError();
 			return self::db_connect_db_notexist;
@@ -186,7 +186,7 @@ class SapphoDatabaseConnection{
 			{
 				for($i=0; $i < count($fields); $i++)
 				{
-				$f = $this->escape_keywords(mysql_real_escape_string($fields[$i]));
+				$f = $this->escape_keywords(mysqli_real_escape_string($fields[$i]));
 				$query .= $f;
 			  
 				if($i != count($fields)-1)
@@ -196,14 +196,14 @@ class SapphoDatabaseConnection{
 			else
 				$query .= $fields;
 			
-			$query .= " FROM ".$this->escape_keywords(mysql_real_escape_string($table));
+			$query .= " FROM ".$this->escape_keywords(mysqli_real_escape_string($table));
 			
 			if($lock)
 			  $query .= ' FOR UPDATE';
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= " WHERE ".$this->escape_keywords(mysql_real_escape_string($where));
+				$query .= " WHERE ".$this->escape_keywords(mysqli_real_escape_string($where));
 			
 	    }
 		else if($this->db_type == self::db_type_postgre)
@@ -236,7 +236,7 @@ class SapphoDatabaseConnection{
 		
 		$result = 0;
 		if($this->typeIs(self::db_type_mysql))
-			$result = mysql_query($query);
+			$result = mysqli_query($query);
 		else if($this->typeIs(self::db_type_postgre))
 			$result = pg_query($query);
 			
@@ -272,7 +272,7 @@ class SapphoDatabaseConnection{
 		$result = 0;
 		
 		if($this->typeIs(self::db_type_mysql))
-			$result = mysql_query($stmnt);
+			$result = mysqli_query($stmnt);
 		else if($this->typeIs(self::db_type_postgre))
 			$result = pg_query($stmnt);
 		
@@ -309,12 +309,12 @@ class SapphoDatabaseConnection{
 		if($this->db_type == self::db_type_mysql)
 		{
 			$query = 'INSERT INTO ';
-			$query .= $this->escape_keywords(mysql_real_escape_string($table));
+			$query .= $this->escape_keywords(mysqli_real_escape_string($table));
 			
 			$query .= '(';
 			$fieldnames = array_keys($fields);
 			for($i=0; $i<count($fieldnames); $i++){
-				$query .= $this->escape_keywords(mysql_real_escape_string($fieldnames[$i]));
+				$query .= $this->escape_keywords(mysqli_real_escape_string($fieldnames[$i]));
 				
 				if($i != count($fieldnames)-1)
 					$query .= ', ';
@@ -338,7 +338,7 @@ class SapphoDatabaseConnection{
 			$query .= '(';
 			$fieldnames = array_keys($fields);
 			for($i=0; $i<count($fieldnames); $i++){
-				$query .= $this->escape_keywords(mysql_real_escape_string($fieldnames[$i]));
+				$query .= $this->escape_keywords(pg_escape_string($fieldnames[$i]));
 				
 				if($i != count($fieldnames)-1)
 					$query .= ', ';
@@ -359,7 +359,7 @@ class SapphoDatabaseConnection{
 		$result = 0;
 		
 		if($this->db_type == self::db_type_mysql)
-			$result = mysql_query($query);
+			$result = mysqli_query($query);
 		else if($this->db_type == self::db_type_postgre)
 			$result = pg_query($query);
 		
@@ -395,13 +395,13 @@ class SapphoDatabaseConnection{
 		if($this->db_type == self::db_type_mysql)
 		{
 			$query .= 'UPDATE ';
-			$query .= $this->escape_keywords(mysql_real_escape_string($table));
+			$query .= $this->escape_keywords(mysqli_real_escape_string($table));
 			
 			$query .= ' SET ';
 			$keys = array_keys($data);
 			for($i=0; $i<count($keys); $i++)
 			{
-				$query .= $this->escape_keywords(mysql_real_escape_string($keys[$i])).' = '.
+				$query .= $this->escape_keywords(mysqli_real_escape_string($keys[$i])).' = '.
 				          $data[$keys[$i]];
 				if($i != count($keys)-1)
 					$query .= ', ';
@@ -409,7 +409,7 @@ class SapphoDatabaseConnection{
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= ' WHERE '.$this->escape_keywords(mysql_real_escape_string($where));
+				$query .= ' WHERE '.$this->escape_keywords(mysqli_real_escape_string($where));
 		}
 		else if($this->db_type = self::db_type_postgre)
 		{
@@ -435,7 +435,7 @@ class SapphoDatabaseConnection{
 		$result = 0;
 		
 		if($this->db_type == self::db_type_mysql)
-			$result = mysql_query($query);
+			$result = mysqli_query($query);
 		else if($this->db_type == self::db_type_postgre)
 			$result = pg_query($query);
 		
@@ -455,7 +455,7 @@ class SapphoDatabaseConnection{
 		
 		$query = 'INSERT INTO ';
 		if($this->typeIs(self::db_type_mysql))
-			$table = $this->escape_keywords(mysql_real_escape_string($table));
+			$table = $this->escape_keywords(mysqli_real_escape_string($table));
 		else if($this->typeIs(self::db_type_postgre))
 			$table = $this->escape_keywords(pg_escape_string($table));
 			
@@ -465,7 +465,7 @@ class SapphoDatabaseConnection{
 		{
 			$val = '';
 			if($this->typeIs(self::db_type_mysql))
-				$val = $this->escape_keywords(mysql_real_escape_string($fields[i]));
+				$val = $this->escape_keywords(mysqli_real_escape_string($fields[i]));
 			else
 				$val = $this->escape_keywords(pg_escape_string($fields[i]));
 			
@@ -502,7 +502,7 @@ class SapphoDatabaseConnection{
 	 */
 	function nextData(){
 		if(($this->typeIs(self::db_type_mysql) &&
-		    !mysql_num_rows($this->lastResult)) 
+		    !mysqli_num_rows($this->lastResult)) 
 			||
            ($this->typeIs(self::db_type_postgre) &&
 		    !pg_num_rows($this->lastResult)))
@@ -517,7 +517,7 @@ class SapphoDatabaseConnection{
 		
 		$data = 0;
 		if($this->typeIs(self::db_type_mysql))
-			$data = mysql_fetch_assoc($this->lastResult);
+			$data = mysqli_fetch_assoc($this->lastResult);
 	    else if($this->typeIs(self::db_type_postgre))
 			$data = pg_fetch_assoc($this->lastResult);
 			
@@ -562,7 +562,7 @@ class SapphoDatabaseConnection{
 	private function getSQLError(){
 		$error = '';
 		if($this->typeIs(self::db_type_mysql))
-			$error = mysql_error();
+			$error = mysqli_error();
 		if($this->typeIs(self::db_type_postgre))
 		    $error = pg_last_error();
 		return $error;
@@ -594,6 +594,7 @@ class SapphoDatabaseConnection{
 	 *  <tr><td>0</td><td>no debug information</td></tr>
 	 *  <tr><td>1</td><td>executed statements</td></tr>
 	 *  <tr><td>2</td><td>data retrieved by #nextData()</td></tr>
+	 *  <tr><td>9</td><td>also set debug flag in all submodules</td></tr>
 	 * </table>
 	 *
 	 * \param $debug the debug level
@@ -601,6 +602,14 @@ class SapphoDatabaseConnection{
 	function setDebug($debug)
 	{
 		$this->debug_level = $debug;
+		if($debug > 8)
+		{
+			$this->synopt->setDebug(1);
+		}
+		else if($debug < 1)
+		{
+			$this->synopt->setDebug(0);
+		}
 	}
 	
 	/**
@@ -625,15 +634,15 @@ class SapphoDatabaseConnection{
 			return self::db_close_not_connected;
 			
 		if($this->typeIs(self::db_type_mysql))
-			if(!mysql_close($this->db_handle))
+			if(!mysqli_close($this->db_handle))
 			{
-				$this->error_message = 'Connection remains unclosed: '.mysql_error();
+				$this->error_message = 'Connection remains unclosed: '.mysqli_error();
 				return self::db_close_not_closed;
 			}
 		else if($this->typeIs(self::db_type_postgre))
 			if(!(pg_close($this->db_handle)))
 			{
-				$this->error_message = 'Connection remains unclosed: '.mysql_error();
+				$this->error_message = 'Connection remains unclosed: '.mysqli_error();
 				return self::db_close_not_closed;
 			}
 		
@@ -650,7 +659,7 @@ class SapphoDatabaseConnection{
 	{
 		if(!$this->lastResult) return 0;
 		if($this->typeIs(self::db_type_mysql))
-			return mysql_num_rows($this->lastResult);
+			return mysqli_num_rows($this->lastResult);
 		if($this->typeIs(self::db_type_postgre))
 			return pg_num_rows($this->lastResult);
 		return 0;
