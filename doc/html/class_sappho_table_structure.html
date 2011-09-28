@@ -85,6 +85,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="SapphoTableStructure" -->
+<p>Internal presentation of used tables.  
+ <a href="class_sappho_table_structure.html#details">More...</a></p>
+
 <p><a href="class_sappho_table_structure-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -92,13 +95,15 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#aead0690aa81c96ede343f1a75a892f71">__construct</a> ($tablename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance.  <a href="#aead0690aa81c96ede343f1a75a892f71"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a8a9b6a70c785724722c2aac831a4c0c5">addColumn</a> ($name, $dtype, $length)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new column to the structure-.  <a href="#a8a9b6a70c785724722c2aac831a4c0c5"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new column to the structure.  <a href="#a8a9b6a70c785724722c2aac831a4c0c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#aa7e13d86be9e9b7150b95a8498cc8efb">getName</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the table name.  <a href="#aa7e13d86be9e9b7150b95a8498cc8efb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a67b44bf11606098986f04d9380cc5786">getType</a> ($column)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the datatype of a column in the table.  <a href="#a67b44bf11606098986f04d9380cc5786"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#abf1ae08a980cf9cfa9fa530ce86c2d57">getLength</a> ($column)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the datafield.  <a href="#abf1ae08a980cf9cfa9fa530ce86c2d57"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a044912a0fc7b81dfdd52b7cc3f95ef70">getFieldNum</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Amount of fields the table contains.  <a href="#a044912a0fc7b81dfdd52b7cc3f95ef70"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#ae19643c0b8a8effd66ed2c93dd3a0127">dtype_numeric</a> = 'N'</td></tr>
@@ -106,7 +111,8 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#ace59040a435414a0c1614a5b1e781d9b">dtype_unknown</a> = 'U'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This class represents the structure of a database table, regardless if that is MySQL or postgreSQL.</p>
+<div class="textblock"><p>Internal presentation of used tables. </p>
+<p>This class represents the structure of a database table, regardless if that is MySQL or postgreSQL.</p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Daniel Eder </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>0.1 </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>2011-09-26 </dd></dl>
@@ -169,7 +175,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Add a new column to the structure-. </p>
+<p>Add a new column to the structure. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">$name</td><td>column name </td></tr>
@@ -178,6 +184,25 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a044912a0fc7b81dfdd52b7cc3f95ef70"></a><!-- doxytag: member="SapphoTableStructure::getFieldNum" ref="a044912a0fc7b81dfdd52b7cc3f95ef70" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoTableStructure::getFieldNum </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Amount of fields the table contains. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the amount of fields the table contains </dd></dl>
 
 </div>
 </div>
@@ -304,7 +329,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 26 2011 20:59:00 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 28 2011 21:49:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

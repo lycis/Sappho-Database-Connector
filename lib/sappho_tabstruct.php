@@ -2,6 +2,8 @@
 /**
  * \class SapphoTableStructure
  *
+ * \brief Internal presentation of used tables
+ *
  * This class represents the structure of a database table, regardless if
  * that is MySQL or postgreSQL.
  *
@@ -40,7 +42,7 @@ class SapphoTableStructure{
 	}
 	
 	/**
-	 * \brief Add a new column to the structure-
+	 * \brief Add a new column to the structure
 	 *
 	 * \param $name column name
 	 * \param $dtype datatype
@@ -93,6 +95,19 @@ class SapphoTableStructure{
 			return false;
 			
 		return $this->columns[$column][1];
+	}
+	
+	/**
+	 * \brief Amount of fields the table contains
+	 *
+	 * \returns the amount of fields the table contains
+	 */
+	function getFieldNum()
+	{
+		if(!in_array($column, array_keys($this->columns)))
+			return false;
+			
+		return $count($this->columns);
 	}
 }
 

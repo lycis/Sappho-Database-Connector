@@ -6,8 +6,7 @@
  *        The SyntaxOptimizer is used to adapt statements or strings for the usage on special database systems.
  *        It may be used to test if a special string is a reserved word or to escape reserved words.
  *
- *        \b Beware: This class is designed to be used internally so it might be a pain to use it :-)
- *		  \warning At the moment the lists of reserved words are incomplete!
+ *        \warning This class is designed to be used internally so it might be a pain to use it :-)
  *
  * \author Daniel Eder
  * \version 0.1

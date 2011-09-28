@@ -85,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="SapphoDatabaseConnection" -->
-<p>This class handles connections to different database types.  
+<p>This class handles connections to different database types. You'll probably want to use this one.  
  <a href="class_sappho_database_connection.html#details">More...</a></p>
 
 <p><a href="class_sappho_database_connection-members.html">List of all members.</a></p>
@@ -106,8 +106,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new record into a table.  <a href="#a44a916b0f1388fa230c602eb5626c7d0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a5a746db9594beff91db644df4bde8d64">update</a> ($table, $data, $where= '')</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update an already existing dataset.  <a href="#a5a746db9594beff91db644df4bde8d64"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56f3d848f0b99c395251fe923781a564"></a><!-- doxytag: member="SapphoDatabaseConnection::bulkInsert" ref="a56f3d848f0b99c395251fe923781a564" args="($table, $fields)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>bulkInsert</b> ($table, $fields)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a56f3d848f0b99c395251fe923781a564">bulkInsert</a> ($table, $fields)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a new mass-insert of data.  <a href="#a56f3d848f0b99c395251fe923781a564"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d">nextData</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next data set of the last result set.  <a href="#aade49b72ed36d5cf3af2a92f0bc5492d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a75b6fba37860b5cc1e896469971a053b">lastError</a> ()</td></tr>
@@ -142,8 +142,9 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a7f52953bff1cae0ca225472dccdd5bb0">db_type_postgre</a> = 'postgresql'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This class handles connections to different database types. </p>
+<div class="textblock"><p>This class handles connections to different database types. You'll probably want to use this one. </p>
 <p>This class was developed during the Sappho project (a Document Management System). It is able to manage a database connection to MySQL and postgreSQL databases without the user worrying about the correct syntax of the different statments.</p>
+<p>It is the main class of the SDBC and will be used to create connections to database and handle all kind of requests you want to send to the database.</p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Daniel Eder </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>0.1 </dd></dl>
 <dl class="date"><dt><b>Date:</b></dt><dd>2011-09-22 </dd></dl>
@@ -220,6 +221,46 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a56f3d848f0b99c395251fe923781a564"></a><!-- doxytag: member="SapphoDatabaseConnection::bulkInsert" ref="a56f3d848f0b99c395251fe923781a564" args="($table, $fields)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::bulkInsert </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>fields</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Starts a new mass-insert of data. </p>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>This method is not implemented to full extent and will cause errors!</dd></dl>
+<p>You might use this method if you intend to insert a lot of new data records to the database. It uses optimized statements to speed up the database requests. After you defined a statement with this method, you have to use #addBulkData() to define which data you wish to insert.</p>
+<p>Eventually if all data is added you will have to call #submitBulk() to execute the insert statement.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$table</td><td>the table you wish to insert into </td></tr>
+    <tr><td class="paramname">$fields</td><td>an array containing the <em>names of the fields</em></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>0</code> on success, <code>1</code> if an error occured </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a6252d3006c6c29e4934000dc7564cb01"></a><!-- doxytag: member="SapphoDatabaseConnection::catalog_table" ref="a6252d3006c6c29e4934000dc7564cb01" args="($table, $recat=false)" -->
 <div class="memitem">
 <div class="memproto">
@@ -872,7 +913,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 26 2011 20:59:00 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 28 2011 21:49:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

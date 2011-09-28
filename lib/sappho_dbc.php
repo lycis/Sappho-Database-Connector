@@ -1,11 +1,14 @@
 <?php
 /**
  * \class SapphoDatabaseConnection
- * \brief This class handles connections to different database types.
+ * \brief This class handles connections to different database types. You'll probably want to use this one.
  *        
  *        This class was developed during the Sappho project (a Document Management System).
  *        It is able to manage a database connection to MySQL and postgreSQL databases
  *        without the user worrying about the correct syntax of the different statments.
+ *
+ *        It is the main class of the SDBC and will be used to create connections to database
+ *        and handle all kind of requests you want to send to the database.
  *
  *
  * \author Daniel Eder
@@ -33,6 +36,9 @@ class SapphoDatabaseConnection{
 	
 	// connection handle
 	private $db_handle = 0;
+	
+	// last statement returned (mysqli only)
+	private $db_stmnt = 0;
 	
 	// error message
 	private $error_message;
@@ -457,6 +463,24 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
+	/**
+	 * \brief Starts a new mass-insert of data.
+	 *
+	 * \warning This method is not implemented to full extent and will cause errors!
+	 *
+	 *  You might use this method if you intend to insert a lot of new data records to
+	 *  the database. It uses optimized statements to speed up the database requests. After
+	 *  you defined a statement with this method, you have to use #addBulkData() to
+	 *  define which data you wish to insert.
+	 *
+	 *  Eventually if all data is added you will have to call #submitBulk() to execute the
+	 *  insert statement.
+	 *
+	 * \param $table the table you wish to insert into
+     * \param $fields an array containing the <i>names of the fields</i>
+     *
+     * \returns \c 0 on success, \c 1 if an error occured	 
+	 */
 	function bulkInsert($table, $fields)
 	{
 		if(!is_array($fields)) return self::db_error_wrong_dtype;
@@ -494,10 +518,19 @@ class SapphoDatabaseConnection{
 		$query .= ')';
 		
 		$this->setLastQuery($query);
-		if($this->typeIs(self::db_type_mysql));
-			
+		$this->prep_stmnt_name = "bulk_insert_".time();
+		if($this->typeIs(self::db_type_mysql))
+			$this->db_stmnt = $this->db_handle->prepare($query);
 		else if($this-typeIs(self::db_type_postgre))
-			pg_prepare("asdf", $query);
+			$this->db_stmnt = pg_prepare($this->prep_stmnt_name, $query);
+			
+		if(!$this->db_stmnt)
+		{
+			$this->error_message = "Could not create bulk insert: ".$this->getSQLError();
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 	/**
@@ -763,6 +796,15 @@ class SapphoDatabaseConnection{
 				echo $data[0]." -> type = ".$struct->getType($data[0]).
 				     "; length = ".$struct->getLength($data[0])."<br/>";
 		}
+		
+		$tablestruct[$table] = $struct;
+		return true;
+	}
+	
+	// catalog a postgre table
+	private function catalog_postgre_table($table)
+	{
+		
 	}
 }
 ?>
