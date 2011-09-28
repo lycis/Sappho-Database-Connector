@@ -5,7 +5,7 @@
 	echo "<h3>Establishing connection</h3>";
 	echo "<p>";
 	$db = new SapphoDatabaseConnection(SapphoDatabaseConnection::db_type_postgre, 'localhost', 'sappho_db', 'sappho');
-	$db->setDebug(2);
+	$db->setDebug(10);
 	if($db->connect('sappho') != 0)
 		die("foo ".$db->lastError());
 	echo "Connection OK";
@@ -58,6 +58,9 @@
 	$object = $db->nextData() or die("blaaa: ".$db->lastError());
 	$db->execute("ROLLBACK");
 	echo "</p>";
+	
+	echo "<h3>Catalog table</h3>";
+	$db->catalog_table("area");
 	
 	echo "<h3>close connection</h3>";
 	echo "<p>";

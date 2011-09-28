@@ -757,7 +757,7 @@ class SapphoDatabaseConnection{
 		if($this->typeIs(self::db_type_mysql))
 			return $this->catalog_mysql_table($table);
 		else if($this->typeIs(self::db_type_postgre))
-			return catalog_postgre_table($table);
+			return $this->catalog_postgre_table($table);
 		return false;
 	}
 	
@@ -769,6 +769,10 @@ class SapphoDatabaseConnection{
 		
 		$query  = 'DESCRIBE ';
 		$query .= $this->escape_keywords($this->db_handle->real_escape_string($table));
+		
+		if($this->debug_level > 3)
+			echo "catalog query = $query<br/>";
+		
 		$result = $this->db_handle->query($query);
 		if(!$result)
 		{
@@ -804,7 +808,37 @@ class SapphoDatabaseConnection{
 	// catalog a postgre table
 	private function catalog_postgre_table($table)
 	{
+		// we only operate for postgresql
+		if(!$this->typeIs(self::db_type_postgre)) return false;
 		
+		$query  = 'SELECT * FROM INFORMATION_SCHEMA.columns WHERE table_name = \'';
+		$query .= $this->escape_keywords(pg_escape_string($table)).'\'';
+		
+		if($this->debug_level > 3)
+			echo "catalog query = $query<br/>";
+			
+		$result = pg_query($query);
+		if(!$result)
+		{
+			$this->error_message = 'Could not catalog table '.$table.': '.$this->getSQLError();
+			return false;
+		}
+		
+		$struct = new SapphoTableStructure($table);
+		while(($data = pg_fetch_assoc($result)))
+		{
+			if($this->debug_level > 3)
+			{
+				echo "Analyzing attribute: ";
+				print_r($data);
+				echo "<br/>";
+			}
+			
+			// length is not stored for postgre - it's not used anyway...
+			$struct->addColumn($data["column_name"], $data["data_type"], -1);
+		}
+		
+		$tablestruct[$table] = $struct;
 	}
 }
 ?>
