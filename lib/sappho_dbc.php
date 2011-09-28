@@ -50,6 +50,9 @@ class SapphoDatabaseConnection{
 	// syntax optimizer
 	private $synopt = null;
 	
+	// transaction running?
+	private $transaction_state = false;
+	
 	// return codes for connect()
 	const db_connect_already_connected = 1; /**< returned by #connect(...) if the connector is already connected to a database */
 	const db_connect_missing_data      = 2; /**< returned by #connect(...) if not all necessary connection data is given */
@@ -869,6 +872,95 @@ class SapphoDatabaseConnection{
 		}
 		
 		$this->tablestruct[$table] = $struct;
+	}
+	
+	/**
+	 * \brief Start a new transaction
+	 * 
+	 *  Invokes a new transaction in the database system.
+	 *
+	 * \returns \c true if successful or \c false on any error
+	 */
+	function startTransaction()
+	{
+		if($this->transaction_state)
+		{
+			$this->error_message = "Transaction already running.";
+			return false;
+		}
+		
+		$result = 0;
+		if($this->db_type == self::db_type_mysql)
+			$result = $this->db_handle->query("START TRANSACTION");
+		else if($this->db_type == self::db_type_postgre)
+			$result = pg_query("START TRANSACTION");
+		
+		if(!$result)
+		{
+			$this->error_messge = $this->getSQLError();
+			return false;
+		}
+		
+		$this->transaction_state = true;
+		return true;
+	}
+	
+	/**
+	 * \brief Commit a running transaction.
+	 *
+	 *  A running transaction will be commited.
+	 *
+	 * \returns \c true if successful or \c false on any error
+	 */
+	function commitTransaction()
+	{
+		if(!$this->transaction_state)
+		{
+			$this->error_message = "No transaction running.";
+			return false;
+		}
+			
+		$result = 0;
+		if($this->db_type == self::db_type_mysql)
+			$result = $this->db_handle->query("COMMIT");
+		else if($this->db_type == self::db_type_postgre)
+			$result = pg_query("COMMIT");
+		
+		if(!$result)
+		{
+			$this->error_messge = $this->getSQLError();
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * \brief Undos a running transaction.
+	 *
+	 *  A running transaction will be rolled back.
+	 *
+	 * \returns \c true if successful or \c false on any error
+	 */
+	function rollbackTransaction()
+	{
+		if(!$this->transaction_state)
+		{
+			$this->error_message = "No transaction running.";
+			return false;
+		}
+			
+		$result = 0;
+		if($this->db_type == self::db_type_mysql)
+			$result = $this->db_handle->query("ROLLBACK");
+		else if($this->db_type == self::db_type_postgre)
+			$result = pg_query("ROLLBACK");
+		
+		if(!$result)
+		{
+			$this->error_messge = $this->getSQLError();
+			return false;
+		}
+		return true;
 	}
 }
 ?>
