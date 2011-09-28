@@ -25,6 +25,11 @@ class SapphoSyntaxOptimizer{
 	private $db_type;
 	private $debug;
 	
+	// constants for data type classification
+	const dtype_numeric = 'N'; /**< datatype mark for numeric values */
+	const dtype_string  = 'S'; /**< datatype mark for string (character) values */
+	const dtype_unknown = 'U'; /**< datatype mark for anything unknown */
+	
 	/**
 	 * \brief Constructor.
 	 *
@@ -45,6 +50,81 @@ class SapphoSyntaxOptimizer{
 	 function setDebug($level)
 	 {
 		$this->debug = $level;
+	 }
+	 
+	 /**
+	  * \brief Formats the given parameter to be a string in an SQL query.
+	  *
+	  *  By using this method the given parameter is formatted so it can be used as a
+	  *  string-based type like \c VARCHAR or \c TEXT in an SQL query.
+	  *
+	  * \param $what the string you want to parse
+	  * \returns A formated value.
+	  */
+	 function formatString($what)
+	 {
+		// luckily MySQL and postgre use mostly the same string qualifier...
+		return "'$what'";
+	 }
+	 
+	 /**
+	  * \brief Formats the parameter to be a number in an SQL query.
+	  *
+	  *  By using this method the given parameter is formatted so it can be used as a
+	  *  string-based type like \c SERIAL or \c INTEGER in an SQL query.
+	  *
+	  * \param $what the string you want to parse
+	  * \returns A formated value. 
+	  */
+	 function formatNumber($what)
+	 {
+		// we don't do anything with numbers... this method is just for continuity
+		return $what;
+	 }
+	 
+	 /**
+	  * \brief Formats a list of values to an according list of data types.
+	  *
+	  *  This functions formats an array of values to different datatypes. The datatypes are given
+	  *  in a separate array. Please keep in mind that each element in the value array
+	  *  has to correspond to one element on the same position in the datatype array!
+	  *
+	  * \param $values an array of values that shall be formatted
+	  * \param $dtypes a list of datatypes that the values shall be formatted to
+	  */
+	 function formatFields($values, $dtypes)
+	 {
+		if(!is_array($values)) $values = array($values);
+		if(!is_array($dtypes)) $dtypes = array($dtypes);
+		
+		// both arrays should be of the same size... if not i don't care...
+		for($i=0; $i < count($values) && $i < count($dtypes); $i++)
+			$values[$i] = $this->formatField($values[$i], $dtypes[$i]);
+		
+		return $values;
+	 }
+	 
+	 /**
+	  * \brief Formats one input field according to it's data type.
+	  *
+	  * \param $value the value to be formatted
+	  * \param $dtype the datatype
+	  * \returns formatted value
+	  */
+	 function formatField($value, $dtype)
+	 {
+		switch($dtype)
+			{
+				case self::dtype_numeric:
+					$value = $this->formatNumber($value);
+					break;
+				case self::dtype_string:
+					$value = $this->formatString($value);
+					break;
+				default:
+					break;
+			}
+		return $value;
 	 }
 	
 	/**

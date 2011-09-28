@@ -48,6 +48,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
@@ -147,7 +148,7 @@ Public Attributes</h2></td></tr>
 <p>It is the main class of the SDBC and will be used to create connections to database and handle all kind of requests you want to send to the database.</p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Daniel Eder </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>0.1 </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>2011-09-22 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>2011-09-28 </dd></dl>
 <dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License Version 3 </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa8da5ecddab95b0839e46e40b0b88594"></a><!-- doxytag: member="SapphoDatabaseConnection::__construct" ref="aa8da5ecddab95b0839e46e40b0b88594" args="($type, $host, $db, $user)" -->
@@ -385,7 +386,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Executes a statement without further checks. </p>
-<p>The given statement is executed on the database without any further checking. You have to make sure that the synstax is correct for the used database by yourself.</p>
+<p>The given statement is executed on the database without any further checking. You have to make sure that the synstax is correct for the used database by yourself. Also mind that a table that is accessed via this method will not be cataloged automatically.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">$stmnt</td><td>the statement you want to execute</td></tr>
@@ -913,7 +914,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 28 2011 21:49:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 28 2011 23:37:56 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

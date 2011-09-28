@@ -35,8 +35,8 @@
 	
 	echo "<h3>insert</h3>";
 	echo "<p>";
-	$data = array("user_name" => "'daniel'",
-	              "user_password" => "'".crypt("test123")."'");
+	$data = array("user_name" => "daniel",
+	              "user_password" => crypt("test123"));
 	$insert = $db->insert('user', $data);
 	//if($insert) die("error - $insert: ".$db->lastError());
 	echo "</p>";
@@ -44,7 +44,7 @@
 	
 	echo "<h3>update</h3>";
 	echo "<p>";
-	$data = array("user_password" => "'".crypt("test123")."'");
+	$data = array("user_password" => crypt("test123"));
 	$update = $db->update('user', $data);
 	if($update) die("error - $update: ".$db->lastError());
 	echo "</p>";

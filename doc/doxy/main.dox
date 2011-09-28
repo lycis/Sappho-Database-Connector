@@ -12,7 +12,7 @@
  * \subsection main-advantages-example1 Example I: Customer's opionions - and consequences
  *  If you did code a big webapplication for a customer that always used MySQL as backend database. 
  *  Imagine about thounands of database requests that are sent to the database in you'r code. Now 
- *  imagine  *  further that the customer suddenly - like all customers do once in a while - wants to 
+ *  imagine  further that the customer suddenly - like all customers do once in a while - wants to 
  *  change his or her database system to another one like postgreSQL. You would have to rewrite
  *  whole sections of code to satisfy the needs of your employer - and you'd lose some
  *  hours of your life by just doing that. 

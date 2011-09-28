@@ -48,6 +48,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
@@ -96,12 +97,23 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ab694005561d486af3ec6abe63630d053"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#add91e18a2ac900327b09e937824b9f0c">setDebug</a> ($level)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets debug information level.  <a href="#add91e18a2ac900327b09e937824b9f0c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a9b633298718ba0951ac318b1dcca6946">formatString</a> ($what)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given parameter to be a string in an SQL query.  <a href="#a9b633298718ba0951ac318b1dcca6946"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1f47be965b17e65baa85e18c5f024d10">formatNumber</a> ($what)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be a number in an SQL query.  <a href="#a1f47be965b17e65baa85e18c5f024d10"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a3f0888328eb06a3fc5f2eeeed705d9bf">formatFields</a> ($values, $dtypes)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a list of values to an according list of data types.  <a href="#a3f0888328eb06a3fc5f2eeeed705d9bf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1ac20d7e596253e99cf24b1f807334b8">formatField</a> ($value, $dtype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats one input field according to it's data type.  <a href="#a1ac20d7e596253e99cf24b1f807334b8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a742e5b029eb23be096d5a0efae5df477">escape_reserved_words</a> ($string)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Escape reserved words in the string.  <a href="#a742e5b029eb23be096d5a0efae5df477"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a5686dc1096735b483c57166fa16d92f3">db_type_mysql</a> = 'mysql'</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a86e1728f6fb8d925804311a3017e0906">db_type_postgre</a> = 'postgresql'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a530af2b9c3df6248d3e57713189e9687">dtype_numeric</a> = 'N'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ad0dd1eb042b3aae741e6a9790be3c8e4">dtype_string</a> = 'S'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ab679bff0969f9f1295b8a9c025a6da4f">dtype_unknown</a> = 'U'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The Syntax Optimizer offers functions to optimze statements for different database systems. </p>
@@ -165,6 +177,134 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a1ac20d7e596253e99cf24b1f807334b8"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatField" ref="a1ac20d7e596253e99cf24b1f807334b8" args="($value, $dtype)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoSyntaxOptimizer::formatField </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>dtype</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Formats one input field according to it's data type. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$value</td><td>the value to be formatted </td></tr>
+    <tr><td class="paramname">$dtype</td><td>the datatype </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>formatted value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3f0888328eb06a3fc5f2eeeed705d9bf"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatFields" ref="a3f0888328eb06a3fc5f2eeeed705d9bf" args="($values, $dtypes)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoSyntaxOptimizer::formatFields </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>dtypes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Formats a list of values to an according list of data types. </p>
+<p>This functions formats an array of values to different datatypes. The datatypes are given in a separate array. Please keep in mind that each element in the value array has to correspond to one element on the same position in the datatype array!</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$values</td><td>an array of values that shall be formatted </td></tr>
+    <tr><td class="paramname">$dtypes</td><td>a list of datatypes that the values shall be formatted to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1f47be965b17e65baa85e18c5f024d10"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatNumber" ref="a1f47be965b17e65baa85e18c5f024d10" args="($what)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoSyntaxOptimizer::formatNumber </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>what</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Formats the parameter to be a number in an SQL query. </p>
+<p>By using this method the given parameter is formatted so it can be used as a string-based type like <code>SERIAL</code> or <code>INTEGER</code> in an SQL query.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$what</td><td>the string you want to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A formated value. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9b633298718ba0951ac318b1dcca6946"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatString" ref="a9b633298718ba0951ac318b1dcca6946" args="($what)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoSyntaxOptimizer::formatString </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>what</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Formats the given parameter to be a string in an SQL query. </p>
+<p>By using this method the given parameter is formatted so it can be used as a string-based type like <code>VARCHAR</code> or <code>TEXT</code> in an SQL query.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$what</td><td>the string you want to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A formated value. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="add91e18a2ac900327b09e937824b9f0c"></a><!-- doxytag: member="SapphoSyntaxOptimizer::setDebug" ref="add91e18a2ac900327b09e937824b9f0c" args="($level)" -->
 <div class="memitem">
 <div class="memproto">
@@ -214,6 +354,48 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a530af2b9c3df6248d3e57713189e9687"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_numeric" ref="a530af2b9c3df6248d3e57713189e9687" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a530af2b9c3df6248d3e57713189e9687">SapphoSyntaxOptimizer::dtype_numeric</a> = 'N'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>datatype mark for numeric values </p>
+
+</div>
+</div>
+<a class="anchor" id="ad0dd1eb042b3aae741e6a9790be3c8e4"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_string" ref="ad0dd1eb042b3aae741e6a9790be3c8e4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#ad0dd1eb042b3aae741e6a9790be3c8e4">SapphoSyntaxOptimizer::dtype_string</a> = 'S'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>datatype mark for string (character) values </p>
+
+</div>
+</div>
+<a class="anchor" id="ab679bff0969f9f1295b8a9c025a6da4f"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_unknown" ref="ab679bff0969f9f1295b8a9c025a6da4f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#ab679bff0969f9f1295b8a9c025a6da4f">SapphoSyntaxOptimizer::dtype_unknown</a> = 'U'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>datatype mark for anything unknown </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>J:/eclipse_ws/sdbc/lib/sappho_synopt.php</li>
 </ul>
@@ -235,7 +417,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 28 2011 21:49:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 28 2011 23:37:56 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

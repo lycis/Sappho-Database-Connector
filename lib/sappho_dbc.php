@@ -13,15 +13,15 @@
  *
  * \author Daniel Eder
  * \version 0.1
- * \date 2011-09-22
+ * \date 2011-09-28
  * \copyright GNU Public License Version 3
  */
 
 // we use the syntax optimizer
-include("sappho_synopt.php");
+require("sappho_synopt.php");
 
 // table structures
-include("sappho_tabstruct.php");
+require("sappho_tabstruct.php");
  
 class SapphoDatabaseConnection{
 	// status can be:
@@ -171,6 +171,18 @@ class SapphoDatabaseConnection{
 		return 0;
 	}
 	
+	// check if table is cataloged, if not do so!
+	private function checkTable($table)
+	{
+		if(!in_array($table, $this->tablestruct))
+		{
+			if($this->debug_level > 3)
+				echo "SDBC: table '$table' unknown invoke cataloging<br/>";
+			$this->catalog_table($table);
+		}
+		return;
+	}
+	
 	/**
 	 * \brief Issue a select command to the database
 	 *
@@ -190,7 +202,7 @@ class SapphoDatabaseConnection{
 	 */
 	function select($table, $fields = '*', $where = '', $lock=false)
 	{
-		//if(!is_array($fields)) return self::db_error_wrong_dtype;
+		$this->checkTable($table);
 		
 		$query = '';
 		if($this->db_type == self::db_type_mysql)
@@ -275,6 +287,8 @@ class SapphoDatabaseConnection{
 	 *
 	 *        The given statement is executed on the database without any further checking.
 	 *        You have to make sure that the synstax is correct for the used database by yourself.
+	 *        Also mind that a table that is accessed via this method will not be cataloged
+	 *        automatically.
 	 *        
 	 * \param $stmnt the statement you want to execute
 	 *
@@ -318,6 +332,9 @@ class SapphoDatabaseConnection{
 	{
 		if(!is_array($fields)) return self::db_error_wrong_dtype;
 		
+		$this->checkTable($table);
+		$struct = $this->tablestruct[$table];
+		
 		$query = '';
 		
 		if($this->db_type == self::db_type_mysql)
@@ -327,15 +344,18 @@ class SapphoDatabaseConnection{
 			
 			$query .= '(';
 			$fieldnames = array_keys($fields);
+			$fieldtypes = array();
 			for($i=0; $i<count($fieldnames); $i++){
 				$query .= $this->escape_keywords($this->db_handle->real_escape_string($fieldnames[$i]));
 				
 				if($i != count($fieldnames)-1)
 					$query .= ', ';
+					
+				array_push($fieldtypes, $struct->getType($fieldnames[$i]));
 			}
 			
 			$query .= ') VALUES(';
-			$values = array_values($fields);
+			$values = $this->synopt->formatFields(array_values($fields), $fieldtypes);
 			for($i=0; $i<count($values); $i++){
 				$query .= $values[$i];
 				
@@ -351,15 +371,18 @@ class SapphoDatabaseConnection{
 			
 			$query .= '(';
 			$fieldnames = array_keys($fields);
+			$fieldtypes = array();
 			for($i=0; $i<count($fieldnames); $i++){
 				$query .= $this->escape_keywords(pg_escape_string($fieldnames[$i]));
 				
 				if($i != count($fieldnames)-1)
 					$query .= ', ';
+					
+				array_push($fieldtypes, $struct->getType($fieldnames[$i]));
 			}
 			
 			$query .= ') VALUES(';
-			$values = array_values($fields);
+			$values = $this->synopt->formatFields(array_values($fields), $fieldtypes);
 			for($i=0; $i<count($values); $i++){
 				$query .= $values[$i];
 				
@@ -404,6 +427,10 @@ class SapphoDatabaseConnection{
 	function update($table, $data, $where = '')
 	{
 		if(!is_array($data)) return self::db_update_error;
+		
+		$this->checkTable($table);
+		$struct = $this->tablestruct[$table];
+		
 		$query = '';
 		
 		if($this->db_type == self::db_type_mysql)
@@ -416,7 +443,7 @@ class SapphoDatabaseConnection{
 			for($i=0; $i<count($keys); $i++)
 			{
 				$query .= $this->escape_keywords($this->db_handle->real_escape_string($keys[$i])).' = '.
-				          $data[$keys[$i]];
+				          $this->synopt->formatField($data[$keys[$i]], $struct->getType($keys[$i]));
 				if($i != count($keys)-1)
 					$query .= ', ';
 			}
@@ -435,7 +462,7 @@ class SapphoDatabaseConnection{
 			for($i=0; $i<count($keys); $i++)
 			{
 				$query .= $this->escape_keywords(pg_escape_string($keys[$i])).' = '.
-				          $data[$keys[$i]];
+				          $this->synopt->formatField($data[$keys[$i]], $struct->getType($keys[$i]));
 				if($i != count($keys)-1)
 					$query .= ', ';
 			}
@@ -484,6 +511,8 @@ class SapphoDatabaseConnection{
 	function bulkInsert($table, $fields)
 	{
 		if(!is_array($fields)) return self::db_error_wrong_dtype;
+		
+		$this->checkTable($table);
 		
 		$query = 'INSERT INTO ';
 		if($this->typeIs(self::db_type_mysql))
@@ -752,7 +781,7 @@ class SapphoDatabaseConnection{
 			return true;
 			
 		if($this->debug_level)
-			echo "Analyzing table $table";
+			echo "SDBC: Analyzing table $table<br/>";
 		
 		if($this->typeIs(self::db_type_mysql))
 			return $this->catalog_mysql_table($table);
@@ -771,7 +800,7 @@ class SapphoDatabaseConnection{
 		$query .= $this->escape_keywords($this->db_handle->real_escape_string($table));
 		
 		if($this->debug_level > 3)
-			echo "catalog query = $query<br/>";
+			echo "SDBC: catalog query = $query<br/>";
 		
 		$result = $this->db_handle->query($query);
 		if(!$result)
@@ -785,7 +814,7 @@ class SapphoDatabaseConnection{
 		{
 			if($this->debug_level > 3)
 			{
-				echo "Analyzing attribute: ";
+				echo "SDBC: Analyzing attribute: ";
 				print_r($data);
 				echo "<br/>";
 			}
@@ -801,7 +830,7 @@ class SapphoDatabaseConnection{
 				     "; length = ".$struct->getLength($data[0])."<br/>";
 		}
 		
-		$tablestruct[$table] = $struct;
+		$this->tablestruct[$table] = $struct;
 		return true;
 	}
 	
@@ -811,11 +840,11 @@ class SapphoDatabaseConnection{
 		// we only operate for postgresql
 		if(!$this->typeIs(self::db_type_postgre)) return false;
 		
-		$query  = 'SELECT * FROM INFORMATION_SCHEMA.columns WHERE table_name = \'';
-		$query .= $this->escape_keywords(pg_escape_string($table)).'\'';
+		$query  = 'SELECT * FROM INFORMATION_SCHEMA.columns WHERE table_name = ';
+		$query .= $this->synopt->formatString(pg_escape_string($table));
 		
 		if($this->debug_level > 3)
-			echo "catalog query = $query<br/>";
+			echo "SDBC: catalog query = $query<br/>";
 			
 		$result = pg_query($query);
 		if(!$result)
@@ -829,8 +858,9 @@ class SapphoDatabaseConnection{
 		{
 			if($this->debug_level > 3)
 			{
-				echo "Analyzing attribute: ";
-				print_r($data);
+				echo "SDBC: Analyzing attribute: ";
+				echo $data["column_name"]." => ";
+				echo $data["data_type"];
 				echo "<br/>";
 			}
 			
@@ -838,7 +868,7 @@ class SapphoDatabaseConnection{
 			$struct->addColumn($data["column_name"], $data["data_type"], -1);
 		}
 		
-		$tablestruct[$table] = $struct;
+		$this->tablestruct[$table] = $struct;
 	}
 }
 ?>

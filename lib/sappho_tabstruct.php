@@ -7,6 +7,9 @@
  * This class represents the structure of a database table, regardless if
  * that is MySQL or postgreSQL.
  *
+ * \bug Currently not all datatypes of MySQL and especially postgres are
+ *      recognized properly and may be cataloged as unknown.
+ *
  * \author Daniel Eder
  * \version 0.1
  * \date 2011-09-26
@@ -23,7 +26,7 @@ class SapphoTableStructure{
 	private $numeric_types = array('SERIAL', 'BIT', 'TINYINT', 'BOOL', 'BOOLEAN', 'SMALLINT', 'MEDIUMINT',
 	                                 'INT', 'INTEGER', 'BIGINT', 'DOUBLE', 'FLOAT', 'DECIMAL', 'DEC', 'FIXED');
 	private $string_types  = array('CHAR', 'VARCHAR', 'TEXT', 'BINARY', 'VARBINARY', 'TINYBLOB', 'TINYTEXT',
-	                                 'BLOB', 'MEDIUMBLOB', 'LONGBLOB', 'LONGTEXT');
+	                                 'BLOB', 'MEDIUMBLOB', 'LONGBLOB', 'LONGTEXT', 'CHARACTER VARYING');
 									 
 	// constants for data type classification
 	const dtype_numeric = 'N'; /**< datatype mark for numeric values */
@@ -51,6 +54,7 @@ class SapphoTableStructure{
 	function addColumn($name, $dtype, $length)
 	{
 		$typemark = '';
+		$dtype = strtoupper($dtype);
 		if(in_array($dtype, $this->numeric_types))
 			$typemark = self::dtype_numeric;
 		else if(in_array($dtype, $this->string_types))
@@ -58,7 +62,7 @@ class SapphoTableStructure{
 		else
 			$typemark = self::dtype_unknown;
 		
-		$this->columns[$name] = array($dtype, $length);
+		$this->columns[$name] = array($typemark, $length);
 	}
 	
 	/**
