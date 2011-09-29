@@ -17,11 +17,11 @@
  * \copyright GNU Public License Version 3
  */
 
-// we use the syntax optimizer
-require("sappho_synopt.php");
-
 // table structures
-require("sappho_tabstruct.php");
+require_once("sappho_tabstruct.php");
+
+// we use the syntax optimizer
+require_once("sappho_synopt.php");
  
 class SapphoDatabaseConnection{
 	// status can be:
@@ -78,6 +78,7 @@ class SapphoDatabaseConnection{
 	
 	// general error codes
 	const db_error_wrong_dtype = 255; /**< a general return code if a wrong datatype was passed to a function */
+	const db_error_catalog     = 256; /**< an error occured during while trying to catalog a table */
 	
 	// database types
 	const db_type_mysql     = 'mysql'; /**< database type MySQL */
@@ -181,9 +182,13 @@ class SapphoDatabaseConnection{
 		{
 			if($this->debug_level > 3)
 				echo "SDBC: table '$table' unknown invoke cataloging<br/>";
-			$this->catalog_table($table);
+			if(!$this->catalog_table($table))
+			{
+				$this->error_message = "Could not catalog table $table - ".$this->lastError();
+				return false;
+			}
 		}
-		return;
+		return true;
 	}
 	
 	/**
@@ -205,7 +210,8 @@ class SapphoDatabaseConnection{
 	 */
 	function select($table, $fields = '*', $where = '', $lock=false)
 	{
-		$this->checkTable($table);
+		if(!$this->checkTable($table))
+			return self::db_error_catalog;
 		
 		$query = '';
 		if($this->db_type == self::db_type_mysql)
@@ -335,7 +341,9 @@ class SapphoDatabaseConnection{
 	{
 		if(!is_array($fields)) return self::db_error_wrong_dtype;
 		
-		$this->checkTable($table);
+		if(!$this->checkTable($table))
+			return self::db_error_catalog;
+			
 		$struct = $this->tablestruct[$table];
 		
 		$query = '';
@@ -431,7 +439,9 @@ class SapphoDatabaseConnection{
 	{
 		if(!is_array($data)) return self::db_update_error;
 		
-		$this->checkTable($table);
+		if(!$this->checkTable($table))
+			return self::db_error_catalog;
+			
 		$struct = $this->tablestruct[$table];
 		
 		$query = '';
@@ -515,7 +525,8 @@ class SapphoDatabaseConnection{
 	{
 		if(!is_array($fields)) return self::db_error_wrong_dtype;
 		
-		$this->checkTable($table);
+		if(!$this->checkTable($table))
+			return self::db_error_catalog;
 		
 		$query = 'INSERT INTO ';
 		if($this->typeIs(self::db_type_mysql))
@@ -635,7 +646,7 @@ class SapphoDatabaseConnection{
 	private function getSQLError(){
 		$error = '';
 		if($this->typeIs(self::db_type_mysql))
-			$error = $this->db_handle->error();
+			$error = $this->db_handle->error;
 		if($this->typeIs(self::db_type_postgre))
 		    $error = pg_last_error();
 		return $error;
