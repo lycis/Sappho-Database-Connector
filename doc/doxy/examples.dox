@@ -1,0 +1,16 @@
+/**
+  \example exec.php
+  \section example-exec-overview Overview
+  This is how to use the SapphoDatabaseConnection#exec() method. 
+  
+  In this example a statement is issued with the SapphoDatabaseConnection#exec() method. This function
+  returns only \c 0 (for success) or 1 (for an error). It does no optimization or syntax adaption for 
+  the target database system. You have to make sure that the syntax of the statement is correct before
+  calling SapphoDatabaseConnection#exec()
+  
+  \section example-exec-detail Detail
+  This example issues the \c CREATE \c TABLE command on the database and validates if it was successful
+  if not an error message is printed.
+  
+  \b Beware: This example does not establish or close a database connection!
+*/
