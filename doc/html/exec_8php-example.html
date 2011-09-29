@@ -75,7 +75,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">exec.php</div>  </div>
 </div>
 <div class="contents">
-<p>This is how to use the exec(...) method</p>
+<h2><a class="anchor" id="example-exec-overview"></a>
+Overview</h2>
+<p>This is how to use the SapphoDatabaseConnection::exec() method.</p>
+<p>In this example a statement is issued with the SapphoDatabaseConnection::exec() method. This function returns only <code>0</code> (for success) or 1 (for an error). It does no optimization or syntax adaption for the target database system. You have to make sure that the syntax of the statement is correct before calling SapphoDatabaseConnection::exec()</p>
+<h2><a class="anchor" id="example-exec-detail"></a>
+Detail</h2>
+<p>This example issues the <code>CREATE</code> <code>TABLE</code> command on the database and validates if it was successful if not an error message is printed.</p>
+<p><b>Beware:</b> This example does not establish or close a database connection!</p>
 <div class="fragment"><pre class="fragment">&lt;?php
 ... (initialize SDBC interface)
 
@@ -106,7 +113,7 @@ $exec = $sdbc-&gt;execute(<span class="stringliteral">&#39;CREATE TABLE temp(tem
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 28 2011 23:37:56 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 29 2011 20:11:53 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

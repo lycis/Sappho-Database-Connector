@@ -76,6 +76,9 @@ class SapphoDatabaseConnection{
 	const db_close_not_connected = 1; /**< returned by #close() if the connector was never connected */
 	const db_close_not_closed    = 2; /**< returned by #close() if the closing was not successfull */
 	
+	// error codes for delete();
+	const db_delete_error = 1; /**< returned by #delete() if an error occured */
+	
 	// general error codes
 	const db_error_wrong_dtype = 255; /**< a general return code if a wrong datatype was passed to a function */
 	const db_error_catalog     = 256; /**< an error occured during while trying to catalog a table */
@@ -284,13 +287,7 @@ class SapphoDatabaseConnection{
 		$this->lastResult = $result;
 		return 0;
 	}
-	
-	/**
-	 * \example exec.php
-	 * \brief This is how to use the exec(...) method 
-	 *
-	 */
-	
+		
 	/**
 	 * \brief Executes a statement without further checks.
 	 *
@@ -500,6 +497,58 @@ class SapphoDatabaseConnection{
 		}
 		
 		$this->lastResult = $result;
+		return 0;
+	}
+	
+	/**
+	 * \brief Removes a data record from a table.
+	 *
+	 *  By using this function a statement that deletes a record from the
+	 *  database is sent to the database.
+	 *
+	 * \param $table the target table
+	 * \param $where a were clause
+	 *
+	 * \returns <table>
+	 *           <tr><td>0</td><td>the statement was completed without any error</tr>
+	 *           <tr><td>#db_delete_error</td><td>an error occured</td></tr>
+	 *         </table>	 */
+	function delete($table, $where='')
+	{
+		if(!checkTable($table))
+			return self::db_error_catalog;
+		
+		$query = 'DELETE FROM';
+		if($this->db_type == self::db_type_mysql)
+			$table = $this->db_handle->real_escape_string($table);
+		else if($this->db_type == self::db_type_postgre)
+			$table = pg_escape_string($table);
+		$query .= $this->escape_keywords($table);
+		
+		$where = trim($where);
+		if($where != '')
+		{
+			$query .= 'WHERE ';
+			if($this->db_type == self::db_type_mysql)
+				$where = $this->db_handle->real_escape_string($where);
+			else if($this->db_type == self::db_type_postgre)
+				$where = pg_escape_string($where);
+			$query .= $this->escape_keywords($where);
+		}
+		setLastQuery($query);
+		
+		$result = false;
+		if($this->db_type == self::db_type_mysql)
+			$result = $this->db_handle->query($query);
+		else if($this->db_type == self::db_type_postgre)
+			$result = pg_query($query);
+		
+		if(!$result)
+		{
+			$this->error_message = $this->getSQLError();
+			return self::db_delete_error;
+		}
+		
 		return 0;
 	}
 	

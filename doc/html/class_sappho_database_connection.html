@@ -107,6 +107,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new record into a table.  <a href="#a44a916b0f1388fa230c602eb5626c7d0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a5a746db9594beff91db644df4bde8d64">update</a> ($table, $data, $where= '')</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update an already existing dataset.  <a href="#a5a746db9594beff91db644df4bde8d64"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a20e38d4fef21719e91c4909cc89365c7">delete</a> ($table, $where='')</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a data record from a table.  <a href="#a20e38d4fef21719e91c4909cc89365c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a56f3d848f0b99c395251fe923781a564">bulkInsert</a> ($table, $fields)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a new mass-insert of data.  <a href="#a56f3d848f0b99c395251fe923781a564"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d">nextData</a> ()</td></tr>
@@ -125,6 +127,12 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The last result set.  <a href="#a37a37ac5ead2215728c5c95b44d0468b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a6252d3006c6c29e4934000dc7564cb01">catalog_table</a> ($table, $recat=false)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Analyzes and catalogues the structure of a table.  <a href="#a6252d3006c6c29e4934000dc7564cb01"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aa758cb256efa1aa2808664e28c85eb94">startTransaction</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a new transaction.  <a href="#aa758cb256efa1aa2808664e28c85eb94"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a942537bb5db17b512a5ce11b9360671e">commitTransaction</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Commit a running transaction.  <a href="#a942537bb5db17b512a5ce11b9360671e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a8a4539d4472c653c70f0622680084f4e">rollbackTransaction</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Undos a running transaction.  <a href="#a8a4539d4472c653c70f0622680084f4e"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0e53d783527edd85a1b5d6874e08c190">db_connect_already_connected</a> = 1</td></tr>
@@ -138,7 +146,9 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#acbea0faa9f5b7d84a75f465a24b52182">db_next_nodata</a> = false</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#ab133ca12c8ad41539369b6389f01085b">db_close_not_connected</a> = 1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a23c8d00e1eef990176f9329f79f6765f">db_close_not_closed</a> = 2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a787539bcd0be3f8fd407b1532bd5d1db">db_delete_error</a> = 1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#abdf4b1e4ea52dd9ad34f471c0e51d58b">db_error_wrong_dtype</a> = 255</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0c6e3a2985caa668585407808ae2b6fa">db_error_catalog</a> = 256</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a8d9b0e195cb4263e26364610c900b1c3">db_type_mysql</a> = 'mysql'</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a7f52953bff1cae0ca225472dccdd5bb0">db_type_postgre</a> = 'postgresql'</td></tr>
 </table>
@@ -331,6 +341,26 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a942537bb5db17b512a5ce11b9360671e"></a><!-- doxytag: member="SapphoDatabaseConnection::commitTransaction" ref="a942537bb5db17b512a5ce11b9360671e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::commitTransaction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Commit a running transaction. </p>
+<p>A running transaction will be commited.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>true</code> if successful or <code>false</code> on any error </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a9236ae53ad9ad9ebd47202768d363144"></a><!-- doxytag: member="SapphoDatabaseConnection::connect" ref="a9236ae53ad9ad9ebd47202768d363144" args="($password)" -->
 <div class="memitem">
 <div class="memproto">
@@ -365,6 +395,50 @@ Public Attributes</h2></td></tr>
 <td><a class="el" href="class_sappho_database_connection.html#af3a2da0f4cdc47add57ba87d07ce7eea">db_connect_declined</a></td><td>the connection was declined by the remote host </td></tr>
 <tr>
 <td><a class="el" href="class_sappho_database_connection.html#a746fb3d7901c792a1e7c1d586971e314">db_connect_db_notexist</a></td><td>the given database does not exist </td></tr>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a20e38d4fef21719e91c4909cc89365c7"></a><!-- doxytag: member="SapphoDatabaseConnection::delete" ref="a20e38d4fef21719e91c4909cc89365c7" args="($table, $where='')" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::delete </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>where</em> = <code>''</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Removes a data record from a table. </p>
+<p>By using this function a statement that deletes a record from the database is sent to the database.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$table</td><td>the target table </td></tr>
+    <tr><td class="paramname">$where</td><td>a were clause</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><table class="doxtable">
+<tr>
+<td>0</td><td>the statement was completed without any error </td></tr>
+<tr>
+<td><a class="el" href="class_sappho_database_connection.html#a787539bcd0be3f8fd407b1532bd5d1db">db_delete_error</a></td><td>an error occured </td></tr>
 </table>
 </dd></dl>
 
@@ -501,6 +575,26 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8a4539d4472c653c70f0622680084f4e"></a><!-- doxytag: member="SapphoDatabaseConnection::rollbackTransaction" ref="a8a4539d4472c653c70f0622680084f4e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::rollbackTransaction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Undos a running transaction. </p>
+<p>A running transaction will be rolled back.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>true</code> if successful or <code>false</code> on any error </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0ea493245c81a80ccc478bc3eb43b2c4"></a><!-- doxytag: member="SapphoDatabaseConnection::rowCount" ref="a0ea493245c81a80ccc478bc3eb43b2c4" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -616,6 +710,26 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="aa758cb256efa1aa2808664e28c85eb94"></a><!-- doxytag: member="SapphoDatabaseConnection::startTransaction" ref="aa758cb256efa1aa2808664e28c85eb94" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::startTransaction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Start a new transaction. </p>
+<p>Invokes a new transaction in the database system.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>true</code> if successful or <code>false</code> on any error </dd></dl>
 
 </div>
 </div>
@@ -781,6 +895,34 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a787539bcd0be3f8fd407b1532bd5d1db"></a><!-- doxytag: member="SapphoDatabaseConnection::db_delete_error" ref="a787539bcd0be3f8fd407b1532bd5d1db" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_database_connection.html#a787539bcd0be3f8fd407b1532bd5d1db">SapphoDatabaseConnection::db_delete_error</a> = 1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>returned by <a class="el" href="class_sappho_database_connection.html#a20e38d4fef21719e91c4909cc89365c7" title="Removes a data record from a table.">delete()</a> if an error occured </p>
+
+</div>
+</div>
+<a class="anchor" id="a0c6e3a2985caa668585407808ae2b6fa"></a><!-- doxytag: member="SapphoDatabaseConnection::db_error_catalog" ref="a0c6e3a2985caa668585407808ae2b6fa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_database_connection.html#a0c6e3a2985caa668585407808ae2b6fa">SapphoDatabaseConnection::db_error_catalog</a> = 256</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>an error occured during while trying to catalog a table </p>
+
+</div>
+</div>
 <a class="anchor" id="abdf4b1e4ea52dd9ad34f471c0e51d58b"></a><!-- doxytag: member="SapphoDatabaseConnection::db_error_wrong_dtype" ref="abdf4b1e4ea52dd9ad34f471c0e51d58b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -914,7 +1056,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 28 2011 23:37:56 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 29 2011 20:11:53 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
