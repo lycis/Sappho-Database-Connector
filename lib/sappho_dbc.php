@@ -241,7 +241,7 @@ class SapphoDatabaseConnection{
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= " WHERE ".$this->escape_keywords($where);
+				$query .= " WHERE ".$where;
 			
 	    }
 		else if($this->db_type == self::db_type_postgre)
@@ -460,7 +460,7 @@ class SapphoDatabaseConnection{
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= ' WHERE '.$this->escape_keywords($where);
+				$query .= ' WHERE '.$where;
 		}
 		else if($this->db_type = self::db_type_postgre)
 		{
@@ -479,7 +479,7 @@ class SapphoDatabaseConnection{
 			
 			$where = trim($where);
 			if($where != '')
-				$query .= ' WHERE '.$this->escape_keywords($where);
+				$query .= ' WHERE '.$where;
 		}
 		
 		$this->setLastQuery($query);
@@ -529,7 +529,7 @@ class SapphoDatabaseConnection{
 		if($where != '')
 		{
 			$query .= 'WHERE ';
-			$query .= $this->escape_keywords($where);
+			$query .= $where;
 		}
 		setLastQuery($query);
 		
