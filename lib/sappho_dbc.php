@@ -43,6 +43,8 @@ class SapphoDatabaseConnection{
 	// error message
 	private $error_message;
 	
+	private $last_insert_id;
+	
 	// debug fields
 	private $debug_level;
 	private $last_query;
@@ -117,6 +119,7 @@ class SapphoDatabaseConnection{
 			$this->synopt = new SapphoSyntaxOptimizer($this->db_type);
 		
 		$this->tablestruct = array();
+		$this->last_insert_id = -1;
 	}
 	
 	/**
@@ -398,6 +401,12 @@ class SapphoDatabaseConnection{
 					$query .= ', ';
 			}
 			$query .= ")";
+			
+			if($struct->serialField() !== false)
+			{
+				$query .= " RETURNING ";
+				$query .= $this->escape_keywords(pg_escape_string($struct->serialField()));
+			}
 		}
 		
 		$this->setLastQuery($query);
@@ -415,6 +424,17 @@ class SapphoDatabaseConnection{
 		}
 		
 		$this->lastResult = $result;
+		
+		// last id
+		if($this->typeIs(self::db_type_mysql))
+			$this->last_insert_id = $this->db_handle->last_id;
+		 else if($this->typeIs(self::db_type_postgre) &&
+		          $struct->serialField())
+		{
+			$data = pg_fetch_assoc($result);
+			$this->last_insert_id = $data[$struct->serialField()];
+		}
+		
 		return 0;
 	}
 	
@@ -915,16 +935,22 @@ class SapphoDatabaseConnection{
 		$struct = new SapphoTableStructure($table);
 		while(($data = pg_fetch_assoc($result)))
 		{
+			// check if this is a incremented field
+			$serial = false;
+			if(strpos($data["column_default"], "nextval(") !== false)
+				$serial = true;
+			
 			if($this->debug_level > 3)
 			{
 				echo "SDBC: Analyzing attribute: ";
 				echo $data["column_name"]." => ";
 				echo $data["data_type"];
+				echo " => serial: $serial (".$data["column_default"].")";
 				echo "<br/>";
 			}
 			
 			// length is not stored for postgre - it's not used anyway...
-			$struct->addColumn($data["column_name"], $data["data_type"], -1);
+			$struct->addColumn($data["column_name"], $data["data_type"], -1, $serial);
 		}
 		
 		$this->tablestruct[$table] = $struct;
@@ -1018,6 +1044,21 @@ class SapphoDatabaseConnection{
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * \brief Get the last automatically incremented field of the last INSERT.
+	 *
+	 * Returns the value of the last automatically incremented field. In case of
+	 * MySQL this is the same value retrieved with mysqli::last_id. In case of
+	 * postgreSQL the last serial field of the last INSERT statement is returned.
+	 *
+	 * Of course this function will only return a valid result after an #insert()
+	 *
+	 * \returns value of the last incremented field
+	 */
+	function lastId(){
+		return $this->last_insert_id;
 	}
 }
 ?>
