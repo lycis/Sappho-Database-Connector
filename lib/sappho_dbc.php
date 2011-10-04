@@ -427,7 +427,7 @@ class SapphoDatabaseConnection{
 		
 		// last id
 		if($this->typeIs(self::db_type_mysql))
-			$this->last_insert_id = $this->db_handle->last_id;
+			$this->last_insert_id = $this->db_handle->insert_id;
 		 else if($this->typeIs(self::db_type_postgre) &&
 		          $struct->serialField())
 		{
@@ -649,12 +649,16 @@ class SapphoDatabaseConnection{
 	 *
 	 * \returns An associated array or #db_next_nodata
 	 */
-	function nextData(){
+	function nextData($result=false){
+		// if a ressource is given take it, otherwise take the default result
+		if($result === false)
+			$result = $this->lastResult;
+		
 		if(($this->typeIs(self::db_type_mysql) &&
-		    !$this->lastResult->num_rows) 
+		    !$result->num_rows) 
 			||
            ($this->typeIs(self::db_type_postgre) &&
-		    !pg_num_rows($this->lastResult)))
+		    !pg_num_rows($result)))
 		{
 			$this->error_message = "SDBC - last result set is empty";
 			return self::db_next_nodata;
@@ -666,9 +670,9 @@ class SapphoDatabaseConnection{
 		
 		$data = 0;
 		if($this->typeIs(self::db_type_mysql))
-			$data = $this->lastResult->fetch_assoc();
+			$data = $result->fetch_assoc();
 	    else if($this->typeIs(self::db_type_postgre))
-			$data = pg_fetch_assoc($this->lastResult);
+			$data = pg_fetch_assoc($result);
 			
 		if($this->debug_level > 1)
 		{
