@@ -903,9 +903,17 @@ class SapphoDatabaseConnection{
 			}
 			
 			$pos    = strpos($data[1], "(");
-			$type   = substr($data[1], 0, $pos);
-			$pos2   = strpos($data[1], ")");
-			$length = substr($data[1], $pos+1, $pos2-$pos-1);
+			if($pos !== false)
+			{
+				$type   = substr($data[1], 0, $pos);
+				$pos2   = strpos($data[1], ")");
+				$length = substr($data[1], $pos+1, $pos2-$pos-1);
+			}
+			else
+			{
+				$type = $data[1];
+				$length = -1;
+			}
 			
 			$struct->addColumn($data[0], $type, $length);
 			if($this->debug_level > 3)
