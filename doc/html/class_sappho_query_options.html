@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: Class List</title>
+<title>SapphoDatabaseConnection: SapphoQueryOptions Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -71,23 +71,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li class="current"><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Class List</div>  </div>
+<div class="title">SapphoQueryOptions Class Reference</div>  </div>
 </div>
 <div class="contents">
-<div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><table>
-  <tr><td class="indexkey"><a class="el" href="class_sappho_database_connection.html">SapphoDatabaseConnection</a></td><td class="indexvalue">This class handles connections to different database types. You'll probably want to use this one </td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td class="indexvalue">This class is used to set any statement options like WHERE clauses or ORDER BY etc </td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_sappho_syntax_optimizer.html">SapphoSyntaxOptimizer</a></td><td class="indexvalue">The Syntax Optimizer offers functions to optimze statements for different database systems </td></tr>
-  <tr><td class="indexkey"><a class="el" href="class_sappho_table_structure.html">SapphoTableStructure</a></td><td class="indexvalue">Internal presentation of used tables </td></tr>
+<!-- doxytag: class="SapphoQueryOptions" -->
+<p>This class is used to set any statement options like WHERE clauses or ORDER BY etc.  
+ <a href="class_sappho_query_options.html#details">More...</a></p>
+
+<p><a href="class_sappho_query_options-members.html">List of all members.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ad739b6e0491c1d8c0cf61c8311038054">__construct</a> ($dbtype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance.  <a href="#ad739b6e0491c1d8c0cf61c8311038054"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#afb89554d0d33b872e12461a806b86b0b">__destruct</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executed on destruction of the object.  <a href="#afb89554d0d33b872e12461a806b86b0b"></a><br/></td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>This class is used to set any statement options like WHERE clauses or ORDER BY etc. </p>
+<p>This class represents any kind of options that aplly to a statement. This may range from WHERE clauses to ORDER BY columns or subselects and joins.</p>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>Currently only simple where clauses are implemented!</dd></dl>
+<dl class="author"><dt><b>Author:</b></dt><dd>Daniel Eder </dd></dl>
+<dl class="version"><dt><b>Version:</b></dt><dd>0.1 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>2011-10-06 </dd></dl>
+<dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License Version 3 </dd></dl>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ad739b6e0491c1d8c0cf61c8311038054"></a><!-- doxytag: member="SapphoQueryOptions::__construct" ref="ad739b6e0491c1d8c0cf61c8311038054" args="($dbtype)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::__construct </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>dbtype</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates a new instance. </p>
+<p>$type database type as set in <a class="el" href="class_sappho_database_connection.html" title="This class handles connections to different database types. You&#39;ll probably want to use this one...">SapphoDatabaseConnection</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="afb89554d0d33b872e12461a806b86b0b"></a><!-- doxytag: member="SapphoQueryOptions::__destruct" ref="afb89554d0d33b872e12461a806b86b0b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::__destruct </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Executed on destruction of the object. </p>
+<p>Currently does nothing. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>J:/eclipse_ws/sdbc/lib/sappho_queryopt.php</li>
+</ul>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 6 2011 12:56:03 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 6 2011 12:56:04 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

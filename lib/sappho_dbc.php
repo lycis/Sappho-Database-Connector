@@ -13,7 +13,7 @@
  *
  * \author Daniel Eder
  * \version 0.1
- * \date 2011-09-28
+ * \date 2011-10-06
  * \copyright GNU Public License Version 3
  */
 
@@ -22,6 +22,9 @@ require_once("sappho_tabstruct.php");
 
 // we use the syntax optimizer
 require_once("sappho_synopt.php");
+
+// query options
+require_once("sappho_queryopt.php");
  
 class SapphoDatabaseConnection{
 	// status can be:
@@ -1069,8 +1072,25 @@ class SapphoDatabaseConnection{
 	 *
 	 * \returns value of the last incremented field
 	 */
-	function lastId(){
+	function lastId()
+	{
 		return $this->last_insert_id;
+	}
+	
+	/**
+	 * \brief Creates a new SapphoQueryOptions instance for this connection.
+	 *
+	 * This method invokes a new instance of SapphoQueryOptions that can be used
+	 * for extended configuration of a query. With this object you may define \c WHERE,
+	 * \c JOINS, \c ORDER BY and the like. The returned instance is <b>not</b> automatically
+	 * used in the next query and has to be passed as \c $where parameter.
+	 *
+	 * \returns A new instance of SapphoQueryOptions configured for this connection.
+	 */
+	function queryOptions()
+	{
+		$options = new SapphoQueryOptions($this->db_type);
+		return $options;
 	}
 }
 ?>

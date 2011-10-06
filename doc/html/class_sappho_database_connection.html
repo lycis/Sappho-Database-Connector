@@ -135,6 +135,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Undos a running transaction.  <a href="#a8a4539d4472c653c70f0622680084f4e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#ac7e9a9121d65ad64ea6fba0654182589">lastId</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last automatically incremented field of the last INSERT.  <a href="#ac7e9a9121d65ad64ea6fba0654182589"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#ab738bcfc3c7a4056fb84c3674723a0f4">queryOptions</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> instance for this connection.  <a href="#ab738bcfc3c7a4056fb84c3674723a0f4"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0e53d783527edd85a1b5d6874e08c190">db_connect_already_connected</a> = 1</td></tr>
@@ -160,7 +162,7 @@ Public Attributes</h2></td></tr>
 <p>It is the main class of the SDBC and will be used to create connections to database and handle all kind of requests you want to send to the database.</p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Daniel Eder </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>0.1 </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>2011-09-28 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>2011-10-06 </dd></dl>
 <dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License Version 3 </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa8da5ecddab95b0839e46e40b0b88594"></a><!-- doxytag: member="SapphoDatabaseConnection::__construct" ref="aa8da5ecddab95b0839e46e40b0b88594" args="($type, $host, $db, $user)" -->
@@ -596,6 +598,26 @@ Public Attributes</h2></td></tr>
 <p>Get the next data set of the last result set. </p>
 <p>This statement returns an associated array with the table data that was queried by the last select statement that was executed.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An associated array or <a class="el" href="class_sappho_database_connection.html#acbea0faa9f5b7d84a75f465a24b52182">db_next_nodata</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab738bcfc3c7a4056fb84c3674723a0f4"></a><!-- doxytag: member="SapphoDatabaseConnection::queryOptions" ref="ab738bcfc3c7a4056fb84c3674723a0f4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::queryOptions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Creates a new <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> instance for this connection. </p>
+<p>This method invokes a new instance of <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> that can be used for extended configuration of a query. With this object you may define <code>WHERE</code>, <code>JOINS</code>, <code>ORDER</code> BY and the like. The returned instance is <b>not</b> automatically used in the next query and has to be passed as <code>$where</code> parameter.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A new instance of <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> configured for this connection. </dd></dl>
 
 </div>
 </div>
@@ -1080,7 +1102,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 6 2011 11:44:28 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 6 2011 12:56:03 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
