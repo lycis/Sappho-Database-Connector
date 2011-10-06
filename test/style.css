@@ -1,0 +1,54 @@
+h1 {  
+    font-size: 20px;  
+	color: #4169E1;
+}  
+      
+h2{  
+    font-size: 18px;  
+	color: #1c94c4;
+}  
+
+h3{  
+    font-size: 16px;  
+	color: #000;
+}  
+
+td{
+	border: 1px solid black;
+	padding: 5px;
+}
+
+th{
+	font-weight: normal;
+	border: 1px solid black;
+	color: #000;
+	background-color: #fff;
+	padding: 5px;
+}
+
+table{
+	box-shadow: 3px 3px 7px #777;
+}
+
+body{
+	background: #f0f0f0; 
+	font: 13px/22px Helvetica, Arial, sans-serif; 
+}
+
+#postgrebox{
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 7%;
+	width: 40%;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+#mysqlbox{
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 55%;
+	width: 40%;
+	border: 1px solid black;
+	padding: 5px;
+}

@@ -538,10 +538,10 @@ class SapphoDatabaseConnection{
 	 *         </table>	 */
 	function delete($table, $where='')
 	{
-		if(!checkTable($table))
+		if(!$this->checkTable($table))
 			return self::db_error_catalog;
 		
-		$query = 'DELETE FROM';
+		$query = 'DELETE FROM ';
 		if($this->db_type == self::db_type_mysql)
 			$table = $this->db_handle->real_escape_string($table);
 		else if($this->db_type == self::db_type_postgre)
@@ -551,10 +551,11 @@ class SapphoDatabaseConnection{
 		$where = trim($where);
 		if($where != '')
 		{
-			$query .= 'WHERE ';
+			$query .= ' WHERE ';
 			$query .= $where;
 		}
-		setLastQuery($query);
+		
+		$this->setLastQuery($query);
 		
 		$result = false;
 		if($this->db_type == self::db_type_mysql)

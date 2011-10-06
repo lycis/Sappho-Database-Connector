@@ -1,19 +1,16 @@
 <h3>Testmodule: Date Formatting</h3>
 
-<table border="1">
-	<tr>
-		<th>Connecting to database</th>
-		<td>
-			<?php
-				require_once("open_testcon.php");
-			?>
-		</td>
-	</tr>
+<table>
 	<tr>
 		<th>Creation of test table</th>
 		<td>
 			<?php
-				if($sdbc->execute("CREATE TABLE date_test (  date date, \"time\" time without time zone,   \"timestamp\" timestamp without time zone, \"interval\" interval)"))
+				$query = "errorasdf";
+				if($dbtype == SapphoDatabaseConnection::db_type_postgre)
+					$query = "CREATE TABLE date_test (  date date, \"time\" time without time zone,   \"timestamp\" timestamp without time zone, \"interval\" interval)";
+				else if($dbtype == SapphoDatabaseConnection::db_type_mysql)
+					$query = "CREATE TABLE date_test (  date date, time datetime, timestamp timestamp)";
+				if($sdbc->execute($query))
 					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
 				echo "<font color='#00ff00'>OK</font>";
 			?>

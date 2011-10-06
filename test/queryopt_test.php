@@ -1,14 +1,6 @@
 <h3>Testmodule: Query Options</h3>
 
-<table border="1">
-	<tr>
-		<th>Connecting to database</th>
-		<td>
-			<?php
-				require_once("open_testcon.php");
-			?>
-		</td>
-	</tr>
+<table>
 	<tr>
 		<th>Creation of test table</th>
 		<td>
