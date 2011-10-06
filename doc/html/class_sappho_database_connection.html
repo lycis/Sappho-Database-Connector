@@ -111,8 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a data record from a table.  <a href="#a20e38d4fef21719e91c4909cc89365c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a56f3d848f0b99c395251fe923781a564">bulkInsert</a> ($table, $fields)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a new mass-insert of data.  <a href="#a56f3d848f0b99c395251fe923781a564"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d">nextData</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next data set of the last result set.  <a href="#aade49b72ed36d5cf3af2a92f0bc5492d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0130041c0a7c4133291636b8c3650d91">nextData</a> ($result=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next data set of the last result set.  <a href="#a0130041c0a7c4133291636b8c3650d91"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a75b6fba37860b5cc1e896469971a053b">lastError</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The error message of the last occured error.  <a href="#a75b6fba37860b5cc1e896469971a053b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#abe2f6e3fd19c04faf9369c226bf21e8a">typeIs</a> ($compare)</td></tr>
@@ -133,6 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Commit a running transaction.  <a href="#a942537bb5db17b512a5ce11b9360671e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a8a4539d4472c653c70f0622680084f4e">rollbackTransaction</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Undos a running transaction.  <a href="#a8a4539d4472c653c70f0622680084f4e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#ac7e9a9121d65ad64ea6fba0654182589">lastId</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last automatically incremented field of the last INSERT.  <a href="#ac7e9a9121d65ad64ea6fba0654182589"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0e53d783527edd85a1b5d6874e08c190">db_connect_already_connected</a> = 1</td></tr>
@@ -555,14 +557,36 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aade49b72ed36d5cf3af2a92f0bc5492d"></a><!-- doxytag: member="SapphoDatabaseConnection::nextData" ref="aade49b72ed36d5cf3af2a92f0bc5492d" args="()" -->
+<a class="anchor" id="ac7e9a9121d65ad64ea6fba0654182589"></a><!-- doxytag: member="SapphoDatabaseConnection::lastId" ref="ac7e9a9121d65ad64ea6fba0654182589" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::lastId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the last automatically incremented field of the last INSERT. </p>
+<p>Returns the value of the last automatically incremented field. In case of MySQL this is the same value retrieved with mysqli::last_id. In case of postgreSQL the last serial field of the last INSERT statement is returned.</p>
+<p>Of course this function will only return a valid result after an <a class="el" href="class_sappho_database_connection.html#a44a916b0f1388fa230c602eb5626c7d0" title="Insert a new record into a table.">insert()</a></p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>value of the last incremented field </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0130041c0a7c4133291636b8c3650d91"></a><!-- doxytag: member="SapphoDatabaseConnection::nextData" ref="a0130041c0a7c4133291636b8c3650d91" args="($result=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">SapphoDatabaseConnection::nextData </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>result</em> = <code>false</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -698,7 +722,7 @@ Public Attributes</h2></td></tr>
 <tr>
 <td>1</td><td>executed statements </td></tr>
 <tr>
-<td>2</td><td>data retrieved by <a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d" title="Get the next data set of the last result set.">nextData()</a> </td></tr>
+<td>2</td><td>data retrieved by <a class="el" href="class_sappho_database_connection.html#a0130041c0a7c4133291636b8c3650d91" title="Get the next data set of the last result set.">nextData()</a> </td></tr>
 <tr>
 <td>4</td><td>table catalog data </td></tr>
 <tr>
@@ -961,7 +985,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>returned by <a class="el" href="class_sappho_database_connection.html#aade49b72ed36d5cf3af2a92f0bc5492d" title="Get the next data set of the last result set.">nextData()</a> if there is no next data record </p>
+<p>returned by <a class="el" href="class_sappho_database_connection.html#a0130041c0a7c4133291636b8c3650d91" title="Get the next data set of the last result set.">nextData()</a> if there is no next data record </p>
 
 </div>
 </div>
@@ -1056,7 +1080,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 29 2011 20:11:53 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 6 2011 11:44:28 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

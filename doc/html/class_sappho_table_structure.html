@@ -95,8 +95,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#aead0690aa81c96ede343f1a75a892f71">__construct</a> ($tablename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance.  <a href="#aead0690aa81c96ede343f1a75a892f71"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a8a9b6a70c785724722c2aac831a4c0c5">addColumn</a> ($name, $dtype, $length)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new column to the structure.  <a href="#a8a9b6a70c785724722c2aac831a4c0c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a631aec9ea25fee6e52f326cdfef98206">addColumn</a> ($name, $dtype, $length, $serial=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new column to the structure.  <a href="#a631aec9ea25fee6e52f326cdfef98206"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#aa7e13d86be9e9b7150b95a8498cc8efb">getName</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the table name.  <a href="#aa7e13d86be9e9b7150b95a8498cc8efb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a67b44bf11606098986f04d9380cc5786">getType</a> ($column)</td></tr>
@@ -105,11 +105,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the datafield.  <a href="#abf1ae08a980cf9cfa9fa530ce86c2d57"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a044912a0fc7b81dfdd52b7cc3f95ef70">getFieldNum</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Amount of fields the table contains.  <a href="#a044912a0fc7b81dfdd52b7cc3f95ef70"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a70d2de07905dca71ea8873909a68b660">serialField</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The field that is automatically incremented within this table.  <a href="#a70d2de07905dca71ea8873909a68b660"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#ae19643c0b8a8effd66ed2c93dd3a0127">dtype_numeric</a> = 'N'</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#afc97cda98f42442aedbbc94695eb9565">dtype_string</a> = 'S'</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#ace59040a435414a0c1614a5b1e781d9b">dtype_unknown</a> = 'U'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_table_structure.html#a0407b79194af4011aa8a4ef010d4e0c3">dtype_date</a> = 'D'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Internal presentation of used tables. </p>
@@ -146,7 +149,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a8a9b6a70c785724722c2aac831a4c0c5"></a><!-- doxytag: member="SapphoTableStructure::addColumn" ref="a8a9b6a70c785724722c2aac831a4c0c5" args="($name, $dtype, $length)" -->
+<a class="anchor" id="a631aec9ea25fee6e52f326cdfef98206"></a><!-- doxytag: member="SapphoTableStructure::addColumn" ref="a631aec9ea25fee6e52f326cdfef98206" args="($name, $dtype, $length, $serial=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -166,7 +169,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>serial</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -183,6 +192,7 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">$name</td><td>column name </td></tr>
     <tr><td class="paramname">$dtype</td><td>datatype </td></tr>
     <tr><td class="paramname">$length</td><td>data length </td></tr>
+    <tr><td class="paramname">$serial</td><td>if <code>true</code> this field is marked as automatically incremented (only relevant for postgreSQL) </td></tr>
   </table>
   </dd>
 </dl>
@@ -267,7 +277,41 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a70d2de07905dca71ea8873909a68b660"></a><!-- doxytag: member="SapphoTableStructure::serialField" ref="a70d2de07905dca71ea8873909a68b660" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoTableStructure::serialField </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The field that is automatically incremented within this table. </p>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>This function is used for postgreSQL only! </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>name of the column. </dd></dl>
+
+</div>
+</div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a0407b79194af4011aa8a4ef010d4e0c3"></a><!-- doxytag: member="SapphoTableStructure::dtype_date" ref="a0407b79194af4011aa8a4ef010d4e0c3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_table_structure.html#a0407b79194af4011aa8a4ef010d4e0c3">SapphoTableStructure::dtype_date</a> = 'D'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>datatype mark for date values </p>
+
+</div>
+</div>
 <a class="anchor" id="ae19643c0b8a8effd66ed2c93dd3a0127"></a><!-- doxytag: member="SapphoTableStructure::dtype_numeric" ref="ae19643c0b8a8effd66ed2c93dd3a0127" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +375,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 29 2011 20:11:53 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 6 2011 11:44:28 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

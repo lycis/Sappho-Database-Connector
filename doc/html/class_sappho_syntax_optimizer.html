@@ -101,6 +101,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given parameter to be a string in an SQL query.  <a href="#a9b633298718ba0951ac318b1dcca6946"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1f47be965b17e65baa85e18c5f024d10">formatNumber</a> ($what)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be a number in an SQL query.  <a href="#a1f47be965b17e65baa85e18c5f024d10"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1445122782e5796e813191d28ccccd4a">formatDate</a> ($what)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be used as a date in a SQL query.  <a href="#a1445122782e5796e813191d28ccccd4a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a3f0888328eb06a3fc5f2eeeed705d9bf">formatFields</a> ($values, $dtypes)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a list of values to an according list of data types.  <a href="#a3f0888328eb06a3fc5f2eeeed705d9bf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1ac20d7e596253e99cf24b1f807334b8">formatField</a> ($value, $dtype)</td></tr>
@@ -174,6 +176,28 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an escaped version of the string </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1445122782e5796e813191d28ccccd4a"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatDate" ref="a1445122782e5796e813191d28ccccd4a" args="($what)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoSyntaxOptimizer::formatDate </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>what</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Formats the parameter to be used as a date in a SQL query. </p>
+<p>By using this method the given parameter is formatted so it can be used as a date-based type like <code>DATE</code> or <code>TIMESTAMP</code> in an SQL query on the target system. This functions only formats a return value of the time() function!</p>
+<p>$what the string you want to format </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>a formatted value </dd></dl>
 
 </div>
 </div>
@@ -417,7 +441,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 29 2011 20:11:53 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 6 2011 11:44:28 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
