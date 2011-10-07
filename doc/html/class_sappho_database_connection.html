@@ -137,6 +137,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last automatically incremented field of the last INSERT.  <a href="#ac7e9a9121d65ad64ea6fba0654182589"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#ab738bcfc3c7a4056fb84c3674723a0f4">queryOptions</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> instance for this connection.  <a href="#ab738bcfc3c7a4056fb84c3674723a0f4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a16e4017fb98a0d888f91df2d009555ee">getType</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the connection.  <a href="#a16e4017fb98a0d888f91df2d009555ee"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a2d4c59e24ecbeb1fc6763e83bf1d2a68">getTableCache</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the table cache.  <a href="#a2d4c59e24ecbeb1fc6763e83bf1d2a68"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aeafeb43f4e060a62e8d49cec9c069ba9">getSyntaxOptimizer</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the configured syntax optimizer.  <a href="#aeafeb43f4e060a62e8d49cec9c069ba9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a3e14ad98444a71739f698b1c682acd7c">escape</a> ($str, $keywords=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Escape the given string for use with the connection.  $str the string be escaped  $keywords set to <code>true</code> if you wish to do keyword escaping.  <a href="#a3e14ad98444a71739f698b1c682acd7c"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#a0e53d783527edd85a1b5d6874e08c190">db_connect_already_connected</a> = 1</td></tr>
@@ -448,6 +456,36 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3e14ad98444a71739f698b1c682acd7c"></a><!-- doxytag: member="SapphoDatabaseConnection::escape" ref="a3e14ad98444a71739f698b1c682acd7c" args="($str, $keywords=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::escape </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>keywords</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Escape the given string for use with the connection.  $str the string be escaped  $keywords set to <code>true</code> if you wish to do keyword escaping. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>escaped string </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="adc462614a2f19075a646e9e04130f4d6"></a><!-- doxytag: member="SapphoDatabaseConnection::execute" ref="adc462614a2f19075a646e9e04130f4d6" args="($stmnt)" -->
 <div class="memitem">
 <div class="memproto">
@@ -491,6 +529,63 @@ Public Attributes</h2></td></tr>
 
 <p>The last result set. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the result set of the last query </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aeafeb43f4e060a62e8d49cec9c069ba9"></a><!-- doxytag: member="SapphoDatabaseConnection::getSyntaxOptimizer" ref="aeafeb43f4e060a62e8d49cec9c069ba9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::getSyntaxOptimizer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the configured syntax optimizer. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>syntax optimzier </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2d4c59e24ecbeb1fc6763e83bf1d2a68"></a><!-- doxytag: member="SapphoDatabaseConnection::getTableCache" ref="a2d4c59e24ecbeb1fc6763e83bf1d2a68" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::getTableCache </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the table cache. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>cached table structures. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a16e4017fb98a0d888f91df2d009555ee"></a><!-- doxytag: member="SapphoDatabaseConnection::getType" ref="a16e4017fb98a0d888f91df2d009555ee" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoDatabaseConnection::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the type of the connection. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>type of database the SDBC is connected to </dd></dl>
 
 </div>
 </div>
@@ -1102,7 +1197,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 6 2011 12:56:03 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 7 2011 22:21:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

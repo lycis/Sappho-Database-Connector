@@ -83,8 +83,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>, including all inherited members.<table>
-  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#ad739b6e0491c1d8c0cf61c8311038054">__construct</a>($dbtype)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#ac3aeab583d9f4b772b080755370648b6">__construct</a>($connection)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#afb89554d0d33b872e12461a806b86b0b">__destruct</a>()</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#a68265221298d3c010b44cb44a3ade53e">andWhere</a>($field, $operation='', $value='')</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>EQUALS</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#a79a4881f0f946d3cfacc663608a82503">getClause</a>($table)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#a1944d101facdc4f5e31d45c689be5c4b">getWhereClause</a>($table, $subcondition=false)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>GREATER</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>LOWER</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#adfb77a6fe339663bf668425df2c0908e">orWhere</a>($field, $operation='', $value='')</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806">where</a>($field, $operation, $value)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>WHERE_AND</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>WHERE_INITIAL</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>WHERE_OR</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>WHERE_SUB_AND</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>WHERE_SUB_OR</b> (defined in <a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a>)</td><td><a class="el" href="class_sappho_query_options.html">SapphoQueryOptions</a></td><td></td></tr>
 </table></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -103,7 +116,7 @@ This is the complete list of members for <a class="el" href="class_sappho_query_
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 6 2011 12:56:04 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 7 2011 22:21:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

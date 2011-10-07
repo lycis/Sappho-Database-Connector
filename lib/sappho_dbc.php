@@ -1090,8 +1090,54 @@ class SapphoDatabaseConnection{
 	 */
 	function queryOptions()
 	{
-		$options = new SapphoQueryOptions($this->db_type);
+		$options = new SapphoQueryOptions($this);
 		return $options;
 	}
+	
+	/**
+	 * \brief Returns the type of the connection.
+	 * \returns type of database the SDBC is connected to
+	 */
+	function getType()
+	{
+		return $this->db_type;
+	}
+	
+	/**
+	 * \brief Returns the table cache.
+	 * \returns cached table structures.
+	 */
+	 function getTableCache()
+	 {
+		return $this->tablestruct;
+	 }
+	 
+	/**
+	 * \brief Returns the configured syntax optimizer
+	 * \returns syntax optimzier
+	 */
+	 function getSyntaxOptimizer()
+	 {
+		return $this->synopt;
+	 }
+	 
+	 /**
+	  * \brief Escape the given string for use with the connection.
+	  * \params $str the string be escaped
+	  * \params $keywords set to \c true if you wish to do keyword escaping
+	  * \returns escaped string
+	  */
+	 function escape($str, $keywords=false)
+	 {
+		if($this->typeIs(self::db_type_mysql))
+			$str = $this->db_handle->real_escape_string($str);
+		else if($this->typeIs(self::db_type_postgre))
+			$str = pg_escape_string($str);
+			
+		if($keywords)
+			$str = $this->escape_keywords($str);
+		
+		return $str;
+	 }
 }
 ?>

@@ -79,7 +79,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">SapphoQueryOptions Class Reference</div>  </div>
 </div>
@@ -92,10 +93,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ad739b6e0491c1d8c0cf61c8311038054">__construct</a> ($dbtype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance.  <a href="#ad739b6e0491c1d8c0cf61c8311038054"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ac3aeab583d9f4b772b080755370648b6">__construct</a> ($connection)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance.  <a href="#ac3aeab583d9f4b772b080755370648b6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#afb89554d0d33b872e12461a806b86b0b">__destruct</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executed on destruction of the object.  <a href="#afb89554d0d33b872e12461a806b86b0b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806">where</a> ($field, $operation, $value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <code>WHERE</code> clause to the query.  <a href="#a549a39b9736418b9070348d70f7e7806"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a68265221298d3c010b44cb44a3ade53e">andWhere</a> ($field, $operation='', $value='')</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an <code>AND</code> condition to the <code>WHERE</code> clause.  <a href="#a68265221298d3c010b44cb44a3ade53e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#adfb77a6fe339663bf668425df2c0908e">orWhere</a> ($field, $operation='', $value='')</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an <code>OR</code> condition to the <code>WHERE</code> clause.  <a href="#adfb77a6fe339663bf668425df2c0908e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a1944d101facdc4f5e31d45c689be5c4b">getWhereClause</a> ($table, $subcondition=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a valid WHERE clause.  <a href="#a1944d101facdc4f5e31d45c689be5c4b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a79a4881f0f946d3cfacc663608a82503">getClause</a> ($table)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all clauses set with this options.  <a href="#a79a4881f0f946d3cfacc663608a82503"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae718e5ff6bb5abb66625c9e606688af6"></a><!-- doxytag: member="SapphoQueryOptions::EQUALS" ref="ae718e5ff6bb5abb66625c9e606688af6" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>EQUALS</b> = 'eq'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744f9ce19d063c72f2b83d0f2459f32c"></a><!-- doxytag: member="SapphoQueryOptions::LOWER" ref="a744f9ce19d063c72f2b83d0f2459f32c" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>LOWER</b> = 'lo'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae21c955c6d88e3e120512631f9f81577"></a><!-- doxytag: member="SapphoQueryOptions::GREATER" ref="ae21c955c6d88e3e120512631f9f81577" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>GREATER</b> = 'gr'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add8f62f89c00b1f0a78b3117afa57a01"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_INITIAL" ref="add8f62f89c00b1f0a78b3117afa57a01" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_INITIAL</b> = 'init'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12cd3eb76f9eaa597b4a119a92eb0a96"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_AND" ref="a12cd3eb76f9eaa597b4a119a92eb0a96" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_AND</b> = 'and'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afba48ac334307a96fd7e7ef250778a23"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_OR" ref="afba48ac334307a96fd7e7ef250778a23" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_OR</b> = 'or'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b7730d69868a65bfee5875da9401f95"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_SUB_AND" ref="a2b7730d69868a65bfee5875da9401f95" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_AND</b> = 'sand'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7088daba9a61701157ce29476d23561d"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_SUB_OR" ref="a7088daba9a61701157ce29476d23561d" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = 'sor'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class is used to set any statement options like WHERE clauses or ORDER BY etc. </p>
@@ -106,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <dl class="date"><dt><b>Date:</b></dt><dd>2011-10-06 </dd></dl>
 <dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License Version 3 </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ad739b6e0491c1d8c0cf61c8311038054"></a><!-- doxytag: member="SapphoQueryOptions::__construct" ref="ad739b6e0491c1d8c0cf61c8311038054" args="($dbtype)" -->
+<a class="anchor" id="ac3aeab583d9f4b772b080755370648b6"></a><!-- doxytag: member="SapphoQueryOptions::__construct" ref="ac3aeab583d9f4b772b080755370648b6" args="($connection)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -114,7 +143,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">SapphoQueryOptions::__construct </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>dbtype</em></td><td>)</td>
+          <td class="paramname"><em>connection</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -122,7 +151,12 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Creates a new instance. </p>
-<p>$type database type as set in <a class="el" href="class_sappho_database_connection.html" title="This class handles connections to different database types. You&#39;ll probably want to use this one...">SapphoDatabaseConnection</a> </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$type</td><td>database type as set in <a class="el" href="class_sappho_database_connection.html" title="This class handles connections to different database types. You&#39;ll probably want to use this one...">SapphoDatabaseConnection</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -142,6 +176,216 @@ Public Member Functions</h2></td></tr>
 
 <p>Executed on destruction of the object. </p>
 <p>Currently does nothing. </p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a68265221298d3c010b44cb44a3ade53e"></a><!-- doxytag: member="SapphoQueryOptions::andWhere" ref="a68265221298d3c010b44cb44a3ade53e" args="($field, $operation='', $value='')" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::andWhere </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>operation</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em> = <code>''</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Add an <code>AND</code> condition to the <code>WHERE</code> clause. </p>
+<p>The use of this method extends the defined <code>WHERE</code> clause with a <code>AND</code> clause. So before calling this method you need to initialize a <code>WHERE</code> clause with <a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806" title="Add a WHERE clause to the query.">where()</a>.</p>
+<p>You may either give all three parameters to define a simple condition like <code>AND column = 'value'</code> or the like.</p>
+<p>If the first parameter is another <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> object a new subcondition like <code>AND (column = 'value' OR column_b = 1 ...)</code> will be added. So this is a convinient way to bild nested <code>WHERE</code> conditions. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$field</td><td>the column that has to match </td></tr>
+    <tr><td class="paramname">$operation</td><td>a match operation </td></tr>
+    <tr><td class="paramname">$value</td><td>the value the column has to match</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>modified object </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a79a4881f0f946d3cfacc663608a82503"></a><!-- doxytag: member="SapphoQueryOptions::getClause" ref="a79a4881f0f946d3cfacc663608a82503" args="($table)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::getClause </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>table</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get all clauses set with this options. </p>
+<p>By using this method all conditions and options defined with this object are evaluated and all set clauses are generated. There is a fixed order for the generated clauses:</p>
+<ol type="1">
+<li><code>WHERE</code> </li>
+</ol>
+<p>It is necessary to provide the table that the query will be executed on to do correct datatype escaping by using the tablecache of the assigned connection.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$table</td><td>the table the query will be executed on </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>all conditions and clauses in a string </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1944d101facdc4f5e31d45c689be5c4b"></a><!-- doxytag: member="SapphoQueryOptions::getWhereClause" ref="a1944d101facdc4f5e31d45c689be5c4b" args="($table, $subcondition=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::getWhereClause </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>subcondition</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct a valid WHERE clause. </p>
+<p>By using this method the stored options are processed and a valid <code>WHERE</code> clause is built and returned. It is already correctly escaped for use with the assigned connection. This method is mainly designed to be used internally but you may call it to get the <code>WHERE</code> clause separatly.</p>
+<p>It is necessary to provide the table that the query will be executed on to do correct datatype escaping by using the tablecache of the assigned connection.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$table</td><td>the table the statement will be executed on </td></tr>
+    <tr><td class="paramname">$subcontition</td><td>set to true if used during <a class="el" href="class_sappho_query_options.html#a1944d101facdc4f5e31d45c689be5c4b" title="Construct a valid WHERE clause.">getWhereClause()</a> if used in nested conditions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the correctly escaped <code>WHERE</code> clause as string </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adfb77a6fe339663bf668425df2c0908e"></a><!-- doxytag: member="SapphoQueryOptions::orWhere" ref="adfb77a6fe339663bf668425df2c0908e" args="($field, $operation='', $value='')" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::orWhere </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>operation</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em> = <code>''</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Add an <code>OR</code> condition to the <code>WHERE</code> clause. </p>
+<p>The use of this method extends the defined <code>WHERE</code> clause with a <code>OR</code> clause. So before calling this method you need to initialize a <code>WHERE</code> clause with <a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806" title="Add a WHERE clause to the query.">where()</a>.</p>
+<p>You may either give all three parameters to define a simple condition like <code>OR column = 'value'</code> or the like.</p>
+<p>If the first parameter is another <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> object a new subcondition like <code>OR (column = 'value' OR column_b = 1 ...)</code> will be added. So this is a convinient way to bild nested <code>WHERE</code> conditions.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$field</td><td>the column that has to match or another <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> object </td></tr>
+    <tr><td class="paramname">$operation</td><td>a match operation </td></tr>
+    <tr><td class="paramname">$value</td><td>the value the column has to match</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>modified object </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a549a39b9736418b9070348d70f7e7806"></a><!-- doxytag: member="SapphoQueryOptions::where" ref="a549a39b9736418b9070348d70f7e7806" args="($field, $operation, $value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SapphoQueryOptions::where </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>operation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Add a <code>WHERE</code> clause to the query. </p>
+<p>This method initiates a <code>WHERE</code> clause. It's parameters set the first condition of the clause. Any further <code>WHERE</code> parameters can be set with the #add() and #or() functions.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$field</td><td>the field that has to be tested </td></tr>
+    <tr><td class="paramname">$operation</td><td>which condition has to match </td></tr>
+    <tr><td class="paramname">$value</td><td>the value the field hast to match</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>modified object </dd></dl>
 
 </div>
 </div>
@@ -166,7 +410,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 6 2011 12:56:04 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 7 2011 22:21:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
