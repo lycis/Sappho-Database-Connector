@@ -209,7 +209,7 @@ class SapphoDatabaseConnection{
 	 *
 	 * \param $table the table you wish to access
 	 * \param $fields an array with fieldnames for multiple fields or only one string for one field (or *)
-	 * \param $where a where clause
+	 * \param $options a where clause
 	 * \param $lock set to true if you wish to lock the selected records
 	 *
 	 * \return <table>
@@ -217,7 +217,7 @@ class SapphoDatabaseConnection{
 	 *           <tr><td>#db_select_error</td><td>an error occured</td></tr>
 	 *         </table>
 	 */
-	function select($table, $fields = '*', $where = '', $lock=false)
+	function select($table, $fields='*', $options=false, $lock=false)
 	{
 		if(!$this->checkTable($table))
 			return self::db_error_catalog;
@@ -245,9 +245,19 @@ class SapphoDatabaseConnection{
 			if($lock)
 			  $query .= ' FOR UPDATE';
 			
-			$where = trim($where);
-			if($where != '')
-				$query .= " WHERE ".$where;
+			// process any query options
+			if($options !== false)
+			{
+				if(is_a($options, "SapphoQueryOptions"))
+					$query .= " ".$options->getClause($table);
+				else
+				{
+					// where clause
+					$options = trim($options);
+					if($options != '')
+						$query .= ' WHERE '.$options;
+				}
+			}
 			
 	    }
 		else if($this->db_type == self::db_type_postgre)
@@ -272,9 +282,19 @@ class SapphoDatabaseConnection{
 			if($lock)
 			  $query .= ' FOR UPDATE';
 			
-			$where = trim($where);
-			if($where != '')
-				$query .= " WHERE ".$this->escape_keywords($where);
+			// process any query options
+			if($options !== false)
+			{
+				if(is_a($options, "SapphoQueryOptions"))
+					$query .= " ".$options->getClause($table);
+				else
+				{
+					// where clause
+					$options = trim($options);
+					if($options != '')
+						$query .= ' WHERE '.$options;
+				}
+			}
 		}
 		$this->setLastQuery($query);
 		
@@ -448,14 +468,14 @@ class SapphoDatabaseConnection{
 	 *
 	 * \param $table the table to be upated
 	 * \param $data an array that associates the fields to the values
-	 * \param $where a where clause to limit the updated datasets
+	 * \param $options a where clause to limit the updated datasets
 	 *
 	 * \returns <table>
 	 *           <tr><td>0</td><td>the statement was issued without any error</tr>
 	 *           <tr><td>#db_update_error</td><td>an error occured</td></tr>
 	 *         </table>
 	 */
-	function update($table, $data, $where = '')
+	function update($table, $data, $options=false)
 	{
 		if(!is_array($data)) return self::db_update_error;
 		
@@ -481,9 +501,19 @@ class SapphoDatabaseConnection{
 					$query .= ', ';
 			}
 			
-			$where = trim($where);
-			if($where != '')
-				$query .= ' WHERE '.$where;
+			// process any query options
+			if($options !== false)
+			{
+				if(is_a($options, "SapphoQueryOptions"))
+					$query .= " ".$options->getClause($table);
+				else
+				{
+					// where clause
+					$options = trim($options);
+					if($options != '')
+						$query .= ' WHERE '.$options;
+				}
+			}
 		}
 		else if($this->db_type = self::db_type_postgre)
 		{
@@ -500,9 +530,19 @@ class SapphoDatabaseConnection{
 					$query .= ', ';
 			}
 			
-			$where = trim($where);
-			if($where != '')
-				$query .= ' WHERE '.$where;
+			// process any query options
+			if($options !== false)
+			{
+				if(is_a($options, "SapphoQueryOptions"))
+					$query .= " ".$options->getClause($table);
+				else
+				{
+					// where clause
+					$options = trim($options);
+					if($options != '')
+						$query .= ' WHERE '.$options;
+				}
+			}
 		}
 		
 		$this->setLastQuery($query);
@@ -530,13 +570,13 @@ class SapphoDatabaseConnection{
 	 *  database is sent to the database.
 	 *
 	 * \param $table the target table
-	 * \param $where a were clause
+	 * \param $options a were clause
 	 *
 	 * \returns <table>
 	 *           <tr><td>0</td><td>the statement was completed without any error</tr>
 	 *           <tr><td>#db_delete_error</td><td>an error occured</td></tr>
 	 *         </table>	 */
-	function delete($table, $where='')
+	function delete($table, $options=false)
 	{
 		if(!$this->checkTable($table))
 			return self::db_error_catalog;
@@ -548,11 +588,20 @@ class SapphoDatabaseConnection{
 			$table = pg_escape_string($table);
 		$query .= $this->escape_keywords($table);
 		
-		$where = trim($where);
-		if($where != '')
+		// we've got any query options
+		if($options !== false)
 		{
-			$query .= ' WHERE ';
-			$query .= $where;
+			if(is_a($options, "SapphoQueryOptions"))
+				$query .= " ".$options->getClause($table);
+			else
+			{
+				$options = trim($options);
+				if($options != '')
+				{
+					$query .= ' WHERE ';
+					$query .= $options;
+				}
+			}
 		}
 		
 		$this->setLastQuery($query);

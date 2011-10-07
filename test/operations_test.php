@@ -28,6 +28,16 @@
 		</td>
 	</tr>
 	<tr>
+		<th>Inserting test data</th>
+		<td>
+			<?php
+				if($sdbc->insert('operations_test', array('value' => 'blablubb')))
+					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
+				echo "<font color='#00ff00'>OK</font>";
+			?>
+		</td>
+	</tr>
+	<tr>
 		<th>Get last ID</th>
 		<td>
 			<?php
@@ -67,6 +77,19 @@
 		</td>
 	</tr>
 	<tr>
+		<th>Select (query options)</th>
+		<td>
+			<?php
+				$options = $sdbc->queryOptions();
+				$options->where('id', SapphoQueryOptions::EQUALS, $lastid)
+				        ->andWhere('id', SapphoQueryOptions::LOWER, 2);
+				if($sdbc->select('operations_test', array('id', 'value'), $options))
+					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
+				echo "<font color='#00ff00'>OK</font>";
+			?>
+		</td>
+	</tr>
+	<tr>
 		<th>Select (simple where clause)</th>
 		<td>
 			<?php
@@ -91,7 +114,7 @@
 		<td>
 			<?php
 				$data = $sdbc->nextData();
-				if(!$data || ($data && ($data["id"] != $lastid || $data["value"] != 'testdata')))
+				if(!$data || ($data && ($data["id"] != $lastid || $data["value"] != 'blablubb')))
 					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
 				echo "<font color='#00ff00'>OK</font>";
 			?>
@@ -118,10 +141,24 @@
 		</td>
 	</tr>
 	<tr>
-		<th>Delete (with where)</th>
+		<th>Update (with QueryOptions)</th>
 		<td>
 			<?php
-				if($sdbc->delete('operations_test', 'id = '.$lastid))
+				$options = $sdbc->queryOptions();
+				$options->where('id', SapphoQueryOptions::EQUALS, $lastid);
+				if($sdbc->update('operations_test', array('value' => 'newdata2'), $options))
+					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
+				echo "<font color='#00ff00'>OK</font>";
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th>Delete (with QueryOptions)</th>
+		<td>
+			<?php
+				$options = $sdbc->queryOptions();
+				$options->where('id', SapphoQueryOptions::GREATER, 2);
+				if($sdbc->delete('operations_test', $options))
 					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
 				echo "<font color='#00ff00'>OK</font>";
 			?>

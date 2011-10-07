@@ -246,5 +246,6 @@ class SapphoQueryOptions{
 		
 		return $clause;
 	}
+	
 }
 ?>
