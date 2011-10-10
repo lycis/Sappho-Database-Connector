@@ -15,4 +15,5 @@
 	include('date_test.php');
 	include('operations_test.php');
 	include('transaction_test.php');
+	include('clone_test.php');
 ?>

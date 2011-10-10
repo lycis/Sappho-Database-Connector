@@ -109,8 +109,9 @@ class SapphoDatabaseConnection{
 	* \param $host databast host
 	* \param $db name of target database
 	* \param $user username to access the database
+	* \param $handle an already existing db handle - internal use
 	*/
-	function __construct($type, $host, $db, $user)
+	function __construct($type, $host, $db, $user, $handle=false)
 	{
 		$this->status  = 'unconnected';
 		if(isset($type)) $this->db_type = $type;
@@ -123,6 +124,12 @@ class SapphoDatabaseConnection{
 		
 		$this->tablestruct = array();
 		$this->last_insert_id = -1;
+		
+		if($handle !== false)
+		{
+			$this->db_handle = $handle;
+			$this->status    = 'connected';
+		}
 	}
 	
 	/**
@@ -1191,6 +1198,19 @@ class SapphoDatabaseConnection{
 			$str = $this->escape_keywords($str);
 		
 		return $str;
+	 }
+	 
+	 /**
+	  * \returns A complete clone of this object.
+	  */
+	 function cloneConnection()
+	 {
+		$clone = new SapphoDatabaseConnection($this->db_type,
+		                                      $this->db_host,
+											  $this->db_name,
+											  $this->db_user, 
+											  $this->db_handle);
+		return $clone;
 	 }
 }
 ?>
