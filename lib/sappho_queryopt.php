@@ -54,10 +54,10 @@ class SapphoQueryOptions{
 	 */
 	function __construct($connection){
 		$this->db_type    = $connection->getType();
-		$this->where     = array();
+		$this->where      = array();
 		$this->sdbc       = $connection;
-		$this->synopt     = $connection->getSyntaxOptimizer();
-		$this->tablecache = $connection->getTableCache();
+		$this->synopt     = &$connection->getSyntaxOptimizer();
+		$this->tablecache = &$connection->getTableCache();
 	}
 	
 	/**

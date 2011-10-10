@@ -1160,7 +1160,7 @@ class SapphoDatabaseConnection{
 	 * \brief Returns the table cache.
 	 * \returns cached table structures.
 	 */
-	 function getTableCache()
+	 function &getTableCache()
 	 {
 		return $this->tablestruct;
 	 }
@@ -1169,7 +1169,7 @@ class SapphoDatabaseConnection{
 	 * \brief Returns the configured syntax optimizer
 	 * \returns syntax optimzier
 	 */
-	 function getSyntaxOptimizer()
+	 function &getSyntaxOptimizer()
 	 {
 		return $this->synopt;
 	 }
