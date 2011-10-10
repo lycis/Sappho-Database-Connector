@@ -1079,6 +1079,8 @@ class SapphoDatabaseConnection{
 			$this->error_messge = $this->getSQLError();
 			return false;
 		}
+		
+		$this->transaction_state = false;
 		return true;
 	}
 	
@@ -1108,6 +1110,8 @@ class SapphoDatabaseConnection{
 			$this->error_messge = $this->getSQLError();
 			return false;
 		}
+		
+		$this->transaction_state = false;
 		return true;
 	}
 	

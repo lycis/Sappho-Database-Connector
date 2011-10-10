@@ -14,4 +14,5 @@
 	include('queryopt_test.php');
 	include('date_test.php');
 	include('operations_test.php');
+	include('transaction_test.php');
 ?>
