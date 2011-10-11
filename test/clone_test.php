@@ -9,7 +9,7 @@
 				if($dbtype == SapphoDatabaseConnection::db_type_postgre)
 					$query = "CREATE TABLE clone_test (id SERIAL, value VARCHAR(255))";
 				else if($dbtype == SapphoDatabaseConnection::db_type_mysql)
-					$query = "CREATE TABLE date_test (  id int AUTO_INCREMENT PRIMAREY KEY, value VARCHAR(255))";
+					$query = "CREATE TABLE clone_test (  id int AUTO_INCREMENT PRIMARY KEY, value VARCHAR(255))";
 				if($sdbc->execute($query))
 					die("<font color='#ff0000'>NOK: ".$sdbc->lastError()."</font>");
 				echo "<font color='#00ff00'>OK</font>";

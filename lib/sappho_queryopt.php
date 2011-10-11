@@ -10,7 +10,7 @@
  *
  * \author Daniel Eder
  * \version 0.1
- * \date 2011-10-06
+ * \date 2011-10-11
  * \copyright GNU Public License Version 3
  */
 
@@ -36,6 +36,9 @@ class SapphoQueryOptions{
 	// table cache
 	private $tablecache;
 	
+	// order by clause
+	private $order;
+	
 	// match operations
 	const EQUALS  = 'eq';
 	const LOWER   = 'lo';
@@ -47,6 +50,12 @@ class SapphoQueryOptions{
 	const WHERE_SUB_AND = 'sand';
 	const WHERE_SUB_OR  = 'sor';
 	
+	// order by sortings
+	const ASC        = 'ascending';
+	const ASCENDING  = 'ascending';
+	const DESC       = 'descending';
+	const DESCENDING = 'descending';
+	
 	/**
 	 * \brief Creates a new instance.
 	 *
@@ -55,6 +64,7 @@ class SapphoQueryOptions{
 	function __construct($connection){
 		$this->db_type    = $connection->getType();
 		$this->where      = array();
+		$this->order      = array();
 		$this->sdbc       = $connection;
 		$this->synopt     = &$connection->getSyntaxOptimizer();
 		$this->tablecache = &$connection->getTableCache();
@@ -229,6 +239,7 @@ class SapphoQueryOptions{
 	 * By using this method all conditions and options defined with this object are evaluated
      * and all set clauses are generated. There is a fixed order for the generated clauses:
 	 * -# \c WHERE
+	 * -# \c ORDER BY
 	 *
 	 * It is necessary to provide the table that the query will be executed on to do
 	 * correct datatype escaping by using the tablecache of the assigned connection.
@@ -244,8 +255,67 @@ class SapphoQueryOptions{
 		if(count($this->where) > 0)
 			$clause .= $this->getWhereClause($table);
 		
+		// order by
+		if(count($this->order) > 0)
+			$clause .= ' '.$this->getOrderByClause();
+		
 		return $clause;
 	}
 	
+	/**
+	 * \brief Adds a new column to an \c ORDER \c BY clause
+	 *
+	 * \param $column the column that indicates the order
+	 * \param $how sort ascending (SapphoQueryOptions::ASC or SapphoQueryOptions::ASCENDING) or
+	 *             descending (SapphoQueryOptions::DESC or SapphoQueryOptions::DESCENDING)
+	 * \returns modified instance
+	 */
+	function orderBy($column, $how=SapphoQueryOptions::ASC)
+	{
+		if($how != self::ASC &&
+		   $how != self::DESC) return false;
+		   
+		$data = array($column, $how);
+		array_push($this->order, $data);
+		return $this;
+	}
+	
+	/**
+	 * \brief Construct a valid ORDER BY clause.
+	 *
+	 * By using this method the stored options are processed and a valid \c ORDER BY clause
+	 * is built and returned.
+	 *
+	 * \returns \c ORDER \c BY clause
+	 */
+	function getOrderByClause()
+	{
+		$clause = '';
+		
+		if(count($this->order) < 1) return 'empty';
+		
+		$clause = 'ORDER BY ';
+		for($i=0; $i<count($this->order); $i++)
+		{
+			$clause .= $this->order[$i][0];
+			$clause .= ' ';
+			switch($this->order[$i][1])
+			{
+				case self::ASC:
+				case self::ASCENDING:
+					$clause .= 'ASC';
+					break;
+				case self::DESC:
+				case self::DESCENDING:
+					$clause .= 'DESC';
+					break;
+				default: break;
+			}
+			
+			if($i != count($this->order)-1)
+				$clause .= ', ';
+		}
+		return $clause;
+	}
 }
 ?>

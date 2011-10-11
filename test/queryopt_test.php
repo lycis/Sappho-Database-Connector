@@ -86,6 +86,19 @@
 		</td>
 	</tr>
 	<tr>
+		<th>Building ORDER BY</th>
+		<td>
+			<?php
+				$options = $sdbc->queryOptions();
+				$options->orderBy('qopt_id', SapphoQueryOptions::ASC);
+				$cl = $options->getOrderByClause();
+				if($cl != "ORDER BY qopt_id ASC")
+					die("<font color='#ff0000'>NOK: $cl</font>");
+				echo "<font color='#00ff00'>OK</font>";
+			?>
+		</td>
+	</tr>
+	<tr>
 		<th>Dropping test environment</th>
 		<td>
 			<?php
