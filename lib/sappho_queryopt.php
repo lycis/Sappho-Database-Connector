@@ -40,10 +40,27 @@ class SapphoQueryOptions{
 	private $order;
 	
 	// match operations
-	const EQUALS  = 'eq';
-	const LOWER   = 'lo';
-	const GREATER = 'gr';
+	const LOWER          = 'lo'; /**< match operation for #where() meaning `a is lower than b`*/
+	const LO             = 'lo'; /**< shortcut for SapphoQueryOptions::LOWER */
 	
+	const LOWER_EQUALS   = 'le'; /**< match operation for #where() meaning `a is lower than or equal to b`*/
+	const LEQ            = 'le'; /**< shortcut for SapphoQueryOptions::LOWER_EQUALS */
+	
+	const EQUALS         = 'eq'; /**< match operation for #where() meaning `a is equal to b`*/
+	const EQ             = 'eq'; /**< shortcut for SapphoQueryOptions::EQUALS */
+	
+	const GREATER_EQUALS = 'ge'; /**< match operation for #where() meaning `a is greater than or equal to b`*/
+	const GEQ            = 'ge'; /**< shortcut for SapphoQueryOptions::GREATER_EQUALS */
+
+	const GREATER        = 'gr'; /**< match operation for #where() meaning `a is gerather than b`*/
+	const GR             = 'gr'; /**< shortcut for SapphoQueryOptions::GREATER */
+	
+	const LIKE           = 'lk'; /**< match operation for #where() for string matching with wildcards */
+	const LK             = 'lk'; /**< shortcut for SapphoQueryOptions::LIKE */
+	
+	const IN             = 'in'; /**< match operation for #where() to check if `a is one of these: b, c, d, e` */
+	
+	// types of where parts
 	const WHERE_INITIAL = 'init';
 	const WHERE_AND     = 'and';
 	const WHERE_OR      = 'or';
@@ -217,20 +234,66 @@ class SapphoQueryOptions{
 			
 				switch($condition[2])
 				{
-					case self::EQUALS:   $clause .= " = ";
+					case self::EQUALS:
+					case self::EQ:
+										$clause .= " = ";
 										 break;
-					case self::GREATER:  $clause .= " > ";
+					case self::GREATER: 
+					case self::GR:
+										$clause .= " > ";
 										 break;
-					case self::LOWER:    $clause .= " < ";
+					case self::LOWER:   
+					case self::LO:
+										$clause .= " < ";
 										 break;
+					case self::LOWER_EQUALS:
+					case self::LEQ:
+										$clause .= " <= ";
+										break;
+					case self::GREATER_EQUALS:
+					case self::GEQ:
+										$clause .= " >= ";
+										break;
+					case self::LIKE:
+					case self::LK:
+										$clause .= " LIKE ";
+										break;
+					case self::IN:
+										$clause .= " IN ";
+										break;
 				}
 			
-				$clause .= $this->synopt->formatField($this->sdbc->escape($condition[3]), 
-													  $this->tablecache[$table]->getType($condition[1]));
+				
+				// if it's an IN condition there's special treatment
+				if($condition[2] == self::IN)
+				{
+					// if the check value is no array we make it one
+					if(!is_array($condition[3]))
+						$condition[3] = array($condition[3]);
+					
+					$clause .= '(';
+					for($i=0; $i<count($condition[3]); $i++)
+					{
+						$clause .= $this->formatField($condition[3][$i], $condition[1], $table);
+						
+						if($i != count($condition[3])-1)
+							$clause .= ', ';
+					}
+					$clause .= ')';
+				}
+				else
+					$clause .= $this->formatField($condition[3], $condition[1], $table);
 			}
 		}
 		
 		return $clause;
+	}
+	
+	// shortcut function to avoid typing
+	private function formatField($field, $dtype, $table)
+	{
+		return $this->synopt->formatField($this->sdbc->escape($field), 
+										  $this->tablecache[$table]->getType($dtype));
 	}
 	
 	/**
