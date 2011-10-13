@@ -60,6 +60,12 @@ class SapphoQueryOptions{
 	
 	const IN             = 'in'; /**< match operation for #where() to check if `a is one of these: b, c, d, e` */
 	
+	const NOT_EQUALS     = 'ne'; /**< match operation for #where() to check if `a is not b` */
+	const NE             = 'ne'; /**< shortcut for SapphoQueryOptions::NOT_EQUALS */
+	
+	const NOT_IN         = 'nin'; /**< match operation for #where() to check if `a is not one of these: b, c, d, e` */
+	const NIN            = 'nin'; /**< shortcut for SapphoQueryOptions::NOT_IN */
+	
 	// types of where parts
 	const WHERE_INITIAL = 'init';
 	const WHERE_AND     = 'and';
@@ -261,11 +267,19 @@ class SapphoQueryOptions{
 					case self::IN:
 										$clause .= " IN ";
 										break;
+					case self::NOT_EQUALS:
+					case self::NE:
+										$clause .= " <> ";
+										break;
+					case self::NOT_IN:
+					case self::NIN:
+										$clause .= " NOT IN ";
+										break;
 				}
 			
 				
 				// if it's an IN condition there's special treatment
-				if($condition[2] == self::IN)
+				if($condition[2] == self::IN || $condition[2] == self::NOT_IN)
 				{
 					// if the check value is no array we make it one
 					if(!is_array($condition[3]))
