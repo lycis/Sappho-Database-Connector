@@ -98,6 +98,9 @@ class SapphoDatabaseConnection{
 	// table descriptions array
 	private $tablestruct;
 	
+	// true if this connector is a clone of another one
+	private $clone;
+	
 	
 	/**
 	* \brief Constructor of the class.
@@ -125,10 +128,12 @@ class SapphoDatabaseConnection{
 		$this->tablestruct = array();
 		$this->last_insert_id = -1;
 		
+		$this->clone = false;		
 		if($handle !== false)
 		{
 			$this->db_handle = $handle;
 			$this->status    = 'connected';
+			$this->clone     = true;
 		}
 	}
 	
@@ -844,6 +849,7 @@ class SapphoDatabaseConnection{
 	 */
 	function close()
 	{
+		if($this->clone) return 0;
 		if($this->status != 'connected')
 			return self::db_close_not_connected;
 			
