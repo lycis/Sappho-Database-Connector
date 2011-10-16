@@ -24,7 +24,7 @@
  <tbody>
  <tr style="height: 56px;">
   
-  <td id="projectlogo"><img alt="Logo" src="logo_200x123.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   
   
   <td style="padding-left: 0.5em;">
@@ -49,7 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -71,16 +71,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">SapphoQueryOptions Class Reference</div>  </div>
 </div>
@@ -88,43 +88,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <!-- doxytag: class="SapphoQueryOptions" -->
 <p>This class is used to set any statement options like WHERE clauses or ORDER BY etc.  
  <a href="class_sappho_query_options.html#details">More...</a></p>
-
-<p><a href="class_sappho_query_options-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ac3aeab583d9f4b772b080755370648b6">__construct</a> ($connection)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance.  <a href="#ac3aeab583d9f4b772b080755370648b6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#afb89554d0d33b872e12461a806b86b0b">__destruct</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executed on destruction of the object.  <a href="#afb89554d0d33b872e12461a806b86b0b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806">where</a> ($field, $operation, $value)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <code>WHERE</code> clause to the query.  <a href="#a549a39b9736418b9070348d70f7e7806"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a68265221298d3c010b44cb44a3ade53e">andWhere</a> ($field, $operation='', $value='')</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an <code>AND</code> condition to the <code>WHERE</code> clause.  <a href="#a68265221298d3c010b44cb44a3ade53e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#adfb77a6fe339663bf668425df2c0908e">orWhere</a> ($field, $operation='', $value='')</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an <code>OR</code> condition to the <code>WHERE</code> clause.  <a href="#adfb77a6fe339663bf668425df2c0908e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a1944d101facdc4f5e31d45c689be5c4b">getWhereClause</a> ($table, $subcondition=false)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a valid WHERE clause.  <a href="#a1944d101facdc4f5e31d45c689be5c4b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a79a4881f0f946d3cfacc663608a82503">getClause</a> ($table)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all clauses set with this options.  <a href="#a79a4881f0f946d3cfacc663608a82503"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a155afedbdfa01f1c0b813ca97642cdab">__construct</a> ($connection)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance.  <a href="#a155afedbdfa01f1c0b813ca97642cdab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a421831a265621325e1fdd19aace0c758">__destruct</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Executed on destruction of the object.  <a href="#a421831a265621325e1fdd19aace0c758"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0">where</a> ($field, $operation, $value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <code>WHERE</code> clause to the query.  <a href="#a1522bfc421b03788e117e907ff4582c0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a92b2549e5ffe42d85b647566758e98da">andWhere</a> ($field, $operation='', $value='')</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an <code>AND</code> condition to the <code>WHERE</code> clause.  <a href="#a92b2549e5ffe42d85b647566758e98da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#aee4d65d51158847433b80e46c611eb90">orWhere</a> ($field, $operation='', $value='')</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an <code>OR</code> condition to the <code>WHERE</code> clause.  <a href="#aee4d65d51158847433b80e46c611eb90"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#aae271af31b1312099c7572f320e458ab">getWhereClause</a> ($table, $subcondition=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a valid WHERE clause.  <a href="#aae271af31b1312099c7572f320e458ab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a589d23e6aef460d612715d98c2d56977">getClause</a> ($table)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all clauses set with this options.  <a href="#a589d23e6aef460d612715d98c2d56977"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a22dfd5d9c224e18b73c49571ae6f75c9">orderBy</a> ($column, $how=SapphoQueryOptions::ASC)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new column to an <code>ORDER</code> <code>BY</code> clause.  <a href="#a22dfd5d9c224e18b73c49571ae6f75c9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#afcfc6ffdc8d1a7152d8fdc49f5e1b53a">getOrderByClause</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a valid ORDER BY clause.  <a href="#afcfc6ffdc8d1a7152d8fdc49f5e1b53a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae718e5ff6bb5abb66625c9e606688af6"></a><!-- doxytag: member="SapphoQueryOptions::EQUALS" ref="ae718e5ff6bb5abb66625c9e606688af6" args="" -->
-const&#160;</td><td class="memItemRight" valign="bottom"><b>EQUALS</b> = 'eq'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744f9ce19d063c72f2b83d0f2459f32c"></a><!-- doxytag: member="SapphoQueryOptions::LOWER" ref="a744f9ce19d063c72f2b83d0f2459f32c" args="" -->
-const&#160;</td><td class="memItemRight" valign="bottom"><b>LOWER</b> = 'lo'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae21c955c6d88e3e120512631f9f81577"></a><!-- doxytag: member="SapphoQueryOptions::GREATER" ref="ae21c955c6d88e3e120512631f9f81577" args="" -->
-const&#160;</td><td class="memItemRight" valign="bottom"><b>GREATER</b> = 'gr'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add8f62f89c00b1f0a78b3117afa57a01"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_INITIAL" ref="add8f62f89c00b1f0a78b3117afa57a01" args="" -->
+Data Fields</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#accae88c9f25b2325723f9a64f955ab27">LOWER</a> = 'lo'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a8621dc6c32c4bd86ad5c0bc675a276c5">LO</a> = 'lo'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a6daedd13eebbf078f0481f523fd58bfc">LOWER_EQUALS</a> = 'le'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a7b48bac6019762f21e795e821e34ff2f">LEQ</a> = 'le'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a008c96da482d1a7b6bd8f24278ba8fc9">EQUALS</a> = 'eq'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#aef24251c1207de07e141b8c1313f26e1">EQ</a> = 'eq'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a8584da65f3024fe387021c9568ca5ccc">GREATER_EQUALS</a> = 'ge'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#af75ed214162ef11b98c97b9261e79f1e">GEQ</a> = 'ge'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#aa726c3dd9a202d681de4761cab1b767f">GREATER</a> = 'gr'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a32309c623673b51eb3f03b73a6501f17">GR</a> = 'gr'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ac8337789d23941de413760443df5cad9">LIKE</a> = 'lk'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a4b779965d5f32eb93cbb9c43a4d50c8e">LK</a> = 'lk'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#aeb649cf6ef2f63be7389b0808b9f3cee">IN</a> = 'in'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a88063a320cfcf21a329e1c0d3cd2a8e2">NOT_EQUALS</a> = 'ne'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#a17df5def7bf6e43ce0d180581d821a86">NE</a> = 'ne'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ae295d32e068af7fdb41d0cc46adaf8a3">NOT_IN</a> = 'nin'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_query_options.html#ae48a1113f19c8e45e440607c69e544f2">NIN</a> = 'nin'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a069b74438bcc893d55c231f56fbf8455"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_INITIAL" ref="a069b74438bcc893d55c231f56fbf8455" args="" -->
 const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_INITIAL</b> = 'init'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12cd3eb76f9eaa597b4a119a92eb0a96"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_AND" ref="a12cd3eb76f9eaa597b4a119a92eb0a96" args="" -->
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5461d9798ed28574965c47f597e9adbd"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_AND" ref="a5461d9798ed28574965c47f597e9adbd" args="" -->
 const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_AND</b> = 'and'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afba48ac334307a96fd7e7ef250778a23"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_OR" ref="afba48ac334307a96fd7e7ef250778a23" args="" -->
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49b5cdaf69833b4eedac3958256768b5"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_OR" ref="a49b5cdaf69833b4eedac3958256768b5" args="" -->
 const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_OR</b> = 'or'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b7730d69868a65bfee5875da9401f95"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_SUB_AND" ref="a2b7730d69868a65bfee5875da9401f95" args="" -->
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8410a93fa5c6f0d38929357ee10db45"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_SUB_AND" ref="ac8410a93fa5c6f0d38929357ee10db45" args="" -->
 const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_AND</b> = 'sand'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7088daba9a61701157ce29476d23561d"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_SUB_OR" ref="a7088daba9a61701157ce29476d23561d" args="" -->
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef66d6143dfc7dfc9fbf93e1382e0fae"></a><!-- doxytag: member="SapphoQueryOptions::WHERE_SUB_OR" ref="aef66d6143dfc7dfc9fbf93e1382e0fae" args="" -->
 const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = 'sor'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32bea9cb6a1769ec537f6acdfe4618a8"></a><!-- doxytag: member="SapphoQueryOptions::ASC" ref="a32bea9cb6a1769ec537f6acdfe4618a8" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>ASC</b> = 'ascending'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4eb6965f9c46bb5bc363e597470da340"></a><!-- doxytag: member="SapphoQueryOptions::ASCENDING" ref="a4eb6965f9c46bb5bc363e597470da340" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>ASCENDING</b> = 'ascending'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34abf23cff3df464425b7cedf58e2939"></a><!-- doxytag: member="SapphoQueryOptions::DESC" ref="a34abf23cff3df464425b7cedf58e2939" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>DESC</b> = 'descending'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9122b532d9ebc38e2096506761d13f4"></a><!-- doxytag: member="SapphoQueryOptions::DESCENDING" ref="ae9122b532d9ebc38e2096506761d13f4" args="" -->
+const&#160;</td><td class="memItemRight" valign="bottom"><b>DESCENDING</b> = 'descending'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class is used to set any statement options like WHERE clauses or ORDER BY etc. </p>
@@ -132,15 +153,15 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Currently only simple where clauses are implemented!</dd></dl>
 <dl class="author"><dt><b>Author:</b></dt><dd>Daniel Eder </dd></dl>
 <dl class="version"><dt><b>Version:</b></dt><dd>0.1 </dd></dl>
-<dl class="date"><dt><b>Date:</b></dt><dd>2011-10-06 </dd></dl>
+<dl class="date"><dt><b>Date:</b></dt><dd>2011-10-11 </dd></dl>
 <dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License Version 3 </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac3aeab583d9f4b772b080755370648b6"></a><!-- doxytag: member="SapphoQueryOptions::__construct" ref="ac3aeab583d9f4b772b080755370648b6" args="($connection)" -->
+<a class="anchor" id="a155afedbdfa01f1c0b813ca97642cdab"></a><!-- doxytag: member="SapphoQueryOptions::__construct" ref="a155afedbdfa01f1c0b813ca97642cdab" args="($connection)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::__construct </td>
+          <td class="memname">__construct </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>connection</em></td><td>)</td>
@@ -160,12 +181,12 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 </div>
 </div>
-<a class="anchor" id="afb89554d0d33b872e12461a806b86b0b"></a><!-- doxytag: member="SapphoQueryOptions::__destruct" ref="afb89554d0d33b872e12461a806b86b0b" args="()" -->
+<a class="anchor" id="a421831a265621325e1fdd19aace0c758"></a><!-- doxytag: member="SapphoQueryOptions::__destruct" ref="a421831a265621325e1fdd19aace0c758" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::__destruct </td>
+          <td class="memname">__destruct </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -180,12 +201,12 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a68265221298d3c010b44cb44a3ade53e"></a><!-- doxytag: member="SapphoQueryOptions::andWhere" ref="a68265221298d3c010b44cb44a3ade53e" args="($field, $operation='', $value='')" -->
+<a class="anchor" id="a92b2549e5ffe42d85b647566758e98da"></a><!-- doxytag: member="SapphoQueryOptions::andWhere" ref="a92b2549e5ffe42d85b647566758e98da" args="($field, $operation='', $value='')" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::andWhere </td>
+          <td class="memname">andWhere </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>field</em>, </td>
@@ -212,7 +233,7 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 <div class="memdoc">
 
 <p>Add an <code>AND</code> condition to the <code>WHERE</code> clause. </p>
-<p>The use of this method extends the defined <code>WHERE</code> clause with a <code>AND</code> clause. So before calling this method you need to initialize a <code>WHERE</code> clause with <a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806" title="Add a WHERE clause to the query.">where()</a>.</p>
+<p>The use of this method extends the defined <code>WHERE</code> clause with a <code>AND</code> clause. So before calling this method you need to initialize a <code>WHERE</code> clause with <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a>.</p>
 <p>You may either give all three parameters to define a simple condition like <code>AND column = 'value'</code> or the like.</p>
 <p>If the first parameter is another <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> object a new subcondition like <code>AND (column = 'value' OR column_b = 1 ...)</code> will be added. So this is a convinient way to bild nested <code>WHERE</code> conditions. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
@@ -227,12 +248,12 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 </div>
 </div>
-<a class="anchor" id="a79a4881f0f946d3cfacc663608a82503"></a><!-- doxytag: member="SapphoQueryOptions::getClause" ref="a79a4881f0f946d3cfacc663608a82503" args="($table)" -->
+<a class="anchor" id="a589d23e6aef460d612715d98c2d56977"></a><!-- doxytag: member="SapphoQueryOptions::getClause" ref="a589d23e6aef460d612715d98c2d56977" args="($table)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::getClause </td>
+          <td class="memname">getClause </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
@@ -246,6 +267,7 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 <p>By using this method all conditions and options defined with this object are evaluated and all set clauses are generated. There is a fixed order for the generated clauses:</p>
 <ol type="1">
 <li><code>WHERE</code> </li>
+<li><code>ORDER</code> BY</li>
 </ol>
 <p>It is necessary to provide the table that the query will be executed on to do correct datatype escaping by using the tablecache of the assigned connection.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
@@ -258,12 +280,32 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 </div>
 </div>
-<a class="anchor" id="a1944d101facdc4f5e31d45c689be5c4b"></a><!-- doxytag: member="SapphoQueryOptions::getWhereClause" ref="a1944d101facdc4f5e31d45c689be5c4b" args="($table, $subcondition=false)" -->
+<a class="anchor" id="afcfc6ffdc8d1a7152d8fdc49f5e1b53a"></a><!-- doxytag: member="SapphoQueryOptions::getOrderByClause" ref="afcfc6ffdc8d1a7152d8fdc49f5e1b53a" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::getWhereClause </td>
+          <td class="memname">getOrderByClause </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct a valid ORDER BY clause. </p>
+<p>By using this method the stored options are processed and a valid <code>ORDER</code> BY clause is built and returned.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd><code>ORDER</code> <code>BY</code> clause </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aae271af31b1312099c7572f320e458ab"></a><!-- doxytag: member="SapphoQueryOptions::getWhereClause" ref="aae271af31b1312099c7572f320e458ab" args="($table, $subcondition=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">getWhereClause </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>table</em>, </td>
@@ -289,7 +331,7 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">$table</td><td>the table the statement will be executed on </td></tr>
-    <tr><td class="paramname">$subcontition</td><td>set to true if used during <a class="el" href="class_sappho_query_options.html#a1944d101facdc4f5e31d45c689be5c4b" title="Construct a valid WHERE clause.">getWhereClause()</a> if used in nested conditions </td></tr>
+    <tr><td class="paramname">$subcontition</td><td>set to true if used during <a class="el" href="class_sappho_query_options.html#aae271af31b1312099c7572f320e458ab" title="Construct a valid WHERE clause.">getWhereClause()</a> if used in nested conditions </td></tr>
   </table>
   </dd>
 </dl>
@@ -297,12 +339,49 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 </div>
 </div>
-<a class="anchor" id="adfb77a6fe339663bf668425df2c0908e"></a><!-- doxytag: member="SapphoQueryOptions::orWhere" ref="adfb77a6fe339663bf668425df2c0908e" args="($field, $operation='', $value='')" -->
+<a class="anchor" id="a22dfd5d9c224e18b73c49571ae6f75c9"></a><!-- doxytag: member="SapphoQueryOptions::orderBy" ref="a22dfd5d9c224e18b73c49571ae6f75c9" args="($column, $how=SapphoQueryOptions::ASC)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::orWhere </td>
+          <td class="memname">orderBy </td>
+          <td>(</td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>column</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&#160;</td>
+          <td class="paramname"><em>how</em> = <code>SapphoQueryOptions::ASC</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Adds a new column to an <code>ORDER</code> <code>BY</code> clause. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$column</td><td>the column that indicates the order </td></tr>
+    <tr><td class="paramname">$how</td><td>sort ascending (SapphoQueryOptions::ASC or SapphoQueryOptions::ASCENDING) or descending (SapphoQueryOptions::DESC or SapphoQueryOptions::DESCENDING) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>modified instance </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aee4d65d51158847433b80e46c611eb90"></a><!-- doxytag: member="SapphoQueryOptions::orWhere" ref="aee4d65d51158847433b80e46c611eb90" args="($field, $operation='', $value='')" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">orWhere </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>field</em>, </td>
@@ -329,7 +408,7 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 <div class="memdoc">
 
 <p>Add an <code>OR</code> condition to the <code>WHERE</code> clause. </p>
-<p>The use of this method extends the defined <code>WHERE</code> clause with a <code>OR</code> clause. So before calling this method you need to initialize a <code>WHERE</code> clause with <a class="el" href="class_sappho_query_options.html#a549a39b9736418b9070348d70f7e7806" title="Add a WHERE clause to the query.">where()</a>.</p>
+<p>The use of this method extends the defined <code>WHERE</code> clause with a <code>OR</code> clause. So before calling this method you need to initialize a <code>WHERE</code> clause with <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a>.</p>
 <p>You may either give all three parameters to define a simple condition like <code>OR column = 'value'</code> or the like.</p>
 <p>If the first parameter is another <a class="el" href="class_sappho_query_options.html" title="This class is used to set any statement options like WHERE clauses or ORDER BY etc.">SapphoQueryOptions</a> object a new subcondition like <code>OR (column = 'value' OR column_b = 1 ...)</code> will be added. So this is a convinient way to bild nested <code>WHERE</code> conditions.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
@@ -344,12 +423,12 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 </div>
 </div>
-<a class="anchor" id="a549a39b9736418b9070348d70f7e7806"></a><!-- doxytag: member="SapphoQueryOptions::where" ref="a549a39b9736418b9070348d70f7e7806" args="($field, $operation, $value)" -->
+<a class="anchor" id="a1522bfc421b03788e117e907ff4582c0"></a><!-- doxytag: member="SapphoQueryOptions::where" ref="a1522bfc421b03788e117e907ff4582c0" args="($field, $operation, $value)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoQueryOptions::where </td>
+          <td class="memname">where </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>field</em>, </td>
@@ -389,6 +468,245 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 </div>
 </div>
+<hr/><h2>Field Documentation</h2>
+<a class="anchor" id="aef24251c1207de07e141b8c1313f26e1"></a><!-- doxytag: member="SapphoQueryOptions::EQ" ref="aef24251c1207de07e141b8c1313f26e1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#aef24251c1207de07e141b8c1313f26e1">EQ</a> = 'eq'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#a008c96da482d1a7b6bd8f24278ba8fc9">SapphoQueryOptions::EQUALS</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a008c96da482d1a7b6bd8f24278ba8fc9"></a><!-- doxytag: member="SapphoQueryOptions::EQUALS" ref="a008c96da482d1a7b6bd8f24278ba8fc9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a008c96da482d1a7b6bd8f24278ba8fc9">EQUALS</a> = 'eq'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> meaning `a is equal to b` </p>
+
+</div>
+</div>
+<a class="anchor" id="af75ed214162ef11b98c97b9261e79f1e"></a><!-- doxytag: member="SapphoQueryOptions::GEQ" ref="af75ed214162ef11b98c97b9261e79f1e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#af75ed214162ef11b98c97b9261e79f1e">GEQ</a> = 'ge'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#a8584da65f3024fe387021c9568ca5ccc">SapphoQueryOptions::GREATER_EQUALS</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a32309c623673b51eb3f03b73a6501f17"></a><!-- doxytag: member="SapphoQueryOptions::GR" ref="a32309c623673b51eb3f03b73a6501f17" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a32309c623673b51eb3f03b73a6501f17">GR</a> = 'gr'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#aa726c3dd9a202d681de4761cab1b767f">SapphoQueryOptions::GREATER</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="aa726c3dd9a202d681de4761cab1b767f"></a><!-- doxytag: member="SapphoQueryOptions::GREATER" ref="aa726c3dd9a202d681de4761cab1b767f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#aa726c3dd9a202d681de4761cab1b767f">GREATER</a> = 'gr'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> meaning `a is gerather than b` </p>
+
+</div>
+</div>
+<a class="anchor" id="a8584da65f3024fe387021c9568ca5ccc"></a><!-- doxytag: member="SapphoQueryOptions::GREATER_EQUALS" ref="a8584da65f3024fe387021c9568ca5ccc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a8584da65f3024fe387021c9568ca5ccc">GREATER_EQUALS</a> = 'ge'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> meaning `a is greater than or equal to b` </p>
+
+</div>
+</div>
+<a class="anchor" id="aeb649cf6ef2f63be7389b0808b9f3cee"></a><!-- doxytag: member="SapphoQueryOptions::IN" ref="aeb649cf6ef2f63be7389b0808b9f3cee" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#aeb649cf6ef2f63be7389b0808b9f3cee">IN</a> = 'in'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> to check if `a is one of these: b, c, d, e` </p>
+
+</div>
+</div>
+<a class="anchor" id="a7b48bac6019762f21e795e821e34ff2f"></a><!-- doxytag: member="SapphoQueryOptions::LEQ" ref="a7b48bac6019762f21e795e821e34ff2f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a7b48bac6019762f21e795e821e34ff2f">LEQ</a> = 'le'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#a6daedd13eebbf078f0481f523fd58bfc">SapphoQueryOptions::LOWER_EQUALS</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="ac8337789d23941de413760443df5cad9"></a><!-- doxytag: member="SapphoQueryOptions::LIKE" ref="ac8337789d23941de413760443df5cad9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#ac8337789d23941de413760443df5cad9">LIKE</a> = 'lk'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> for string matching with wildcards </p>
+
+</div>
+</div>
+<a class="anchor" id="a4b779965d5f32eb93cbb9c43a4d50c8e"></a><!-- doxytag: member="SapphoQueryOptions::LK" ref="a4b779965d5f32eb93cbb9c43a4d50c8e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a4b779965d5f32eb93cbb9c43a4d50c8e">LK</a> = 'lk'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#ac8337789d23941de413760443df5cad9">SapphoQueryOptions::LIKE</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a8621dc6c32c4bd86ad5c0bc675a276c5"></a><!-- doxytag: member="SapphoQueryOptions::LO" ref="a8621dc6c32c4bd86ad5c0bc675a276c5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a8621dc6c32c4bd86ad5c0bc675a276c5">LO</a> = 'lo'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#accae88c9f25b2325723f9a64f955ab27">SapphoQueryOptions::LOWER</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="accae88c9f25b2325723f9a64f955ab27"></a><!-- doxytag: member="SapphoQueryOptions::LOWER" ref="accae88c9f25b2325723f9a64f955ab27" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#accae88c9f25b2325723f9a64f955ab27">LOWER</a> = 'lo'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> meaning `a is lower than b` </p>
+
+</div>
+</div>
+<a class="anchor" id="a6daedd13eebbf078f0481f523fd58bfc"></a><!-- doxytag: member="SapphoQueryOptions::LOWER_EQUALS" ref="a6daedd13eebbf078f0481f523fd58bfc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a6daedd13eebbf078f0481f523fd58bfc">LOWER_EQUALS</a> = 'le'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> meaning `a is lower than or equal to b` </p>
+
+</div>
+</div>
+<a class="anchor" id="a17df5def7bf6e43ce0d180581d821a86"></a><!-- doxytag: member="SapphoQueryOptions::NE" ref="a17df5def7bf6e43ce0d180581d821a86" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a17df5def7bf6e43ce0d180581d821a86">NE</a> = 'ne'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#a88063a320cfcf21a329e1c0d3cd2a8e2">SapphoQueryOptions::NOT_EQUALS</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="ae48a1113f19c8e45e440607c69e544f2"></a><!-- doxytag: member="SapphoQueryOptions::NIN" ref="ae48a1113f19c8e45e440607c69e544f2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#ae48a1113f19c8e45e440607c69e544f2">NIN</a> = 'nin'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>shortcut for <a class="el" href="class_sappho_query_options.html#ae295d32e068af7fdb41d0cc46adaf8a3">SapphoQueryOptions::NOT_IN</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a88063a320cfcf21a329e1c0d3cd2a8e2"></a><!-- doxytag: member="SapphoQueryOptions::NOT_EQUALS" ref="a88063a320cfcf21a329e1c0d3cd2a8e2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#a88063a320cfcf21a329e1c0d3cd2a8e2">NOT_EQUALS</a> = 'ne'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> to check if `a is not b` </p>
+
+</div>
+</div>
+<a class="anchor" id="ae295d32e068af7fdb41d0cc46adaf8a3"></a><!-- doxytag: member="SapphoQueryOptions::NOT_IN" ref="ae295d32e068af7fdb41d0cc46adaf8a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sappho_query_options.html#ae295d32e068af7fdb41d0cc46adaf8a3">NOT_IN</a> = 'nin'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>match operation for <a class="el" href="class_sappho_query_options.html#a1522bfc421b03788e117e907ff4582c0" title="Add a WHERE clause to the query.">where()</a> to check if `a is not one of these: b, c, d, e` </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>J:/eclipse_ws/sdbc/lib/sappho_queryopt.php</li>
 </ul>
@@ -398,7 +716,7 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -410,7 +728,7 @@ const&#160;</td><td class="memItemRight" valign="bottom"><b>WHERE_SUB_OR</b> = '
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 7 2011 22:21:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 16 2011 23:39:48 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

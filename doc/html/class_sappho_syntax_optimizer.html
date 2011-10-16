@@ -24,7 +24,7 @@
  <tbody>
  <tr style="height: 56px;">
   
-  <td id="projectlogo"><img alt="Logo" src="logo_200x123.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   
   
   <td style="padding-left: 0.5em;">
@@ -49,7 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -71,16 +71,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">SapphoSyntaxOptimizer Class Reference</div>  </div>
 </div>
@@ -88,34 +88,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <!-- doxytag: class="SapphoSyntaxOptimizer" -->
 <p>The Syntax Optimizer offers functions to optimze statements for different database systems.  
  <a href="class_sappho_syntax_optimizer.html#details">More...</a></p>
-
-<p><a href="class_sappho_syntax_optimizer-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ab694005561d486af3ec6abe63630d053">__construct</a> ($type)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ab694005561d486af3ec6abe63630d053"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#add91e18a2ac900327b09e937824b9f0c">setDebug</a> ($level)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets debug information level.  <a href="#add91e18a2ac900327b09e937824b9f0c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a9b633298718ba0951ac318b1dcca6946">formatString</a> ($what)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given parameter to be a string in an SQL query.  <a href="#a9b633298718ba0951ac318b1dcca6946"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1f47be965b17e65baa85e18c5f024d10">formatNumber</a> ($what)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be a number in an SQL query.  <a href="#a1f47be965b17e65baa85e18c5f024d10"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1445122782e5796e813191d28ccccd4a">formatDate</a> ($what)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be used as a date in a SQL query.  <a href="#a1445122782e5796e813191d28ccccd4a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a3f0888328eb06a3fc5f2eeeed705d9bf">formatFields</a> ($values, $dtypes)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a list of values to an according list of data types.  <a href="#a3f0888328eb06a3fc5f2eeeed705d9bf"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a1ac20d7e596253e99cf24b1f807334b8">formatField</a> ($value, $dtype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats one input field according to it's data type.  <a href="#a1ac20d7e596253e99cf24b1f807334b8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a742e5b029eb23be096d5a0efae5df477">escape_reserved_words</a> ($string)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Escape reserved words in the string.  <a href="#a742e5b029eb23be096d5a0efae5df477"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ac395571e7767c80119b30cf2e5087c59">__construct</a> ($type)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac395571e7767c80119b30cf2e5087c59"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#aedfdb6173abee79e4cf7ca197377a1e8">setDebug</a> ($level)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets debug information level.  <a href="#aedfdb6173abee79e4cf7ca197377a1e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#acfbcb320497a0ef0fb01cf0efd5b2aef">formatString</a> ($what)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given parameter to be a string in an SQL query.  <a href="#acfbcb320497a0ef0fb01cf0efd5b2aef"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#aff0d1c363e34421b23dd3290aa4723ac">formatNumber</a> ($what)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be a number in an SQL query.  <a href="#aff0d1c363e34421b23dd3290aa4723ac"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#aa861f09dfeb48179c05ee4333508297d">formatDate</a> ($what)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the parameter to be used as a date in a SQL query.  <a href="#aa861f09dfeb48179c05ee4333508297d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a70cf14cd62b135e48d77f2985355e775">formatFields</a> ($values, $dtypes)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a list of values to an according list of data types.  <a href="#a70cf14cd62b135e48d77f2985355e775"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#add737a03ed331d25f1bcc33bf6b0c299">formatField</a> ($value, $dtype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats one input field according to it's data type.  <a href="#add737a03ed331d25f1bcc33bf6b0c299"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#af1c2eb986546fc9ef471bd93aad5e132">escape_reserved_words</a> ($string)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Escape reserved words in the string.  <a href="#af1c2eb986546fc9ef471bd93aad5e132"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a5686dc1096735b483c57166fa16d92f3">db_type_mysql</a> = 'mysql'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a86e1728f6fb8d925804311a3017e0906">db_type_postgre</a> = 'postgresql'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a530af2b9c3df6248d3e57713189e9687">dtype_numeric</a> = 'N'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ad0dd1eb042b3aae741e6a9790be3c8e4">dtype_string</a> = 'S'</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ab679bff0969f9f1295b8a9c025a6da4f">dtype_unknown</a> = 'U'</td></tr>
+Data Fields</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#ade3bbda6a1caae1f20eeef03a6817518">db_type_mysql</a> = 'mysql'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a800ad96088569cfb486c7a914ddbe404">db_type_postgre</a> = 'postgresql'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a85e2e55ee14da7b207a005be36ba981c">dtype_numeric</a> = 'N'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a2c3055709357a8f87cbf93a12f0bd9b4">dtype_string</a> = 'S'</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_syntax_optimizer.html#a418c7eb0f35690ff732536f6d01a2542">dtype_unknown</a> = 'U'</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The Syntax Optimizer offers functions to optimze statements for different database systems. </p>
@@ -126,12 +124,12 @@ Public Attributes</h2></td></tr>
 <dl class="date"><dt><b>Date:</b></dt><dd>2011-09-22 </dd></dl>
 <dl class="copyright"><dt><b>Copyright:</b></dt><dd>GNU Public License Version 3 </dd></dl>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ab694005561d486af3ec6abe63630d053"></a><!-- doxytag: member="SapphoSyntaxOptimizer::__construct" ref="ab694005561d486af3ec6abe63630d053" args="($type)" -->
+<a class="anchor" id="ac395571e7767c80119b30cf2e5087c59"></a><!-- doxytag: member="SapphoSyntaxOptimizer::__construct" ref="ac395571e7767c80119b30cf2e5087c59" args="($type)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::__construct </td>
+          <td class="memname">__construct </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
@@ -152,12 +150,12 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a742e5b029eb23be096d5a0efae5df477"></a><!-- doxytag: member="SapphoSyntaxOptimizer::escape_reserved_words" ref="a742e5b029eb23be096d5a0efae5df477" args="($string)" -->
+<a class="anchor" id="af1c2eb986546fc9ef471bd93aad5e132"></a><!-- doxytag: member="SapphoSyntaxOptimizer::escape_reserved_words" ref="af1c2eb986546fc9ef471bd93aad5e132" args="($string)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::escape_reserved_words </td>
+          <td class="memname">escape_reserved_words </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>string</em></td><td>)</td>
@@ -179,12 +177,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1445122782e5796e813191d28ccccd4a"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatDate" ref="a1445122782e5796e813191d28ccccd4a" args="($what)" -->
+<a class="anchor" id="aa861f09dfeb48179c05ee4333508297d"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatDate" ref="aa861f09dfeb48179c05ee4333508297d" args="($what)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::formatDate </td>
+          <td class="memname">formatDate </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>what</em></td><td>)</td>
@@ -201,12 +199,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1ac20d7e596253e99cf24b1f807334b8"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatField" ref="a1ac20d7e596253e99cf24b1f807334b8" args="($value, $dtype)" -->
+<a class="anchor" id="add737a03ed331d25f1bcc33bf6b0c299"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatField" ref="add737a03ed331d25f1bcc33bf6b0c299" args="($value, $dtype)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::formatField </td>
+          <td class="memname">formatField </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>value</em>, </td>
@@ -238,12 +236,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3f0888328eb06a3fc5f2eeeed705d9bf"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatFields" ref="a3f0888328eb06a3fc5f2eeeed705d9bf" args="($values, $dtypes)" -->
+<a class="anchor" id="a70cf14cd62b135e48d77f2985355e775"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatFields" ref="a70cf14cd62b135e48d77f2985355e775" args="($values, $dtypes)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::formatFields </td>
+          <td class="memname">formatFields </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>values</em>, </td>
@@ -275,12 +273,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1f47be965b17e65baa85e18c5f024d10"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatNumber" ref="a1f47be965b17e65baa85e18c5f024d10" args="($what)" -->
+<a class="anchor" id="aff0d1c363e34421b23dd3290aa4723ac"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatNumber" ref="aff0d1c363e34421b23dd3290aa4723ac" args="($what)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::formatNumber </td>
+          <td class="memname">formatNumber </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>what</em></td><td>)</td>
@@ -302,12 +300,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9b633298718ba0951ac318b1dcca6946"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatString" ref="a9b633298718ba0951ac318b1dcca6946" args="($what)" -->
+<a class="anchor" id="acfbcb320497a0ef0fb01cf0efd5b2aef"></a><!-- doxytag: member="SapphoSyntaxOptimizer::formatString" ref="acfbcb320497a0ef0fb01cf0efd5b2aef" args="($what)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::formatString </td>
+          <td class="memname">formatString </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>what</em></td><td>)</td>
@@ -329,12 +327,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="add91e18a2ac900327b09e937824b9f0c"></a><!-- doxytag: member="SapphoSyntaxOptimizer::setDebug" ref="add91e18a2ac900327b09e937824b9f0c" args="($level)" -->
+<a class="anchor" id="aedfdb6173abee79e4cf7ca197377a1e8"></a><!-- doxytag: member="SapphoSyntaxOptimizer::setDebug" ref="aedfdb6173abee79e4cf7ca197377a1e8" args="($level)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SapphoSyntaxOptimizer::setDebug </td>
+          <td class="memname">setDebug </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
           <td class="paramname"><em>level</em></td><td>)</td>
@@ -349,13 +347,13 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a5686dc1096735b483c57166fa16d92f3"></a><!-- doxytag: member="SapphoSyntaxOptimizer::db_type_mysql" ref="a5686dc1096735b483c57166fa16d92f3" args="" -->
+<hr/><h2>Field Documentation</h2>
+<a class="anchor" id="ade3bbda6a1caae1f20eeef03a6817518"></a><!-- doxytag: member="SapphoSyntaxOptimizer::db_type_mysql" ref="ade3bbda6a1caae1f20eeef03a6817518" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a5686dc1096735b483c57166fa16d92f3">SapphoSyntaxOptimizer::db_type_mysql</a> = 'mysql'</td>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#ade3bbda6a1caae1f20eeef03a6817518">db_type_mysql</a> = 'mysql'</td>
         </tr>
       </table>
 </div>
@@ -364,12 +362,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a86e1728f6fb8d925804311a3017e0906"></a><!-- doxytag: member="SapphoSyntaxOptimizer::db_type_postgre" ref="a86e1728f6fb8d925804311a3017e0906" args="" -->
+<a class="anchor" id="a800ad96088569cfb486c7a914ddbe404"></a><!-- doxytag: member="SapphoSyntaxOptimizer::db_type_postgre" ref="a800ad96088569cfb486c7a914ddbe404" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a86e1728f6fb8d925804311a3017e0906">SapphoSyntaxOptimizer::db_type_postgre</a> = 'postgresql'</td>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a800ad96088569cfb486c7a914ddbe404">db_type_postgre</a> = 'postgresql'</td>
         </tr>
       </table>
 </div>
@@ -378,12 +376,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a530af2b9c3df6248d3e57713189e9687"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_numeric" ref="a530af2b9c3df6248d3e57713189e9687" args="" -->
+<a class="anchor" id="a85e2e55ee14da7b207a005be36ba981c"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_numeric" ref="a85e2e55ee14da7b207a005be36ba981c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a530af2b9c3df6248d3e57713189e9687">SapphoSyntaxOptimizer::dtype_numeric</a> = 'N'</td>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a85e2e55ee14da7b207a005be36ba981c">dtype_numeric</a> = 'N'</td>
         </tr>
       </table>
 </div>
@@ -392,12 +390,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad0dd1eb042b3aae741e6a9790be3c8e4"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_string" ref="ad0dd1eb042b3aae741e6a9790be3c8e4" args="" -->
+<a class="anchor" id="a2c3055709357a8f87cbf93a12f0bd9b4"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_string" ref="a2c3055709357a8f87cbf93a12f0bd9b4" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#ad0dd1eb042b3aae741e6a9790be3c8e4">SapphoSyntaxOptimizer::dtype_string</a> = 'S'</td>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a2c3055709357a8f87cbf93a12f0bd9b4">dtype_string</a> = 'S'</td>
         </tr>
       </table>
 </div>
@@ -406,12 +404,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab679bff0969f9f1295b8a9c025a6da4f"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_unknown" ref="ab679bff0969f9f1295b8a9c025a6da4f" args="" -->
+<a class="anchor" id="a418c7eb0f35690ff732536f6d01a2542"></a><!-- doxytag: member="SapphoSyntaxOptimizer::dtype_unknown" ref="a418c7eb0f35690ff732536f6d01a2542" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#ab679bff0969f9f1295b8a9c025a6da4f">SapphoSyntaxOptimizer::dtype_unknown</a> = 'U'</td>
+          <td class="memname">const <a class="el" href="class_sappho_syntax_optimizer.html#a418c7eb0f35690ff732536f6d01a2542">dtype_unknown</a> = 'U'</td>
         </tr>
       </table>
 </div>
@@ -429,7 +427,7 @@ Public Attributes</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -441,7 +439,7 @@ Public Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 7 2011 22:21:34 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 16 2011 23:39:48 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
