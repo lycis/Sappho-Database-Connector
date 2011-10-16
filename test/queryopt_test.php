@@ -129,6 +129,35 @@
 				echo "<font color='#00ff00'>OK</font>";
 			?>
 		</td>
+	</tr
+	<tr>
+		<th>Building multi column ORDER BY</th>
+		<td>
+			<?php
+				$options = $sdbc->queryOptions();
+				$options->orderBy('qopt_id', SapphoQueryOptions::ASC)
+				        ->orderBy('qopt_text', SapphoQueryOptions::DESC);
+				$cl = $options->getOrderByClause();
+				if($cl != "ORDER BY qopt_id ASC, qopt_text DESC")
+					die("<font color='#ff0000'>NOK: $cl</font>");
+				echo "<font color='#00ff00'>OK</font>";
+			?>
+		</td>
+	</tr>
+	<tr>
+		<th>Building mixed clause</th>
+		<td>
+			<?php
+				$options = $sdbc->queryOptions();
+				$options->orderBy('qopt_id', SapphoQueryOptions::ASC)
+				        ->orderBy('qopt_text', SapphoQueryOptions::DESC)
+						->where('qopt_id', SapphoQueryOptions::GEQ, 1);
+				$cl = $options->getClause('queryopt_test');
+				if($cl != "WHERE qopt_id >= 1 ORDER BY qopt_id ASC, qopt_text DESC")
+					die("<font color='#ff0000'>NOK: $cl</font>");
+				echo "<font color='#00ff00'>OK</font>";
+			?>
+		</td>
 	</tr>
 	<tr>
 		<th>Dropping test environment</th>
