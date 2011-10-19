@@ -31,7 +31,8 @@ class SapphoTableStructure{
 	private $string_types  = array('CHAR', 'VARCHAR', 'TEXT', 'BINARY', 'VARBINARY', 'TINYBLOB', 'TINYTEXT',
 	                                 'BLOB', 'MEDIUMBLOB', 'LONGBLOB', 'LONGTEXT', 'CHARACTER VARYING');
 	private $date_types    = array('DATE', 'TIMESTAMP', 'TIME', 'TIMESTAMP WITHOUT TIME ZONE',
-	                                 'TIMESTAMP WITH TIME ZONE', 'TIME WITHOUT TIME ZONE', 'TIME WITH TIME ZONE');
+	                               'TIMESTAMP WITH TIME ZONE', 'TIME WITHOUT TIME ZONE', 'TIME WITH TIME ZONE',
+									'DATETIME');
 									 
 	// constants for data type classification
 	const dtype_numeric = 'N'; /**< datatype mark for numeric values */
