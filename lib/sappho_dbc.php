@@ -401,7 +401,8 @@ class SapphoDatabaseConnection{
 			}
 			
 			$query .= ') VALUES(';
-			$values = $this->synopt->formatFields(array_values($fields), $fieldtypes);
+			$values = $this->synopt->formatFields($this->escape(array_values($fields)),
+										          $fieldtypes);
 			for($i=0; $i<count($values); $i++){
 				$query .= $values[$i];
 				
@@ -428,7 +429,8 @@ class SapphoDatabaseConnection{
 			}
 			
 			$query .= ') VALUES(';
-			$values = $this->synopt->formatFields(array_values($fields), $fieldtypes);
+			$values = $this->synopt->formatFields($this->escape(array_values($fields)),
+									              $fieldtypes);
 			for($i=0; $i<count($values); $i++){
 				$query .= $values[$i];
 				
@@ -508,7 +510,8 @@ class SapphoDatabaseConnection{
 			for($i=0; $i<count($keys); $i++)
 			{
 				$query .= $this->escape_keywords($this->db_handle->real_escape_string($keys[$i])).' = '.
-				          $this->synopt->formatField($data[$keys[$i]], $struct->getType($keys[$i]));
+				          $this->synopt->formatField($this->escape($data[$keys[$i]]),
+							                         $struct->getType($keys[$i]));
 				if($i != count($keys)-1)
 					$query .= ', ';
 			}
@@ -537,7 +540,8 @@ class SapphoDatabaseConnection{
 			for($i=0; $i<count($keys); $i++)
 			{
 				$query .= $this->escape_keywords(pg_escape_string($keys[$i])).' = '.
-				          $this->synopt->formatField($data[$keys[$i]], $struct->getType($keys[$i]));
+				          $this->synopt->formatField($this->escape($data[$keys[$i]]), 
+						                             $struct->getType($keys[$i]));
 				if($i != count($keys)-1)
 					$query .= ', ';
 			}
@@ -1189,21 +1193,36 @@ class SapphoDatabaseConnection{
 	 
 	 /**
 	  * \brief Escape the given string for use with the connection.
-	  * \params $str the string be escaped
+	  * \params $in the string be escaped (may be an array of strings)
 	  * \params $keywords set to \c true if you wish to do keyword escaping
-	  * \returns escaped string
+	  * \returns escaped string or array of string if $in was an array
 	  */
-	 function escape($str, $keywords=false)
+	 function escape($in, $keywords=false)
 	 {
-		if($this->typeIs(self::db_type_mysql))
-			$str = $this->db_handle->real_escape_string($str);
-		else if($this->typeIs(self::db_type_postgre))
-			$str = pg_escape_string($str);
+		if(!is_array($in))
+			$arr = array($in);
+		else
+			$arr = $in;
 			
-		if($keywords)
-			$str = $this->escape_keywords($str);
+		for($i=0; $i<count($arr); $i++)
+		{
+			$str = $arr[$i];
+			
+			if($this->typeIs(self::db_type_mysql))
+				$str = $this->db_handle->real_escape_string($str);
+			else if($this->typeIs(self::db_type_postgre))
+				$str = pg_escape_string($str);
+			
+			if($keywords)
+				$str = $this->escape_keywords($str);
+			
+			$arr[$i] = $str;
+		}
 		
-		return $str;
+		if(is_array($in))
+			return $arr;
+		
+		return $arr[0];
 	 }
 	 
 	 /**
