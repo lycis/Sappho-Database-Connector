@@ -6,9 +6,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -77,6 +82,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('class_sappho_database_connection.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -141,8 +159,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the table cache.  <a href="#a2230b89515e284add3e08b3f8113a851"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#acaf2943196317685cae8a26737c64020">getSyntaxOptimizer</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the configured syntax optimizer.  <a href="#acaf2943196317685cae8a26737c64020"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#ac29e6adad068d140d653a94bb207e2f4">escape</a> ($str, $keywords=false)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Escape the given string for use with the connection.  $str the string be escaped  $keywords set to <code>true</code> if you wish to do keyword escaping.  <a href="#ac29e6adad068d140d653a94bb207e2f4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#aa5da4e2c5309f93959335e949ef94f9d">escape</a> ($in, $keywords=false)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Escape the given string for use with the connection.  $in the string be escaped (may be an array of strings)  $keywords set to <code>true</code> if you wish to do keyword escaping.  <a href="#aa5da4e2c5309f93959335e949ef94f9d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sappho_database_connection.html#af65617417394fa90dae5e480972c8f40">cloneConnection</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -479,7 +497,7 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac29e6adad068d140d653a94bb207e2f4"></a><!-- doxytag: member="SapphoDatabaseConnection::escape" ref="ac29e6adad068d140d653a94bb207e2f4" args="($str, $keywords=false)" -->
+<a class="anchor" id="aa5da4e2c5309f93959335e949ef94f9d"></a><!-- doxytag: member="SapphoDatabaseConnection::escape" ref="aa5da4e2c5309f93959335e949ef94f9d" args="($in, $keywords=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -487,7 +505,7 @@ Data Fields</h2></td></tr>
           <td class="memname">escape </td>
           <td>(</td>
           <td class="paramtype">$&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramname"><em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -504,8 +522,8 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Escape the given string for use with the connection.  $str the string be escaped  $keywords set to <code>true</code> if you wish to do keyword escaping. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>escaped string </dd></dl>
+<p>Escape the given string for use with the connection.  $in the string be escaped (may be an array of strings)  $keywords set to <code>true</code> if you wish to do keyword escaping. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>escaped string or array of string if $in was an array </dd></dl>
 
 </div>
 </div>
@@ -1203,6 +1221,10 @@ Data Fields</h2></td></tr>
 <li>J:/eclipse_ws/sdbc/lib/sappho_dbc.php</li>
 </ul>
 </div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="class_sappho_database_connection.html">SapphoDatabaseConnection</a>      </li>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -1218,12 +1240,12 @@ Data Fields</h2></td></tr>
 </div>
 
 
+    <li class="footer">Generated on Sun Oct 23 2011 22:27:27 for SapphoDatabaseConnection by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 16 2011 23:39:48 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.5.1
-</small></address>
 
 </body>
 </html>
