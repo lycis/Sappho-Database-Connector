@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: Bug List</title>
+<title>SapphoDatabaseConnection: $title</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -85,22 +85,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('bug.html','');
+  initNavTree('_features.html','');
 </script>
 <div id="doc-content">
-<div class="header">
-  <div class="headertitle">
-<div class="title">Bug List </div>  </div>
-</div>
 <div class="contents">
-<div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_bug000001"></a>Class <a class="el" href="class_sappho_table_structure.html">SapphoTableStructure</a>  </dt>
-<dd>Currently not all datatypes of MySQL and especially postgres are recognized properly and may be cataloged as unknown.</dd>
-</dl>
+<div class="textblock"><p>This iteration of the SDBC contains these features:</p>
+<ul>
+<li>Connect to different database systems<ul>
+<li>MySQL [<a href="http://www.mysql.com">http://www.mysql.com</a>]</li>
+<li>postgreSQL [<a href="http://www.postgresql.org">http://www.postgresql.org</a>]</li>
+</ul>
+</li>
+<li>Execute common operations on databases<ul>
+<li>Insert, update, select and delete database records</li>
+<li>Execute not yet implemented functionalities</li>
+<li>Lock database records</li>
+<li>Get IDs of last inserted records</li>
+</ul>
+</li>
+<li>Syntax optimization and phrasing of statements<ul>
+<li>Automatic phrasing of `INSERT`, `UPDATE`, `SELECT` and `DELETE` statements</li>
+<li>Definition of simple and nested `WHERE` clauses</li>
+<li>Definition of multicolumn `ORDER BY`</li>
+</ul>
+</li>
+<li>Automatically recognize datatypes of table columns and format inserted values correctly<ul>
+<li>Masking of string based datatypes (with the correct quotes for the used database system)</li>
+<li>Recognition of number based datatypes</li>
+<li>Automatic generation of date and timestamps for data based datatypes</li>
+<li>Automatic escaping of user input (in fact nearly everything is escaped as needed)</li>
+</ul>
+</li>
+<li>Transaction management<ul>
+<li>Start new transactions</li>
+<li>Rollback transactions</li>
+<li>Commit transactions </li>
+</ul>
+</li>
+</ul>
 </div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
+      <li class="navelem"><a class="el" href="index.html">index</a>      </li>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
