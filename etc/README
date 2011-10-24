@@ -1,0 +1,32 @@
+== SDBC iteration #0001 ==
+
+This release package includes the released iteration #0001 of the Sappho
+Database Connector. The library is distributed by terms of the LGPL Version
+3 (see COPYING)!
+
+Please refer to the /doc folder for further information about usage,
+examples and tutorials.
+
+Features of this release are:
+
+1. Connect to different database systems
+  a. MySQL
+  b. postgreSQL 
+2. Execute common operations on databases
+  a. Insert, update, select and delete database records
+  b. Execute not yet implemented functionalities
+  c. Lock database records
+  d. Get IDs of last inserted records 
+  e. Syntax optimization and phrasing of statements
+  f. Automatic phrasing of INSERT, UPDATE, SELECT and DELETE statements
+  g. Definition of simple and nested WHERE clauses
+  h. Definition of multicolumn ORDER BY 
+3. Automatically recognize datatypes of table columns and format inserted values correctly
+  a. Masking of string based datatypes (with the correct quotes for the used database system)
+  b. Recognition of number based datatypes
+  c. Automatic generation of date and timestamps for data based datatypes
+4. Automatic escaping of user input (in fact nearly everything is escaped as needed)
+5. Transaction management
+  a. Start new transactions
+  b. Rollback transactions
+  c. Commit transactions
