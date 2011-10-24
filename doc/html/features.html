@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: $title</title>
+<title>SapphoDatabaseConnection: Features of this Iteration</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -85,52 +85,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('_tutorial.html','');
+  initNavTree('features.html','');
 </script>
 <div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">Features of this Iteration </div>  </div>
+</div>
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="tutorial"></a>
-Tutorial</h2>
-<p>This section of the documentation will show you how to use the SDBC with a small and easy to comprehend tutorial.</p>
-<h3><a class="anchor" id="tutorial-webapp"></a>
-A tutorial Web Application</h3>
-<p>This tutorial will build a very basic web application to illustrate the usage of the SDBC class. This application will be some kind of news management system that provides a simple user interface because our focus is centered around the database access.</p>
-<p>The system will be able to show some news that are stored in a database and let a user add as well as delete messages.</p>
-<h3><a class="anchor" id="tutorial-source-code"></a>
-Source Code</h3>
-<p>The complete source code of this tutoral should be shipped with this documentation. If you are accessing this tutorial as part of an other website or the sources were not distributed along with it you can download them from <a href="http://sappho.deder.at">http://sappho.deder.at</a></p>
-<h3><a class="anchor" id="tutorial-toc"></a>
-Table of Contents</h3>
-<ol type="1">
-<li><a class="el" href="_tutorial.html#tutorial-database">Database</a> Database</li>
-</ol>
-<h2><a class="anchor" id="tutorial-database"></a>
-Database</h2>
-<p>Our tutorial application will use a database called <code>sdbc_tutorial</code>. It consists of two tables <code>login</code> and <code>news</code>.</p>
-<p>The <code>login</code> table contains information that is necessary for a user to log in. Only logged in users are allowed to add news entries. The table has this layout: </p>
-<table class="doxtable">
-<tr>
-<th>field</th><th>descriptions </th></tr>
-<tr>
-<td>id</td><td>the user id </td></tr>
-<tr>
-<td>name</td><td>a user name for the login </td></tr>
-<tr>
-<td>password</td><td>the (encrypted) password of the user </td></tr>
-</table>
-<p>The second table <code>news</code> contains all news messages the system knows and will display. It has a structure like this: </p>
-<table class="doxtable">
-<tr>
-<th>field</th><th>descriptions </th></tr>
-<tr>
-<td>id</td><td>id of the entry </td></tr>
-<tr>
-<td>title</td><td>a short description of the message </td></tr>
-<tr>
-<td>submitted</td><td>a timestamp that documents when the message was added </td></tr>
-<tr>
-<td>text</td><td>the message text </td></tr>
-</table>
+<div class="textblock"><p>This iteration of the SDBC contains these features:</p>
+<ul>
+<li>Connect to different database systems<ul>
+<li>MySQL [<a href="http://www.mysql.com">http://www.mysql.com</a>]</li>
+<li>postgreSQL [<a href="http://www.postgresql.org">http://www.postgresql.org</a>]</li>
+</ul>
+</li>
+<li>Execute common operations on databases<ul>
+<li>Insert, update, select and delete database records</li>
+<li>Execute not yet implemented functionalities</li>
+<li>Lock database records</li>
+<li>Get IDs of last inserted records</li>
+</ul>
+</li>
+<li>Syntax optimization and phrasing of statements<ul>
+<li>Automatic phrasing of `INSERT`, `UPDATE`, `SELECT` and `DELETE` statements</li>
+<li>Definition of simple and nested `WHERE` clauses</li>
+<li>Definition of multicolumn `ORDER BY`</li>
+</ul>
+</li>
+<li>Automatically recognize datatypes of table columns and format inserted values correctly<ul>
+<li>Masking of string based datatypes (with the correct quotes for the used database system)</li>
+<li>Recognition of number based datatypes</li>
+<li>Automatic generation of date and timestamps for data based datatypes</li>
+<li>Automatic escaping of user input (in fact nearly everything is escaped as needed)</li>
+</ul>
+</li>
+<li>Transaction management<ul>
+<li>Start new transactions</li>
+<li>Rollback transactions</li>
+<li>Commit transactions </li>
+</ul>
+</li>
+</ul>
 </div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -151,7 +147,7 @@ Database</h2>
 </div>
 
 
-    <li class="footer">Generated on Mon Oct 24 2011 15:07:46 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Mon Oct 24 2011 16:45:22 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -1,0 +1,61 @@
+/** \page tutorial-page-connecting Step 3: Connecting
+ *
+ * In steps 1 and 2 we built a basic database with a webinterface. Within the next step we will
+ * connect our page to the database and check whether the connection was established successfully.
+ *
+ * \section tutorial-page-connect-build Building a connection
+ * The connection will be established by the SDBC. So all you have to do is to create a new instance
+ * of the SapphoDatabaseConnection class and call its connect(...) method. Because we'll need this
+ * part of the code within different scripts, we'll to the connection in a separate script called
+ * <tt>connect.php</tt>. Before we can use any of our library classes we have to load them by
+ * \code
+require_once("../lib/sdbc/sappho_sdbc.php");
+ * \endcode
+ * This file automatically loads all used classes and provides us with the SapphoDatabaseConnection
+ * calss that provides us with the dynamic interface to the database.
+ *
+ * After loaded the library we create a new instace of the connector and provide it with the
+ * database type, hostname, database name and username (in exactly this order). Mind that this
+ * tutorial only uses a connection to a MySQL datbase. If you in fact are using a postgreSQL database
+ * just change the <tt>db_type_mysql</tt> to <tt>db_type_postgre</tt> - everything else will be
+ * done the same way!
+ * \code
+ 	$sdbc = new SapphoDatabaseConnection(
+					SapphoDatabaseConnection::db_type_mysql,
+					"localhost",
+					"sdbc_tutorial",
+					"sdbc_tutorial"
+				);
+ * \endcode
+ *
+ * Now we've got an interface to our database - so the next step is to connect to the database. On this
+ * occasion we'll see a very comfortable behaviour of the library that makes it very easy to determine
+ * if an error occured during the execution of a method:
+ *
+ * <i>Every method (with a few exceptions) of SapphoDatabaseConnection returns 0 (zero) if it was
+ * successful. If it was not it will return an error code.</i>
+ *
+ * To connect to the database we use the connect(...) method. If it returns zero everything was fine,
+ * otherwise we have to print an error message:
+ * \code
+if($sdbc->connect('sdbc1234'))
+	  die("Could not connect to the database: ".$sdbc->lastError());
+ * \endcode
+ *
+ * This code tries to log in with the given password. If this was not successful we will print the
+ * returned error message. As you can see the <tt>lastError()</tt> method will return the last error
+ * message that was returned from the database service.
+ *
+ * \section tutorial-page-connect-index Connecting the page
+ * Now we have a script that will connect us to the database and provide a handle (<tt>$sdbc</tt>)
+ * that we can use for database queries. To use this handle we have to load the connection script 
+ * whenever our startpage is called. This is achieved by including this file at the beginning of
+ * our <tt>index.php</tt>. Nothing new for those of you who already familiar with PHP:
+ * \code
+<?php
+	require_once('connect.php');
+?>
+<html>
+...
+ * \endcode
+ */

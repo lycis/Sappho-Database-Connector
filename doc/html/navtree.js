@@ -2,8 +2,12 @@ var NAVTREE =
 [
   [ "SapphoDatabaseConnection", "index.html", [
     [ "Main Page", "index.html", [
-      [ "Features", "_features.html", null ],
-      [ "Tutorial", "_tutorial.html", null ]
+      [ "Features of this Iteration", "features.html", null ],
+      [ "Tutorial", "tutorial-page-main.html", [
+        [ "Step 1: Database", "tutorial-page-database.html", null ],
+        [ "Step 2: Basic Layout", "tutorial-page-basic-layout.html", null ],
+        [ "Step 3: Connecting", "tutorial-page-connecting.html", null ]
+      ] ]
     ] ],
     [ "Related Pages", "pages.html", [
       [ "Bug List", "bug.html", null ]

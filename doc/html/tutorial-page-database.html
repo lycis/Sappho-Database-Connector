@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: $title</title>
+<title>SapphoDatabaseConnection: Step 1: Database</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -85,27 +85,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('_tutorial.html','');
+  initNavTree('tutorial-page-database.html','');
 </script>
 <div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">Step 1: Database </div>  </div>
+</div>
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="tutorial"></a>
-Tutorial</h2>
-<p>This section of the documentation will show you how to use the SDBC with a small and easy to comprehend tutorial.</p>
-<h3><a class="anchor" id="tutorial-webapp"></a>
-A tutorial Web Application</h3>
-<p>This tutorial will build a very basic web application to illustrate the usage of the SDBC class. This application will be some kind of news management system that provides a simple user interface because our focus is centered around the database access.</p>
-<p>The system will be able to show some news that are stored in a database and let a user add as well as delete messages.</p>
-<h3><a class="anchor" id="tutorial-source-code"></a>
-Source Code</h3>
-<p>The complete source code of this tutoral should be shipped with this documentation. If you are accessing this tutorial as part of an other website or the sources were not distributed along with it you can download them from <a href="http://sappho.deder.at">http://sappho.deder.at</a></p>
-<h3><a class="anchor" id="tutorial-toc"></a>
-Table of Contents</h3>
-<ol type="1">
-<li><a class="el" href="_tutorial.html#tutorial-database">Database</a> Database</li>
-</ol>
-<h2><a class="anchor" id="tutorial-database"></a>
-Database</h2>
+<div class="textblock"><h2><a class="anchor" id="tutorial-database-tables"></a>
+Tables</h2>
 <p>Our tutorial application will use a database called <code>sdbc_tutorial</code>. It consists of two tables <code>login</code> and <code>news</code>.</p>
 <p>The <code>login</code> table contains information that is necessary for a user to log in. Only logged in users are allowed to add news entries. The table has this layout: </p>
 <table class="doxtable">
@@ -131,11 +120,16 @@ Database</h2>
 <tr>
 <td>text</td><td>the message text </td></tr>
 </table>
+<h2><a class="anchor" id="tutorial-database-setup"></a>
+Setting up the Database</h2>
+<p>The tutorial folder contains SQL scripts for all supported database systems. If you are trying to run this tutorial on a MySQL database use the file called <code>mysql.sql</code> or <code>postgre.sql</code> if you are running a postgreSQL database.</p>
+<p>You only need to load the included scripts into a database called <code>sdbc_tutorial</code>. This is the database that all scripts of the example web application will try to connect to. Make sure you also have a database user called <code>sdbc_tutorial</code> because the scripts also try to connect with this username and the password <code>sdbc1234</code>. If you are rewriting the tutorial - what's by the recommended to understand the examples much better - you don't need to bother with these details. </p>
 </div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="index.html">index</a>      </li>
+      <li class="navelem"><a class="el" href="tutorial-page-main.html">Tutorial</a>      </li>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -151,7 +145,7 @@ Database</h2>
 </div>
 
 
-    <li class="footer">Generated on Mon Oct 24 2011 15:07:46 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Mon Oct 24 2011 16:45:22 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: $title</title>
+<title>SapphoDatabaseConnection: Tutorial</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -85,11 +85,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('_tutorial.html','');
+  initNavTree('tutorial-page-main.html','');
 </script>
 <div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">Tutorial </div>  </div>
+</div>
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="tutorial"></a>
+<div class="textblock"><h2><a class="anchor" id="tutorial-top"></a>
 Tutorial</h2>
 <p>This section of the documentation will show you how to use the SDBC with a small and easy to comprehend tutorial.</p>
 <h3><a class="anchor" id="tutorial-webapp"></a>
@@ -102,35 +106,10 @@ Source Code</h3>
 <h3><a class="anchor" id="tutorial-toc"></a>
 Table of Contents</h3>
 <ol type="1">
-<li><a class="el" href="_tutorial.html#tutorial-database">Database</a> Database</li>
+<li><a class="el" href="tutorial-page-database.html">Step 1: Database</a></li>
+<li><a class="el" href="tutorial-page-basic-layout.html">Step 2: Basic Layout</a></li>
+<li><a class="el" href="tutorial-page-connecting.html">Step 3: Connecting</a> </li>
 </ol>
-<h2><a class="anchor" id="tutorial-database"></a>
-Database</h2>
-<p>Our tutorial application will use a database called <code>sdbc_tutorial</code>. It consists of two tables <code>login</code> and <code>news</code>.</p>
-<p>The <code>login</code> table contains information that is necessary for a user to log in. Only logged in users are allowed to add news entries. The table has this layout: </p>
-<table class="doxtable">
-<tr>
-<th>field</th><th>descriptions </th></tr>
-<tr>
-<td>id</td><td>the user id </td></tr>
-<tr>
-<td>name</td><td>a user name for the login </td></tr>
-<tr>
-<td>password</td><td>the (encrypted) password of the user </td></tr>
-</table>
-<p>The second table <code>news</code> contains all news messages the system knows and will display. It has a structure like this: </p>
-<table class="doxtable">
-<tr>
-<th>field</th><th>descriptions </th></tr>
-<tr>
-<td>id</td><td>id of the entry </td></tr>
-<tr>
-<td>title</td><td>a short description of the message </td></tr>
-<tr>
-<td>submitted</td><td>a timestamp that documents when the message was added </td></tr>
-<tr>
-<td>text</td><td>the message text </td></tr>
-</table>
 </div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -151,7 +130,7 @@ Database</h2>
 </div>
 
 
-    <li class="footer">Generated on Mon Oct 24 2011 15:07:46 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Mon Oct 24 2011 16:45:22 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
