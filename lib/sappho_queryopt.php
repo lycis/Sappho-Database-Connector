@@ -6,7 +6,6 @@
  *        This class represents any kind of options that aplly to a statement. This may range from
  *        WHERE clauses to ORDER BY columns or subselects and joins.
  *
- *        \warning Currently only simple where clauses are implemented!
  *
  * \author Daniel Eder
  * \version 0.1

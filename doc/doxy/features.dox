@@ -1,0 +1,26 @@
+/**
+ * \page Features
+ *
+ * This iteration of the SDBC contains these features:
+ * - Connect to different database systems
+ *   - MySQL [http://www.mysql.com]
+ *   - postgreSQL [http://www.postgresql.org]
+ * - Execute common operations on databases
+ *   - Insert, update, select and delete database records
+ *   - Execute not yet implemented functionalities
+ *   - Lock database records
+ *   - Get IDs of last inserted records
+ * - Syntax optimization and phrasing of statements
+ *   - Automatic phrasing of `INSERT`, `UPDATE`, `SELECT` and `DELETE` statements
+ *   - Definition of simple and nested `WHERE` clauses
+ *   - Definition of multicolumn `ORDER BY`
+ * - Automatically recognize datatypes of table columns and format inserted values correctly
+ *   - Masking of string based datatypes (with the correct quotes for the used database system)
+ *   - Recognition of number based datatypes
+ *   - Automatic generation of date and timestamps for data based datatypes
+ *   - Automatic escaping of user input (in fact nearly everything is escaped as needed)
+ * - Transaction management
+ *   - Start new transactions
+ *   - Rollback transactions
+ *   - Commit transactions
+ */

@@ -6,9 +6,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -70,13 +75,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('index.html','');
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">SapphoDatabaseConnection Documentation</div>  </div>
 </div>
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="main-overview"></a>
+<div class="textblock"><p>see also: <a class="el" href="_features.html">Features</a> <a class="el" href="_tutorial.html#Tutorial">Tutorial</a></p>
+<h2><a class="anchor" id="main-overview"></a>
 Overview</h2>
+<p>This documentation is valid for iteration SDBC#0001 only!</p>
 <p>The Sappho Database Connector (SDBC) is a PHP class that is able to establish a conenction to differnt types of database like MySQL or postgreSQL. It main advantage is that you - as a developer - don't have to care about the correct syntax of a statement or calling the right PHP functions to issue the SQL commands th the database.</p>
 <h2><a class="anchor" id="main-advanages"></a>
 Why use SDBC?</h2>
@@ -135,6 +155,9 @@ An overall example</h2>
        $sdbc-&gt;close();
     ?&gt;
 </pre></div> </div></div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -150,12 +173,12 @@ An overall example</h2>
 </div>
 
 
+    <li class="footer">Generated on Sun Oct 23 2011 23:15:56 for SapphoDatabaseConnection by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 16 2011 23:39:48 for SapphoDatabaseConnection by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.5.1
-</small></address>
 
 </body>
 </html>

@@ -1,6 +1,11 @@
 /** \mainpage
+ * see also:
+ * \subpage Features
+ * \subpage Tutorial
  *
  * \section main-overview Overview
+ *  This documentation is valid for iteration SDBC#0001 only!
+ *
  *  The Sappho Database Connector (SDBC) is a PHP class that is able to establish a conenction
  *  to differnt types of database like MySQL or postgreSQL. It main advantage is that you - as
  *  a developer - don't have to care about the correct syntax of a statement or calling the
