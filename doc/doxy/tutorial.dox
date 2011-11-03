@@ -1,5 +1,27 @@
-/** \page Tutorial
- * \section Tutorial
+/** \page tutorial-page-main Tutorial
+ *
+ * \section tutorial-top Tutorial
  * This section of the documentation will show you how to use the SDBC with a
  * small and easy to comprehend tutorial.
+ *
+ * \subsection tutorial-webapp A tutorial Web Application
+ * This tutorial will build a very basic web application to illustrate the usage
+ * of the SDBC class. This application will be some kind of news management system
+ * that provides a simple user interface because our focus is centered around the
+ * database access.
+ *
+ * The system will be able to show some news that are stored in a database and let a
+ * user add as well as delete messages.
+ *
+ * \subsection tutorial-source-code Source Code
+ * The complete source code of this tutoral should be shipped with this documentation.
+ * If you are accessing this tutorial as part of an other website or the sources were
+ * not distributed along with it you can download them from <a href="http://sappho.deder.at">
+ * http://sappho.deder.at</a>
+ *
+ * \subsection tutorial-toc Table of Contents
+ *  -# \subpage tutorial-page-database
+ *  -# \subpage tutorial-page-basic-layout
+ *  -# \subpage tutorial-page-connecting
+ *  -# \subpage tutorial-page-userauth
  */

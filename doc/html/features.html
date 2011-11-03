@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>SapphoDatabaseConnection: Examples</title>
+<title>SapphoDatabaseConnection: Features of this Iteration</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -53,9 +53,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li class="current"><a href="examples.html"><span>Examples</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -85,22 +85,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-  initNavTree('examples.html','');
+  initNavTree('features.html','');
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Examples</div>  </div>
+<div class="title">Features of this Iteration </div>  </div>
 </div>
 <div class="contents">
-<div class="textblock">Here is a list of all examples:</div><ul>
-<li><a class="el" href="exec_8php-example.html">exec.php</a></li>
-
+<div class="textblock"><p>This iteration of the SDBC contains these features:</p>
+<ul>
+<li>Connect to different database systems<ul>
+<li>MySQL [<a href="http://www.mysql.com">http://www.mysql.com</a>]</li>
+<li>postgreSQL [<a href="http://www.postgresql.org">http://www.postgresql.org</a>]</li>
 </ul>
-</div>
+</li>
+<li>Execute common operations on databases<ul>
+<li>Insert, update, select and delete database records</li>
+<li>Execute not yet implemented functionalities</li>
+<li>Lock database records</li>
+<li>Get IDs of last inserted records</li>
+</ul>
+</li>
+<li>Syntax optimization and phrasing of statements<ul>
+<li>Automatic phrasing of `INSERT`, `UPDATE`, `SELECT` and `DELETE` statements</li>
+<li>Definition of simple and nested `WHERE` clauses</li>
+<li>Definition of multicolumn `ORDER BY`</li>
+</ul>
+</li>
+<li>Automatically recognize datatypes of table columns and format inserted values correctly<ul>
+<li>Masking of string based datatypes (with the correct quotes for the used database system)</li>
+<li>Recognition of number based datatypes</li>
+<li>Automatic generation of date and timestamps for data based datatypes</li>
+<li>Automatic escaping of user input (in fact nearly everything is escaped as needed)</li>
+</ul>
+</li>
+<li>Transaction management<ul>
+<li>Start new transactions</li>
+<li>Rollback transactions</li>
+<li>Commit transactions </li>
+</ul>
+</li>
+</ul>
+</div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
+      <li class="navelem"><a class="el" href="index.html">index</a>      </li>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -116,7 +147,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Nov 3 2011 15:45:44 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Thu Nov 3 2011 15:45:43 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

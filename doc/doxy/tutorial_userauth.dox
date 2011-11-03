@@ -1,0 +1,94 @@
+/** \page tutorial-page-userauth Step 4: User Login
+ This part of the tutorial focuses on the user login. We will use a session
+ base connection, so it will be necessary for your webserver to provide this option.
+ 
+ The user authentication will be processed in a script called <tt>login.php</tt>. If you
+ refer to the code in the second step where <tt>index.php</tt> was created you will notice
+ that the login form we defined there uses the <tt>login.php</tt> as action.
+ 
+ \section tutorial-page-userauth-verify Verifying user existence
+ The first thing out login script has to do is to verify if the given user exists.
+ if it does not we will prompt so. Before we can access the database we have to 
+ connect to it. Thanks to our <tt>connect.php</tt> that was created in the former step
+ we can do this without much coding:
+ \code
+ <?php
+    require_once('connect.php');
+	...
+  \endcode
+  
+  The connect script provides us with a database handle known as <tt>$sdbc</tt>. Now we will
+  use this handle to execute a <tt>SELECT</tt> statement with a very basic where clause that
+  will retrieve the user data.
+  
+  \subsection tutorial-page-userauth-where A simple WHERE clause
+  The first step is to initialize a <tt>WHERE</tt> clause. All clauses and conditions of
+  database statements are represented by <tt>QueryOptions</tt> (implemented in 
+  <tt>SapphoQueryOptions</tt>). Because each query options set is strongly tied to it's connection
+  for reasons of data type recognition and formatting we use the <tt>queryOptions()</tt> method
+  of the SDBC:
+  \code
+  $options = $sdbc->queryOptions()
+	              ->where('name', SapphoQueryOptions::EQUALS, $_POST["username"]);
+  \endcode
+  These two lines of code do two things: First the method <tt>queryOptions()</tt> initializes a
+  new SapphoQueryOptions and binds it to the connection represented by <tt>$sdbc</tt>. Secondly we
+  insert a new <tt>WHERE</tt> clause into the options. The layout of this method closely resembles
+  the syntax you are possibly familiar with from various SQL dialects. The first parameter of <tt>
+  where(...)</tt> is the name of the field we wish to compare. It is followed by the comparison
+  operation. In this case this is <tt>EQUALS</tt> (shortcut <tt>EQ</tt>), indicating that we wat 
+  to check if the given field matches the third parameter of the function. Query options do of 
+  course support more than <tt>EQUALS</tt> for comparison, as we will see later on.
+  
+  \subsection tutorial-page-userauth-escaping A word on escaping
+  You may wonder if we forgot to do some escaping in the example code above. Let me tell you we
+  did not. It is a much too common mistake to forget proper escaping in <tt>WHERE</tt> clauses
+  and so to open a gate to the hell of SQL injections.
+  
+  By using the SDBC you won't have to worry about escaping most of the time. All major functions
+  of the calss do the escaping based on the database type for you! Because of this it is not
+  possible to inject malicious SQL code in the <tt>WHERE</tt> clause of the code above.
+  
+  \subsection tutorial-page-userauth-select The select statement
+  Now that we have our statements options prepared we have to execute a select statement. This
+  is very simply done by using the select(...) method of SapphoDatabaseConnection:
+  \code
+  if($sdbc->select('login', '*', $options))
+	die("Could not verify user existence: ".$sdbc->lastError());
+  \endcode
+  By calling the method we create and execute a <tt>SELECT</tt> on the table <tt>login</tt> with
+  the query options we configured beforehand. The method will return 0 (zero) if everything worked
+  out and anything greater 0 if it did not. So by applying the <tt>if</tt> condition check we
+  will exit with a proper error message in case something was wrong. The <tt>lastError</tt> method
+  directly returns the last error we received from the database system.
+  
+  \subsection tutorial-page-userauth-count Counting the rows
+  Finally, to verify if the user exists, we will count the returned rows. If we no row was selected
+  a user with this name obviously does not exist. We can count the returned rows by using
+  <tt>rowCount()</tt>. The method simply returns the amount of rows affected by the last statement:
+  \code
+  if($sdbc->rowCount() < 1)
+		die("This user does not exist.");
+  \endcode
+  
+  \section tutorial-page-userauth-password Checking the password
+  By using the <tt>select(...)</tt> method we already have received a valid result set (of course
+  only if the select returned no error). So we are able to access the selected rows by using the
+  <tt>nextData()</tt> method of our database handle. This method always returns a associative array
+  that contains the next row of the selected data:
+  \code
+  $user = $sdbc->nextData();
+  if($_POST["password"] != $user["password"])
+	die("No, that's not the password!");
+  \endcode
+  
+  If the user entered a correct user name and password we will mark the session as logged in and
+  provide the user with a link back to our mainpage.
+  \code
+    echo "Login successful.<br/>";
+	$_SESSION["loggedin"] = true;
+	echo "<a href='index.php'>Click here to continue</a>";
+	
+	?>
+  \endcode
+*/
