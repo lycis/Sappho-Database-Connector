@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h2><a class="anchor" id="tutorial-page-connect-build"></a>
 Building a connection</h2>
 <p>The connection will be established by the SDBC. So all you have to do is to create a new instance of the <a class="el" href="class_sappho_database_connection.html" title="This class handles connections to different database types. You&#39;ll probably want to use this one...">SapphoDatabaseConnection</a> class and call its connect(...) method. Because we'll need this part of the code within different scripts, we'll to the connection in a separate script called <code>connect.php</code>. Before we can use any of our library classes we have to load them by </p>
-<div class="fragment"><pre class="fragment">require_once(<span class="stringliteral">&quot;../lib/sdbc/sappho_sdbc.php&quot;</span>);
+<div class="fragment"><pre class="fragment">require_once(<span class="stringliteral">&quot;../lib/sdbc/sappho_dbc.php&quot;</span>);
 </pre></div><p> This file automatically loads all used classes and provides us with the <a class="el" href="class_sappho_database_connection.html" title="This class handles connections to different database types. You&#39;ll probably want to use this one...">SapphoDatabaseConnection</a> calss that provides us with the dynamic interface to the database.</p>
 <p>After loaded the library we create a new instace of the connector and provide it with the database type, hostname, database name and username (in exactly this order). Mind that this tutorial only uses a connection to a MySQL datbase. If you in fact are using a postgreSQL database just change the <code>db_type_mysql</code> to <code>db_type_postgre</code> - everything else will be done the same way! </p>
 <div class="fragment"><pre class="fragment">    $sdbc = <span class="keyword">new</span> <a class="code" href="class_sappho_database_connection.html" title="This class handles connections to different database types. You&#39;ll probably want to use this one...">SapphoDatabaseConnection</a>(
@@ -141,7 +141,7 @@ Connecting the page</h2>
 </div>
 
 
-    <li class="footer">Generated on Mon Oct 24 2011 16:45:22 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Thu Nov 3 2011 15:45:43 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

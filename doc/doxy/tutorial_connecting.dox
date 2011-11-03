@@ -9,7 +9,7 @@
  * part of the code within different scripts, we'll to the connection in a separate script called
  * <tt>connect.php</tt>. Before we can use any of our library classes we have to load them by
  * \code
-require_once("../lib/sdbc/sappho_sdbc.php");
+require_once("../lib/sdbc/sappho_dbc.php");
  * \endcode
  * This file automatically loads all used classes and provides us with the SapphoDatabaseConnection
  * calss that provides us with the dynamic interface to the database.

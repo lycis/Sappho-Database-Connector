@@ -6,7 +6,8 @@ var NAVTREE =
       [ "Tutorial", "tutorial-page-main.html", [
         [ "Step 1: Database", "tutorial-page-database.html", null ],
         [ "Step 2: Basic Layout", "tutorial-page-basic-layout.html", null ],
-        [ "Step 3: Connecting", "tutorial-page-connecting.html", null ]
+        [ "Step 3: Connecting", "tutorial-page-connecting.html", null ],
+        [ "Step 4: User Login", "tutorial-page-userauth.html", null ]
       ] ]
     ] ],
     [ "Related Pages", "pages.html", [

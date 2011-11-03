@@ -1,5 +1,5 @@
 <?php
-	require_once('../lib/sdbc/sappho_sdbc.php');
+	require_once('../lib/sdbc/sappho_dbc.php');
 	
 	$sdbc = new SapphoDatabaseConnection(
 				SapphoDatabaseConnection::db_type_mysql,
