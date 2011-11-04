@@ -89,9 +89,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
 <div id="doc-content">
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="Tutorial"></a>
+<div class="textblock"><h2><a class="anchor" id="tutorial"></a>
 Tutorial</h2>
-<p>This section of the documentation will show you how to use the SDBC with a small and easy to comprehend tutorial. </p>
+<p>This section of the documentation will show you how to use the SDBC with a small and easy to comprehend tutorial.</p>
+<h3><a class="anchor" id="tutorial-webapp"></a>
+A tutorial Web Application</h3>
+<p>This tutorial will build a very basic web application to illustrate the usage of the SDBC class. This application will be some kind of news management system that provides a simple user interface because our focus is centered around the database access.</p>
+<p>The system will be able to show some news that are stored in a database and let a user add as well as delete messages.</p>
+<h3><a class="anchor" id="tutorial-source-code"></a>
+Source Code</h3>
+<p>The complete source code of this tutoral should be shipped with this documentation. If you are accessing this tutorial as part of an other website or the sources were not distributed along with it you can download them from <a href="http://sappho.deder.at">http://sappho.deder.at</a></p>
+<h3><a class="anchor" id="tutorial-toc"></a>
+Table of Contents</h3>
+<ol type="1">
+<li><a class="el" href="_tutorial.html#tutorial-database">Database</a> Database</li>
+</ol>
+<h2><a class="anchor" id="tutorial-database"></a>
+Database</h2>
+<p>Our tutorial application will use a database called <code>sdbc_tutorial</code>. It consists of two tables <code>login</code> and <code>news</code>.</p>
+<p>The <code>login</code> table contains information that is necessary for a user to log in. Only logged in users are allowed to add news entries. The table has this layout: </p>
+<table class="doxtable">
+<tr>
+<th>field</th><th>descriptions </th></tr>
+<tr>
+<td>id</td><td>the user id </td></tr>
+<tr>
+<td>name</td><td>a user name for the login </td></tr>
+<tr>
+<td>password</td><td>the (encrypted) password of the user </td></tr>
+</table>
+<p>The second table <code>news</code> contains all news messages the system knows and will display. It has a structure like this: </p>
+<table class="doxtable">
+<tr>
+<th>field</th><th>descriptions </th></tr>
+<tr>
+<td>id</td><td>id of the entry </td></tr>
+<tr>
+<td>title</td><td>a short description of the message </td></tr>
+<tr>
+<td>submitted</td><td>a timestamp that documents when the message was added </td></tr>
+<tr>
+<td>text</td><td>the message text </td></tr>
+</table>
 </div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -112,7 +151,7 @@ Tutorial</h2>
 </div>
 
 
-    <li class="footer">Generated on Sun Oct 23 2011 23:15:56 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Mon Oct 24 2011 15:07:46 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

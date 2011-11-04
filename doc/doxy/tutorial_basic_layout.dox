@@ -1,0 +1,98 @@
+/** \page tutorial-page-basic-layout Step 2: Basic Layout
+ *
+ * Before we dive into the PHP code we need to create a basic layout for our web page.
+ * We won't use something special, just very low-level HTML and some CSS to make it look better.
+ *
+ * \section tutorial-page-basic-layout-structure Base Structure
+ * The base for our page will be a very basic HTML structure because we let our PHP scripts do
+ * the hard work:
+ * \code
+<html>
+	<head>
+		<title>SDBC Tutorial</title>
+		<link rel="stylesheet" type="text/css" href="tutorial.css"/>
+	</head>
+	<body>
+		<h1>SDBC Tutorial: News Board</h1>
+		<div id="login-panel">
+			<form method="POST" action="login.php">
+				<table>
+					<tr>
+						<td>user: </td>
+						<td><input type="text" name="username" /></td>
+						<td>password: </td>
+						<td><input type="password" name="password" /></td>
+						<td><input type="submit" value="log in" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="newsboard">
+			<h3>Latest News</h3>
+		</div>
+	</body>
+</html>
+ * \endcode
+ *
+ * As you can see we are binding a stylesheet into this structure. This stylesheet is nothing special
+ * and your app will run even without it - but won't look that good ;-) So here is the styles we are
+ * using - you may change them to whatever fits your needs:
+ * \code
+body{
+   font-family: Arial;
+}
+
+h1 {
+   text-align: center;
+   font-size: 22px;  
+   color: #1c94c4;
+}
+
+h3 {
+   text-align: center;
+   font-size: 16px;  
+   color: #1c94c4;
+}
+
+#newsboard{
+	margin: 0 auto;
+	border-radius: 7px;
+	box-shadow: 0px 0px 20px #1c94c4;
+	width: 80%;
+	background-color: white;
+}
+
+#login-panel{
+	margin: 0 auto;
+	border-radius: 7px;
+	width: 50%;
+	background-color: white;
+}
+ * \endcode
+ *
+ * \section tutorial-page-basic-layout-login-panel Login Panel
+ * If you display the site as it is defined above there's not much going on in your webbrowser. To
+ * change that we'll add a simple login box that will call a <tt>login.php</tt> script and sign us in
+ * as user. The box only needs a textbox for the username and one for the password as well as a button
+ * to submit our login request. We did realize this by a very simple formular:
+ * \code
+...
+<div id="login-panel">
+	<form method="POST" action="login.php">
+		<table>
+			<tr>
+				<td>user: </td>
+				<td><input type="text" name="username" /></td>
+				<td>password: </td>
+				<td><input type="password" name="password" /></td>
+				<td><input type="submit" value="log in" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+...
+ * \endcode
+ *
+ * Now that we've got a basic webpage we can continue with step 2 and add some PHP magic to make
+ * things work!
+ */

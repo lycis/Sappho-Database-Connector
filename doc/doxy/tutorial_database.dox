@@ -1,0 +1,38 @@
+/** \page tutorial-page-database Step 1: Database
+ *
+ * \section tutorial-database-tables Tables
+ * Our tutorial application will use a database called <tt>sdbc_tutorial</tt>. It consists
+ * of two tables <tt>login</tt> and <tt>news</tt>.
+ *
+ * The <tt>login</tt> table contains information that is necessary for a user to log in.
+ * Only logged in users are allowed to add news entries. The table has this layout:
+ * <table>
+ *   <tr><th>field</th><th>descriptions</th></tr>
+ *   <tr><td>id</td><td>the user id</td></tr>
+ *   <tr><td>name</td><td>a user name for the login</td></tr>
+ *   <tr><td>password</td><td>the (encrypted) password of the user</td></tr>
+ * </table>
+ * 
+ * The second table <tt>news</tt> contains all news messages the system knows and will
+ * display. It has a structure like this:
+ * <table>
+ *   <tr><th>field</th><th>descriptions</th></tr>
+ *   <tr><td>id</td><td>id of the entry</td></tr>
+ *   <tr><td>title</td><td>a short description of the message</td></tr>
+ *   <tr><td>submitted</td><td>a timestamp that documents when the message was added</td></tr>
+ *   <tr><td>text</td><td>the message text</td></tr>
+ * </table> 
+ *
+ * \section tutorial-database-setup Setting up the Database
+ * The tutorial folder contains SQL scripts for all supported database systems. If you are trying
+ * to run this tutorial on a MySQL database use the file called <tt>mysql.sql</tt> or
+ * <tt>postgre.sql</tt> if you are running a postgreSQL database.
+ *
+ * You only need to load the included scripts into a database called <tt>sdbc_tutorial</tt>. This is
+ * the database that all scripts of the example web application will try to connect to. Make sure you
+ * also have a database user called <tt>sdbc_tutorial</tt> because the scripts also try to connect
+ * with this username and the password <tt>sdbc1234</tt>. If you are rewriting the tutorial - what's by
+ * the recommended to understand the examples much better - you don't need to bother with these
+ * details.
+ *
+ */
