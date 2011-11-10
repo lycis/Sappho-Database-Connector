@@ -44,6 +44,12 @@ CREATE TABLE news (
    content		TEXT			NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE = InnoDB;
+
+-- --------------------------------------------------------
+--           C R E A T E   U S E R
+-- --------------------------------------------------------
+INSERT INTO login(name, password) VALUES('admin', 'password1234');
+
 -- End transaction
 COMMIT;
 

@@ -116,6 +116,7 @@ Building a connection</h2>
 Connecting the page</h2>
 <p>Now we have a script that will connect us to the database and provide a handle (<code>$sdbc</code>) that we can use for database queries. To use this handle we have to load the connection script whenever our startpage is called. This is achieved by including this file at the beginning of our <code>index.php</code>. Nothing new for those of you who already familiar with PHP: </p>
 <div class="fragment"><pre class="fragment">&lt;?php
+    session_start(); <span class="comment">// we&#39;ll need this later on for the user login</span>
     require_once(<span class="stringliteral">&#39;connect.php&#39;</span>);
 ?&gt;
 &lt;html&gt;
@@ -141,7 +142,7 @@ Connecting the page</h2>
 </div>
 
 
-    <li class="footer">Generated on Thu Nov 3 2011 15:45:43 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Thu Nov 10 2011 11:27:01 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
