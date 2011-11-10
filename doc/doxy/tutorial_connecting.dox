@@ -53,6 +53,7 @@ if($sdbc->connect('sdbc1234'))
  * our <tt>index.php</tt>. Nothing new for those of you who already familiar with PHP:
  * \code
 <?php
+	session_start(); // we'll need this later on for the user login
 	require_once('connect.php');
 ?>
 <html>

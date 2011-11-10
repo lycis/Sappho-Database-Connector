@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Verifying user existence</h2>
 <p>The first thing out login script has to do is to verify if the given user exists. if it does not we will prompt so. Before we can access the database we have to connect to it. Thanks to our <code>connect.php</code> that was created in the former step we can do this without much coding: </p>
 <div class="fragment"><pre class="fragment"> &lt;?php
+    session_start(); <span class="comment">// to keep up the session</span>
     require_once(<span class="stringliteral">&#39;connect.php&#39;</span>);
     ...
 </pre></div><p>The connect script provides us with a database handle known as <code>$sdbc</code>. Now we will use this handle to execute a <code>SELECT</code> statement with a very basic where clause that will retrieve the user data.</p>
@@ -135,6 +136,32 @@ Checking the password</h2>
     echo <span class="stringliteral">&quot;&lt;a href=&#39;index.php&#39;&gt;Click here to continue&lt;/a&gt;&quot;</span>;
     
     ?&gt;
+</pre></div><p>As you can see here this is a very basic and unsecure method for user authentication. We do not use any encryption, only plain text comparison (the password in the database has to be plain text too). If you used the provieded SQL script to create the database structure a valid user was already create for you. It's credentials are: <code>username: admin</code>, <code>password: password1234</code>. Otherwise you need to create your own user. This tutorial will not provide a web interface for user creation - but it will certainly be a good thing to implement on your own as soon as you figured out how to use the <code>insert(...)</code> method. Here is a simple SQL statement to create your user_ </p>
+<div class="fragment"><pre class="fragment">    INSERT INTO login(name, password) VALUES(&#39;&lt;username&gt;&#39;, &#39;&lt;password&gt;&#39;);
+</pre></div><p>Additionally we would like to hide the login form if the user is already logged in. You can easily do this by checking if the <code>$_SESSION["loggedin"]</code> variable is set before writing the form: </p>
+<div class="fragment"><pre class="fragment">  ...
+    &lt;h1&gt;SDBC Tutorial: News Board&lt;/h1&gt;
+        &lt;?php
+        <span class="keywordflow">if</span>(isset($_SESSION[<span class="stringliteral">&quot;loggedin&quot;</span>]) &amp;&amp; $_SESSION[<span class="stringliteral">&quot;loggedin&quot;</span>])
+        {
+            echo <span class="stringliteral">&#39;&lt;p&gt;You are logged in.&lt;/p&gt;&#39;</span>;
+        }
+        <span class="keywordflow">else</span>
+            echo <span class="stringliteral">&#39;&lt;div id=&quot;login-panel&quot;&gt;</span>
+<span class="stringliteral">                    &lt;form method=&quot;POST&quot; action=&quot;login.php&quot;&gt;</span>
+<span class="stringliteral">                        &lt;table&gt;</span>
+<span class="stringliteral">                            &lt;tr&gt;</span>
+<span class="stringliteral">                                &lt;td&gt;user: &lt;/td&gt;</span>
+<span class="stringliteral">                                &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;/td&gt;</span>
+<span class="stringliteral">                                &lt;td&gt;password: &lt;/td&gt;</span>
+<span class="stringliteral">                                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;&lt;/td&gt;</span>
+<span class="stringliteral">                                &lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;log in&quot; /&gt;&lt;/td&gt;</span>
+<span class="stringliteral">                            &lt;/tr&gt;</span>
+<span class="stringliteral">                        &lt;/table&gt;</span>
+<span class="stringliteral">                    &lt;/form&gt;</span>
+<span class="stringliteral">                &lt;/div&gt;&#39;</span>;
+        ?&gt;
+    ...
 </pre></div> </div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -156,7 +183,7 @@ Checking the password</h2>
 </div>
 
 
-    <li class="footer">Generated on Thu Nov 3 2011 15:45:43 for SapphoDatabaseConnection by
+    <li class="footer">Generated on Thu Nov 10 2011 11:27:01 for SapphoDatabaseConnection by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

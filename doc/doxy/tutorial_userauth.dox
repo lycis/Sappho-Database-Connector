@@ -13,6 +13,7 @@
  we can do this without much coding:
  \code
  <?php
+	session_start(); // to keep up the session
     require_once('connect.php');
 	...
   \endcode
@@ -90,5 +91,46 @@
 	echo "<a href='index.php'>Click here to continue</a>";
 	
 	?>
+  \endcode
+	
+  As you can see here this is a very basic and unsecure method for user authentication. We do not
+  use any encryption, only plain text comparison (the password in the database has to be plain text
+  too). If you used the provieded SQL script to create the database structure a valid user was
+  already create for you. It's credentials are: <tt>username: admin</tt>, <tt>password: 
+  password1234</tt>. Otherwise you need to create your own user. This tutorial will not provide a
+  web interface for user creation - but it will certainly be a good thing to implement on your own
+  as soon as you figured out how to use the <tt>insert(...)</tt> method. Here is a simple SQL
+  statement to create your user_
+  \code
+    INSERT INTO login(name, password) VALUES('<username>', '<password>');
+  \endcode
+  
+  Additionally we would like to hide the login form if the user is already logged in. You can easily
+  do this by checking if the <tt>$_SESSION["loggedin"]</tt> variable is set before writing the
+  form:
+  \code
+  ...
+	<h1>SDBC Tutorial: News Board</h1>
+		<?php
+		if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"])
+		{
+			echo '<p>You are logged in.</p>';
+		}
+		else
+			echo '<div id="login-panel">
+					<form method="POST" action="login.php">
+						<table>
+							<tr>
+								<td>user: </td>
+								<td><input type="text" name="username" /></td>
+								<td>password: </td>
+								<td><input type="password" name="password" /></td>
+								<td><input type="submit" value="log in" /></td>
+							</tr>
+						</table>
+					</form>
+				</div>';
+		?>
+	...
   \endcode
 */
